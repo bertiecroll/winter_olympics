@@ -18,6 +18,12 @@ class Sport
     @id = sport['id'].to_i
   end
 
+  def delete()
+    sql = "DELETE FROM sports
+      WHERE id = #{id}"
+    SqlRunner.run(sql)
+  end
+
   def self.map_items(sql)
     sports = SqlRunner.run(sql)
     return sports.map {|sport| Sport.new(sport)}
@@ -25,6 +31,11 @@ class Sport
 
   def self.map_item(sql)
     return Sport.map_items(sql).first
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM sports"
+    SqlRunner.run(sql)
   end
 
 end
