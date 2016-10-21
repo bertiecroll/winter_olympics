@@ -19,4 +19,21 @@ class Contest
     return Venue.find(venue_id)
   end
 
+  def save()
+    sql = "INSERT INTO contests (name, event_id, venue_id)
+      VALUES ('#{@name}', #{@event_id}, #{@venue_id})
+      RETURNING *"
+    contest = SqlRunner.run(sql).first
+    @id = contest['id'].to_i
+  end
+
+  def self.map_items(sql)
+    contests = SqlRunner.run(sql)
+    return contests.map {|contest| Contest.new(contest)}
+  end
+
+  def self.map_item(sql)
+    return Contest.map_items(sql).first
+  end
+
 end

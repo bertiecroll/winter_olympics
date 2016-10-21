@@ -47,6 +47,7 @@ Sport.delete_all()
 
 #CONTEST
 @contest_1 = Contest.new('name' => "Qualifying", 'event_id' => @event_1.id, 'venue_id' => @venue_1.id)
+@contest_1.save()
 
 
 #ATHLETE
