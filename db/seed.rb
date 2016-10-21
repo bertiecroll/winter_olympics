@@ -1,7 +1,9 @@
 require('pry-byebug')
 require_relative('../models/nation')
 require_relative('../models/sport')
+require_relative('../models/event')
 require_relative('../models/athlete')
+
 
 Athlete.delete_all()
 Nation.delete_all()
@@ -23,12 +25,17 @@ Sport.delete_all()
 @sport_3 = Sport.new('name' => "Skeleton", 'score_method' => "time")
 @sport_3.save()
 
+#EVENTS
+@event_1 = Event.new('name' => "Slalom", 'gender' => "male", 'sport_id' => @sport_1.id)
+@event_2 = Event.new('name' => "Downhill", 'gender' => "female", 'sport_id' => @sport_1.id)
+@event_3 = Event.new('name' => "Individual", 'gender' => "male", 'sport_id' => @sport_2.id)
+
 #ATHLETE
-@athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "1986-12-05", 'nation_id' => @gb.id)
+@athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "1986-12-05", 'gender' => "male", 'nation_id' => @gb.id)
 @athlete_1.save()
-@athlete_2 = Athlete.new('first_name' => "Julien", 'last_name' => "Lizeroux", 'date_of_birth' => "1979-09-05", 'nation_id' => @france.id)
+@athlete_2 = Athlete.new('first_name' => "Julien", 'last_name' => "Lizeroux", 'date_of_birth' => "1979-09-05", 'gender' => "male", 'nation_id' => @france.id)
 @athlete_2.save()
-@athlete_3 = Athlete.new('first_name' => "Mario", 'last_name' => "Matt", 'date_of_birth' => "1979-04-09", 'nation_id' => @austria.id)
+@athlete_3 = Athlete.new('first_name' => "Mario", 'last_name' => "Matt", 'date_of_birth' => "1979-04-09", 'gender' => "male", 'nation_id' => @austria.id)
 @athlete_3.save()
 
 
