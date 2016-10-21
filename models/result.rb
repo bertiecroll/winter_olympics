@@ -11,4 +11,12 @@ class Result
     @contest_id = options['contest_id'].to_i
   end
 
+  def save()
+    sql = "INSERT INTO results (score, athlete_id, contest_id)
+      VALUES (#{@score}, #{@athlete_id}, #{@contest_id})
+      RETURNING *"
+    result = SqlRunner.run(sql).first
+    @id = result['id'].to_i
+  end
+
 end

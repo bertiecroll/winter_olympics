@@ -5,7 +5,7 @@ require_relative('../models/event')
 require_relative('../models/venue')
 require_relative('../models/contest')
 require_relative('../models/athlete')
-require_relative('../models/athlete_contest')
+require_relative('../models/result')
 
 
 Athlete.delete_all()
@@ -65,6 +65,7 @@ Sport.delete_all()
 @athlete_3.save()
 
 #RESULT
+@result_1 = Result.new('score' => 1.41, 'athlete_id' => @athlete_1.id, 'contest_id' => @contest_2.id)
 
 
 binding.pry
