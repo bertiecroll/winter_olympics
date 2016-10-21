@@ -3,6 +3,7 @@ require_relative('../models/nation')
 require_relative('../models/sport')
 require_relative('../models/event')
 require_relative('../models/venue')
+require_relative('../models/contest')
 require_relative('../models/athlete')
 
 
@@ -43,6 +44,10 @@ Sport.delete_all()
 @venue_2.save()
 @venue_3 = Venue.new('name' => "Gangneung Ice Arena", 'location' => "Gangneung", 'capacity' => 12000)
 @venue_3.save()
+
+#CONTEST
+@contest_1 = Contest.new('name' => "Qualifying", 'event_id' => @event_1.id, 'venue_id' => @venue_1.id)
+
 
 #ATHLETE
 @athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "1986-12-05", 'gender' => "male", 'nation_id' => @gb.id)
