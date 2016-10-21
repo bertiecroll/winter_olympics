@@ -25,6 +25,17 @@ class Venue
     SqlRunner.run(sql)
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM venues
+      WHERE id = #{id}"
+    return Venue.map_item(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM venues"
+    return Venue.map_items(sql)
+  end
+
   def self.map_items(sql)
     venues = SqlRunner.run(sql)
     return venues.map {|venue| Venue.new(venue)}
