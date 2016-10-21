@@ -11,4 +11,12 @@ class Contest
     @venue_id = options['venue_id'].to_i
   end
 
+  def event()
+    return Event.find(event_id)
+  end
+
+  def venue()
+    return Venue.find(venue_id)
+  end
+
 end

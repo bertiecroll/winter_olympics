@@ -12,9 +12,7 @@ class Event
   end
 
   def sport()
-    sql = "SELECT * FROM sports
-      WHERE id = #{@sport_id}"
-    return Sport.map_item(sql)
+    return Sport.find(@sport_id)
   end
 
   def save()

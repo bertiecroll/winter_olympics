@@ -23,9 +23,7 @@ class Athlete
   end
 
   def nation()
-    sql = "SELECT * FROM nations
-      WHERE id = #{@nation_id}"
-    return Nation.map_item(sql)
+    return Nation.find(@nation_id)
   end
 
   def save()
