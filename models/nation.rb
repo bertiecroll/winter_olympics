@@ -10,6 +10,12 @@ class Nation
     @region = options['region']
   end
 
+  def athletes()
+    sql = "SELECT * FROM athletes
+      WHERE nation_id = #{@id}"
+    return Athlete.map_items(sql)
+  end
+
   def save()
     sql = "INSERT INTO nations (name, region)
       VALUES ('#{@name}', '#{@region}')
