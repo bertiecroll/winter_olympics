@@ -6,6 +6,7 @@ require_relative('../models/athlete')
 
 
 Athlete.delete_all()
+Event.delete_all()
 Nation.delete_all()
 Sport.delete_all()
 
@@ -27,8 +28,11 @@ Sport.delete_all()
 
 #EVENTS
 @event_1 = Event.new('name' => "Slalom", 'gender' => "male", 'sport_id' => @sport_1.id)
+@event_1.save()
 @event_2 = Event.new('name' => "Downhill", 'gender' => "female", 'sport_id' => @sport_1.id)
+@event_2.save()
 @event_3 = Event.new('name' => "Individual", 'gender' => "male", 'sport_id' => @sport_2.id)
+@event_3.save()
 
 #ATHLETE
 @athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "1986-12-05", 'gender' => "male", 'nation_id' => @gb.id)

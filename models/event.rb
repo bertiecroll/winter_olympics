@@ -19,13 +19,24 @@ class Event
     @id = event['id'].to_i
   end
 
+  def delete()
+    sql = "DELETE FROM events
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
   def self.map_items(sql)
     events = SqlRunner.run(sql)
     return events.map {|event| Event.new(event)}
   end
 
-  def map_item(sql)
+  def self.map_item(sql)
     return Event.map_items(sql).first
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM events"
+    SqlRunner.run(sql)
   end
 
 end
