@@ -5,6 +5,7 @@ require_relative('../models/event')
 require_relative('../models/venue')
 require_relative('../models/contest')
 require_relative('../models/athlete')
+require_relative('../models/athlete_contest')
 
 
 Athlete.delete_all()
@@ -62,6 +63,8 @@ Sport.delete_all()
 @athlete_2.save()
 @athlete_3 = Athlete.new('first_name' => "Mario", 'last_name' => "Matt", 'date_of_birth' => "1979-04-09", 'gender' => "male", 'nation_id' => @austria.id)
 @athlete_3.save()
+
+#RESULT
 
 
 binding.pry

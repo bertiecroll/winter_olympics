@@ -48,7 +48,7 @@ CREATE TABLE contests (
   venue_id INT4 REFERENCES venues(id)
 );
 
-CREATE TABLE athletes_contests (
+CREATE TABLE results (
   id SERIAL4 PRIMARY KEY,
   score NUMERIC(8,3),
   athlete_id INT4 REFERENCES athletes(id),
