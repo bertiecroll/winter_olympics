@@ -22,6 +22,12 @@ class Athlete
     return @date_of_birth.to_s
   end
 
+  def nation()
+    sql = "SELECT * FROM nations
+      WHERE id = #{@nation_id}"
+    return Nation.map_item(sql)
+  end
+
   def save()
     sql = "INSERT INTO athletes (first_name, last_name, date_of_birth, gender, nation_id)
       VALUES ('#{@first_name}', '#{@last_name}', '#{@date_of_birth.to_s}', '#{@gender}', #{@nation_id})
