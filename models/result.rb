@@ -19,4 +19,24 @@ class Result
     @id = result['id'].to_i
   end
 
+  def delete()
+    sql = "DELETE FROM results
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
+  def self.map_items(sql)
+    results = SqlRunner.run(sql)
+    return results.map {|result| Result.new(result)}
+  end
+
+  def self.map_item(sql)
+    return Result.map_items(sql).first
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM results"
+    SqlRunner.run(sql)
+  end
+
 end
