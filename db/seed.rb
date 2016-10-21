@@ -8,6 +8,7 @@ require_relative('../models/athlete')
 
 Athlete.delete_all()
 Event.delete_all()
+Venue.delete_all()
 Nation.delete_all()
 Sport.delete_all()
 
@@ -37,8 +38,11 @@ Sport.delete_all()
 
 #VENUES
 @venue_1 = Venue.new('name' => "Yongpyong Alpine Centre", 'location' => "Pyeongchang", 'capacity' => 10000)
+@venue_1.save()
 @venue_2 = Venue.new('name' => "Alpensia Sliding Centre", 'location' => "Pyeongchang", 'capacity' => 7000)
+@venue_2.save()
 @venue_3 = Venue.new('name' => "Gangneung Ice Arena", 'location' => "Gangneung", 'capacity' => 12000)
+@venue_3.save()
 
 #ATHLETE
 @athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "1986-12-05", 'gender' => "male", 'nation_id' => @gb.id)

@@ -19,6 +19,12 @@ class Venue
     @id = venue['id'].to_i
   end
 
+  def delete()
+    sql = "DELETE FROM venues
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
   def self.map_items(sql)
     venues = SqlRunner.run(sql)
     return venues.map {|venue| Venue.new(venue)}
@@ -26,6 +32,11 @@ class Venue
 
   def self.map_item(sql)
     return Venue.map_items(sql).first
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM venues"
+    SqlRunner.run(sql)
   end
 
 end
