@@ -10,4 +10,21 @@ class Sport
     @score_method = options['score_method']
   end
 
+  def save()
+    sql = "INSERT INTO sports (name, score_method)
+      VALUES ('#{@name}', '#{@score_method}')
+      RETURNING *"
+    sport = SqlRunner.run(sql).first
+    @id = sport['id'].to_i
+  end
+
+  def self.map_items(sql)
+    sports = SqlRunner.run(sql)
+    return sports.map {|sport| Sport.new(sport)}
+  end
+
+  def self.map_item(sql)
+    return Sport.map_items(sql).first
+  end
+
 end
