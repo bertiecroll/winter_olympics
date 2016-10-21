@@ -20,7 +20,8 @@ CREATE TABLE sports (
 
 CREATE TABLE athletes (
   id SERIAL4 PRIMARY KEY,
-  name VARCHAR(255),
+  first_name VARCHAR(255),
+  last_name VARCHAR(255),
   date_of_birth DATE,
   sport_id INT4 REFERENCES sports(id),
   nation_id INT4 REFERENCES nations(id)

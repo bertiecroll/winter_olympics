@@ -5,11 +5,13 @@ require_relative('../models/sport')
 Nation.delete_all()
 Sport.delete_all()
 
-@uk = Nation.new('name' => "United Kingdom", 'region' => "Europe")
+#NATIONS
+@gb = Nation.new('name' => "Great Britain", 'region' => "Europe")
 @uk.save()
 @france = Nation.new('name' => "France", 'region' => "Europe")
 @france.save()
 
+#SPORTS
 @sport_1 = Sport.new('name' => "Alpine Skiing", 'score_method' => "time")
 @sport_1.save()
 @sport_2 = Sport.new('name' => "Figure Skating", 'score_method' => "points")
