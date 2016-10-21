@@ -33,6 +33,17 @@ class Contest
     SqlRunner.run(sql)
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM contests
+      WHERE id = #{id}"
+    return Contest.map_item(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM contests"
+    return Contest.map_items(sql)
+  end
+
   def self.map_items(sql)
     contests = SqlRunner.run(sql)
     return contests.map {|contest| Contest.new(contest)}
