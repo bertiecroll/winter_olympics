@@ -27,6 +27,12 @@ class Contest
     @id = contest['id'].to_i
   end
 
+  def delete()
+    sql = "DELETE FROM contests
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
   def self.map_items(sql)
     contests = SqlRunner.run(sql)
     return contests.map {|contest| Contest.new(contest)}
@@ -34,6 +40,11 @@ class Contest
 
   def self.map_item(sql)
     return Contest.map_items(sql).first
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM contests"
+    SqlRunner.run(sql)
   end
 
 end
