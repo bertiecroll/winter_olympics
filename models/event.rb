@@ -25,6 +25,17 @@ class Event
     SqlRunner.run(sql)
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM events
+      WHERE id = #{id}"
+    return Event.map_item(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM events"
+    return Event.map_items(sql)
+  end
+
   def self.map_items(sql)
     events = SqlRunner.run(sql)
     return events.map {|event| Event.new(event)}
