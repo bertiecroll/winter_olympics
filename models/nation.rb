@@ -24,6 +24,26 @@ class Nation
     SqlRunner.run(sql)
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM nations
+      WHERE id = #{id}"
+    return Nation.map_item(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM nations"
+    return Nation.map_items(sql)
+  end
+
+  def self.map_items(sql)
+    nations = SqlRunner.run(sql)
+    return nations.map {|nation| Nation.new(nation)}
+  end
+
+  def self.map_item(sql)
+    return Nation.map_items(sql).first
+  end
+
   def self.delete_all()
     sql = "DELETE FROM nations"
     SqlRunner.run(sql)
