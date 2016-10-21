@@ -11,4 +11,21 @@ class Venue
     @capacity = options['capacity'].to_i
   end
 
+  def save()
+    sql = "INSERT INTO venues (name, location, capacity)
+      VALUES ('#{@name}', '#{@location}', #{@capacity})
+      RETURNING *"
+    venue = SqlRunner.run(sql).first
+    @id = venue['id'].to_i
+  end
+
+  def self.map_items(sql)
+    venues = SqlRunner.run(sql)
+    return venues.map {|venue| Venue.new(venue)}
+  end
+
+  def self.map_item(sql)
+    return Venue.map_items(sql).first
+  end
+
 end
