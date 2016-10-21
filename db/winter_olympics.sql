@@ -31,7 +31,7 @@ CREATE TABLE venues (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
   location VARCHAR(255),
-  capacity INT2
+  capacity INT4
 );
 
 CREATE TABLE events (
