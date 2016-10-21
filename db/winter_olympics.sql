@@ -23,6 +23,7 @@ CREATE TABLE athletes (
   first_name VARCHAR(255),
   last_name VARCHAR(255),
   date_of_birth DATE,
+  gender VARCHAR(255),
   nation_id INT4 REFERENCES nations(id)
 );
 
@@ -36,6 +37,7 @@ CREATE TABLE venues (
 CREATE TABLE events (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
+  gender VARCHAR(255),
   sport_id INT4 REFERENCES sports(id)
 );
 

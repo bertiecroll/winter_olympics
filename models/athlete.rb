@@ -3,13 +3,14 @@ require_relative('../db/sql_runner')
 
 class Athlete
 
-  attr_reader(:id, :first_name, :last_name, :date_of_birth, :nation_id)
+  attr_reader(:id, :first_name, :last_name, :date_of_birth, :gender, :nation_id)
 
   def initialize(options)
     @id = options['id'].to_i
     @first_name = options['first_name']
     @last_name = options['last_name']
     @date_of_birth = Date.parse(options['date_of_birth'])
+    @gender = options['gender']
     @nation_id = options['nation_id'].to_i
   end
 
@@ -22,8 +23,8 @@ class Athlete
   end
 
   def save()
-    sql = "INSERT INTO athletes (first_name, last_name, date_of_birth, nation_id)
-      VALUES ('#{@first_name}', '#{@last_name}', '#{@date_of_birth.to_s}', #{@nation_id})
+    sql = "INSERT INTO athletes (first_name, last_name, date_of_birth, gender, nation_id)
+      VALUES ('#{@first_name}', '#{@last_name}', '#{@date_of_birth.to_s}', '#{@gender}', #{@nation_id})
       RETURNING *"
     athlete = SqlRunner.run(sql).first
     @id = athlete['id']
