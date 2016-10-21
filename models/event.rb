@@ -11,6 +11,12 @@ class Event
     @sport_id = options['sport_id'].to_i
   end
 
+  def sport()
+    sql = "SELECT * FROM sports
+      WHERE id = #{@sport_id}"
+    return Sport.map_item(sql)
+  end
+
   def save()
     sql = "INSERT INTO events (name, gender, sport_id)
       VALUES ('#{@name}', '#{@gender}', #{@sport_id})
