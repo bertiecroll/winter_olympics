@@ -20,8 +20,19 @@ class Sport
 
   def delete()
     sql = "DELETE FROM sports
-      WHERE id = #{id}"
+      WHERE id = #{@id}"
     SqlRunner.run(sql)
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM sports
+      WHERE id = #{id}"
+    return Sport.map_item(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM sports"
+    return Sport.map_items(sql)
   end
 
   def self.map_items(sql)
