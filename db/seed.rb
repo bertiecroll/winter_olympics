@@ -3,6 +3,7 @@ require_relative('../models/nation')
 require_relative('../models/sport')
 require_relative('../models/athlete')
 
+Athlete.delete_all()
 Nation.delete_all()
 Sport.delete_all()
 
@@ -21,7 +22,8 @@ Sport.delete_all()
 @sport_3.save()
 
 #ATHLETE
-@athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "22-12-1986", 'nation_id' => @gb.id)
+@athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "1986-12-22", 'nation_id' => @gb.id)
+@athlete_1.save()
 
 
 binding.pry
