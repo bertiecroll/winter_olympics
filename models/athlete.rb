@@ -17,6 +17,10 @@ class Athlete
     return "#{@first_name} #{@last_name}"
   end
 
+  def dob()
+    return @date_of_birth.to_s
+  end
+
   def save()
     sql = "INSERT INTO athletes (first_name, last_name, date_of_birth, nation_id)
       VALUES ('#{@first_name}', '#{@last_name}', '#{@date_of_birth.to_s}', #{@nation_id})
@@ -29,6 +33,17 @@ class Athlete
     sql = "DELETE FROM athletes
       WHERE id = #{@id}"
     SqlRunner.run(sql)
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM athletes
+      WHERE id = #{id}"
+    return Athlete.map_item(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM athletes"
+    return Athlete.map_items(sql)
   end
 
   def self.map_items(sql)

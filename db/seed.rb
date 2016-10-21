@@ -12,6 +12,8 @@ Sport.delete_all()
 @gb.save()
 @france = Nation.new('name' => "France", 'region' => "Europe")
 @france.save()
+@austria = Nation.new('name' => "Austria", 'region' => "Europe")
+@austria.save()
 
 #SPORTS
 @sport_1 = Sport.new('name' => "Alpine Skiing", 'score_method' => "time")
@@ -22,8 +24,12 @@ Sport.delete_all()
 @sport_3.save()
 
 #ATHLETE
-@athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "1986-12-22", 'nation_id' => @gb.id)
+@athlete_1 = Athlete.new('first_name' => "David", 'last_name' => "Ryding", 'date_of_birth' => "1986-12-05", 'nation_id' => @gb.id)
 @athlete_1.save()
+@athlete_2 = Athlete.new('first_name' => "Julien", 'last_name' => "Lizeroux", 'date_of_birth' => "1979-09-05", 'nation_id' => @france.id)
+@athlete_2.save()
+@athlete_3 = Athlete.new('first_name' => "Mario", 'last_name' => "Matt", 'date_of_birth' => "1979-04-09", 'nation_id' => @austria.id)
+@athlete_3.save()
 
 
 binding.pry
