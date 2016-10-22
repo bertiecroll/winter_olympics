@@ -2,6 +2,10 @@ require_relative('../models/sport')
 
 #INDEX
 #get all sports /sports
+get '/sports' do
+  @sports = Sport.all()
+  erb(:'sports/index')
+end
 
 #NEW
 #get new form to add sport /sport/new
