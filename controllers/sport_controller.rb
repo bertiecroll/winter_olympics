@@ -23,6 +23,10 @@ end
 
 #SHOW
 #get single sport by unique ID /sports/:id
+get '/sports/:id' do
+  @sport = Sport.find(params[:id])
+  erb(:'sports/show')
+end
 
 #EDIT
 #get new form to update sport /sports/:id/edit
