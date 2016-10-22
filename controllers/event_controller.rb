@@ -46,3 +46,8 @@ end
 
 #DESTROY
 #delete event using unqiue id, redirect to /events
+delete '/events/:id' do
+  @event = Event.find(params[:id])
+  @event.delete()
+  redirect to("/sports/#{@event.sport.id}")
+end
