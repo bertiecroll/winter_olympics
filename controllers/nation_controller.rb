@@ -9,6 +9,9 @@ end
 
 #NEW
 #get new form to add nation /nations/new
+get '/nations/new' do
+  erb(:'nations/new')
+end
 
 #CREATE
 #post new nation onto list /nations
