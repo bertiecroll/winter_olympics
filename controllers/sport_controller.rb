@@ -44,3 +44,8 @@ end
 
 #DESTROY
 #delete sport using unqiue id, redirect to /sport
+delete '/sports/:id' do
+  @sport = Sport.find(params[:id])
+  @sport.delete
+  redirect to("/sports")
+end
