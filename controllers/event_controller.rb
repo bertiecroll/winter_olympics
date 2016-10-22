@@ -1,7 +1,11 @@
 require_relative('../models/event')
 
 #INDEX
-#get all events /events
+#get all events for sport sports/:id/events
+get '/events' do
+  @events = Event.all()
+  erb(:'events/index')
+end
 
 #NEW
 #get new form to add event /events/new

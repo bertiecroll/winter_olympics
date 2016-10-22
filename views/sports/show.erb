@@ -1,6 +1,11 @@
 <div>
   <h3><%= @sport.name %></h3>
 </div>
+<div>
+  <% @sport.events.each do |event| %>
+    <h4><%= event.name %></h4>
+  <% end %>
+</div>
 
 <form action="/sports/<%= @sport.id %>" method="post">
   <input type="hidden" name="_method" value="delete">  
