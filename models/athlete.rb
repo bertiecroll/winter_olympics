@@ -1,6 +1,5 @@
 require('date')
 require_relative('../db/sql_runner')
-require_relative('nation')
 
 class Athlete
 

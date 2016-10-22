@@ -1,4 +1,5 @@
 require_relative('../models/athlete')
+require_relative('../models/nation')
 
 #INDEX
 #get all athletes /athletes
@@ -9,6 +10,10 @@ end
 
 #NEW
 #get new form to add athlete /athletes/new
+get '/athletes/new' do
+  @nations = Nation.all()
+  erb(:'athletes/new')
+end
 
 #CREATE
 #post new athlete onto list /athletes
