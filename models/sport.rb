@@ -2,7 +2,8 @@ require_relative('../db/sql_runner')
 
 class Sport
 
-  attr_reader(:id, :names)
+  attr_reader(:id)
+  attr_accessor(:name)
 
   def initialize(options)
     @id = options['id'].to_i
@@ -21,6 +22,13 @@ class Sport
       RETURNING *"
     sport = SqlRunner.run(sql).first
     @id = sport['id'].to_i
+  end
+
+  def update()
+    sql = "UPDATE sports
+      SET name = '#{@name}'
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
   end
 
   def delete()
