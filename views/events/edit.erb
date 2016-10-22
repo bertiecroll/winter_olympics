@@ -1,0 +1,28 @@
+<form action="/events/<%= @event.id %>" method="post">
+  
+  <label for="sport_id">Sport</label>
+  <select type="text" name="sport_id" id="sport_id">
+    <% @sports.each do |sport| %>
+      <option value="<%= sport.id %>" <%= "selected" if @event.sport_id == sport.id %> ><%= sport.name %></option>
+    <% end %>
+  </select>
+
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" value="<%= @event.name %>">
+
+  <label for="class">Class</label>
+  <select type="text" name="class" id="class">
+    <option value="male" <%= "selected" if @event.class == "male" %> >Male</option>
+    <option value="female" <%= "selected" if @event.class == "female" %> >Female</option>
+  </select>
+
+  <label for="score_method">Score Method</label>
+  <select type="text" name="score_method" id="score_method">
+    <option value="points" <%= "selected" if @event.score_method == "points" %> >Points</option>
+    <option value="time" <%= "selected" if @event.score_method == "time" %> >Time</option>
+  </select>
+
+  <input type="hidden" name="_method" value="put">
+  <input type="submit" value="Update Event">
+
+</form>

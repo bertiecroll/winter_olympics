@@ -31,9 +31,18 @@ end
 
 #EDIT
 #get new form to update event /events/:id/edit
+get '/events/:id/edit' do
+  @event = Event.find(params[:id])
+  @sports = Sport.all()
+  erb(:'events/edit')
+end
 
 #UPDATE
 #put update event details /events/:id
+put '/events/:id' do
+  Event.update(params)
+  redirect to("/events/#{params[:id]}")
+end
 
 #DESTROY
 #delete event using unqiue id, redirect to /events
