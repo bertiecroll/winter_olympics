@@ -2,6 +2,10 @@ require_relative('../models/athlete')
 
 #INDEX
 #get all athletes /athletes
+get '/athletes' do
+  @athletes = Athlete.all()
+  erb(:'athletes/index')
+end
 
 #NEW
 #get new form to add athlete /athletes/new
