@@ -25,6 +25,17 @@ class Result
     SqlRunner.run(sql)
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM results
+      WHERE id = #{id}"
+    return Result.map_item(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM results"
+    return Result.map_items(sql)
+  end
+
   def self.map_items(sql)
     results = SqlRunner.run(sql)
     return results.map {|result| Result.new(result)}
