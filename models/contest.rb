@@ -2,7 +2,8 @@ require_relative('../db/sql_runner')
 
 class Contest
 
-  attr_reader(:id, :name, :event_id, :venue_id)
+  attr_reader(:id)
+  attr_accessor(:name, :event_id, :venue_id)
 
   def initialize(options)
     @id = options['id'].to_i
@@ -25,6 +26,13 @@ class Contest
       RETURNING *"
     contest = SqlRunner.run(sql).first
     @id = contest['id'].to_i
+  end
+
+  def update()
+    sql = "UPDATE contests
+      SET name = '#{@name}', event_id = #{@event_id}, venue_id = #{@venue_id}
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
   end
 
   def delete()
