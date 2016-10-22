@@ -9,9 +9,17 @@ end
 
 #NEW
 #get new form to add sport /sport/new
+get '/sports/new' do
+  erb(:'sports/new')
+end
 
 #CREATE
 #post new sport onto list /sports
+post '/sports' do
+  @sport = Sport.new(params)
+  @sport.save()
+  erb(:'sports/create')
+end
 
 #SHOW
 #get single sport by unique ID /sports/:id
