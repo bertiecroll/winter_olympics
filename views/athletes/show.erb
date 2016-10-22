@@ -19,4 +19,10 @@
   </table>
 </div>
 
+<form action="/athletes/<%= @athlete.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Athlete">
+</form>
+
+<a href="/athletes/<%= @athlete.id %>/edit">Edit Athlete's Details</a>
 <a href="/athletes">View all Athletes</a>

@@ -47,3 +47,8 @@ end
 
 #DESTROY
 #delete athlete using unqiue id, redirect to /athletes
+delete '/athletes/:id' do
+  @athlete = Athlete.find(params[:id])
+  @athlete.delete()
+  redirect to('/athletes')
+end
