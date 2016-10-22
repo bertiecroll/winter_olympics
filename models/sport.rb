@@ -24,16 +24,16 @@ class Sport
     @id = sport['id'].to_i
   end
 
-  def update()
-    sql = "UPDATE sports
-      SET name = '#{@name}'
+  def delete()
+    sql = "DELETE FROM sports
       WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
-  def delete()
-    sql = "DELETE FROM sports
-      WHERE id = #{@id}"
+  def self.update(options)
+    sql = "UPDATE sports
+      SET name = '#{options['name']}'
+      WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
 

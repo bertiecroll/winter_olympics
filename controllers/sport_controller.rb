@@ -30,9 +30,17 @@ end
 
 #EDIT
 #get new form to update sport /sports/:id/edit
+get '/sports/:id/edit' do
+  @sport = Sport.find(params[:id])
+  erb(:'sports/edit')
+end
 
 #UPDATE
 #put update sport details /sport/:id
+put '/sports/:id' do
+  Sport.update(params)
+  redirect to("/sports/#{params[:id]}")
+end
 
 #DESTROY
 #delete sport using unqiue id, redirect to /sport

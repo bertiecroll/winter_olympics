@@ -1,0 +1,9 @@
+<form action="/sports/<%= @sport.id %>" method="post">
+  
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" value="<%= @sport.name %>">
+
+  <input type="hidden" name="_method" value="put">
+  <input type="submit" value="Update Sport Details">
+
+</form>
