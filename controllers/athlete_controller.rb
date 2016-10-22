@@ -17,6 +17,11 @@ end
 
 #CREATE
 #post new athlete onto list /athletes
+post '/athletes' do
+  @athlete = Athlete.new(params)
+  @athlete.save()
+  erb(:'athletes/create')
+end
 
 #SHOW
 #get single athlete by unique ID /athletes/:id
