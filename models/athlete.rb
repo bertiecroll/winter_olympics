@@ -3,7 +3,8 @@ require_relative('../db/sql_runner')
 
 class Athlete
 
-  attr_reader(:id, :first_name, :last_name, :date_of_birth, :gender, :nation_id)
+  attr_reader(:id, :date_of_birth)
+  attr_accessor(:first_name, :last_name, :gender, :nation_id)
 
   def initialize(options)
     @id = options['id'].to_i
@@ -26,12 +27,23 @@ class Athlete
     return Nation.find(@nation_id)
   end
 
+  def date_of_birth=(new_dob)
+    return @date_of_birth = Date.parse(new_dob)
+  end
+
   def save()
     sql = "INSERT INTO athletes (first_name, last_name, date_of_birth, gender, nation_id)
-      VALUES ('#{@first_name}', '#{@last_name}', '#{@date_of_birth.to_s}', '#{@gender}', #{@nation_id})
+      VALUES ('#{@first_name}', '#{@last_name}', '#{dob()}', '#{@gender}', #{@nation_id})
       RETURNING *"
     athlete = SqlRunner.run(sql).first
     @id = athlete['id']
+  end
+
+  def update()
+    sql = "UPDATE athletes
+      SET first_name = '#{@first_name}', last_name = '#{@last_name}', date_of_birth = '#{dob()}', gender = '#{@gender}', nation_id = #{@nation_id}
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
   end
 
   def delete()
