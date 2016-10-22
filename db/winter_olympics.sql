@@ -23,7 +23,7 @@ CREATE TABLE athletes (
   last_name VARCHAR(255),
   date_of_birth DATE,
   gender VARCHAR(255),
-  nation_id INT4 REFERENCES nations(id)
+  nation_id INT4 REFERENCES nations(id) ON DELETE CASCADE
 );
 
 CREATE TABLE venues (
@@ -38,19 +38,19 @@ CREATE TABLE events (
   name VARCHAR(255),
   class VARCHAR(255),
   score_method VARCHAR(255),
-  sport_id INT4 REFERENCES sports(id)
+  sport_id INT4 REFERENCES sports(id) ON DELETE CASCADE
 );
 
 CREATE TABLE contests (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
-  event_id INT4 REFERENCES events(id),
-  venue_id INT4 REFERENCES venues(id)
+  event_id INT4 REFERENCES events(id) ON DELETE CASCADE,
+  venue_id INT4 REFERENCES venues(id) ON DELETE CASCADE
 );
 
 CREATE TABLE results (
   id SERIAL4 PRIMARY KEY,
   score VARCHAR(255),
-  athlete_id INT4 REFERENCES athletes(id),
-  contest_id INT4 REFERENCES contests(id)
+  athlete_id INT4 REFERENCES athletes(id) ON DELETE CASCADE,
+  contest_id INT4 REFERENCES contests(id) ON DELETE CASCADE
 );

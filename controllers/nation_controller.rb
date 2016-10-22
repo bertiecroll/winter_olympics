@@ -44,3 +44,8 @@ end
 
 #DESTROY
 #delete nation using unqiue id, redirect to /nations
+delete '/nations/:id' do
+  @nation = Nation.find(params['id'])
+  @nation.delete()
+  redirect to("/nations")
+end

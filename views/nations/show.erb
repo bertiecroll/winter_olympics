@@ -11,6 +11,12 @@
       <td><a href="/nations/<%= @nation.id %>/edit">Edit Nation</a></td>
     </tr>
   </table>
+  <div>
+    <form action="/nations/<%= @nation.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Nation">
+    </form>
+  </div>
 </div>
 <div>
   <table>
