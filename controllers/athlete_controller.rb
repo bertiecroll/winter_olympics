@@ -25,6 +25,10 @@ end
 
 #SHOW
 #get single athlete by unique ID /athletes/:id
+get '/athletes/:id' do
+  @athlete = Athlete.find(params[:id])
+  erb(:'athletes/show')
+end
 
 #EDIT
 #get new form to update athlete /athletes/:id/edit

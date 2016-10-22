@@ -3,16 +3,12 @@
   <table>
     <tr>
       <th>Nation</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Date of Birth</th>
+      <th>Full Name</th>
     <tr>
     <% @athletes.each do |athlete| %>
       <tr>
         <td><%= athlete.nation.name %></td>
-        <td><%= athlete.first_name %></td>
-        <td><%= athlete.last_name %></td>
-        <td><%= athlete.dob %></td>
+        <td><a href= "/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></td>
       </tr>
     <% end %>
   </table>
