@@ -36,7 +36,7 @@ CREATE TABLE venues (
 CREATE TABLE events (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
-  gender VARCHAR(255),
+  class VARCHAR(255),
   score_method VARCHAR(255),
   sport_id INT4 REFERENCES sports(id)
 );

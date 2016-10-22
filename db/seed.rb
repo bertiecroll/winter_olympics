@@ -32,11 +32,11 @@ Sport.delete_all()
 @sport_3.save()
 
 #EVENTS
-@event_1 = Event.new('name' => "Slalom", 'gender' => "male", 'score_method' => "time", 'sport_id' => @sport_1.id)
+@event_1 = Event.new('name' => "Slalom", 'class' => "male", 'score_method' => "time", 'sport_id' => @sport_1.id)
 @event_1.save()
-@event_2 = Event.new('name' => "Downhill", 'gender' => "female", 'score_method' => "time", 'sport_id' => @sport_1.id)
+@event_2 = Event.new('name' => "Downhill", 'class' => "female", 'score_method' => "time", 'sport_id' => @sport_1.id)
 @event_2.save()
-@event_3 = Event.new('name' => "Individual", 'gender' => "male", 'score_method' => "points", 'sport_id' => @sport_2.id)
+@event_3 = Event.new('name' => "Individual", 'class' => "male", 'score_method' => "points", 'sport_id' => @sport_2.id)
 @event_3.save()
 
 #VENUES
