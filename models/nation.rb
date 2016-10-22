@@ -2,7 +2,8 @@ require_relative('../db/sql_runner')
 
 class Nation
 
-  attr_reader(:id, :name, :region)
+  attr_reader(:id)
+  attr_accessor(:name, :region)
 
   def initialize(options)
     @id = options['id'].to_i
@@ -22,6 +23,13 @@ class Nation
       RETURNING *"
     nation = SqlRunner.run(sql).first
     @id = nation['id']
+  end
+
+  def update()
+    sql = "UPDATE nations
+      SET name = '#{@name}', region = '#{@region}'
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
   end
 
   def delete()
