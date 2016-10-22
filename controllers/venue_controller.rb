@@ -44,3 +44,8 @@ end
 
 #DESTROY
 #delete venue using unqiue id, redirect to /venues
+delete '/venues/:id' do
+  @venue = Venue.find(params[:id])
+  @venue.delete
+  redirect to("/venues")
+end

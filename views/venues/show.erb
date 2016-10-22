@@ -4,6 +4,13 @@
 <h5>Location: <%= @venue.location %></h5>
 <h5>Capacity: <%= @venue.capacity %></h5>
 
+<form action="/venues/<%= @venue.id %>" method="post">
+  
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Venue">
+  
+</form>
+
 <a href="/venues/<%= @venue.id %>/edit">Edit Venue</a>
 
 <a href="/venues">View All Venues</a>
