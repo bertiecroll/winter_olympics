@@ -1,6 +1,8 @@
 <h2>Venues:</h2>
 <div>
   <% @venues.each do |venue| %>
-    <div><%= venue.name %></div>
+    <div><a href="/venues/<%= venue.id %>"><%= venue.name %></a></div>
   <% end %>
 </div>
+
+<a href="/venues/new">Add New Venue</a>  
