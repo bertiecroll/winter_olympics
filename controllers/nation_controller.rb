@@ -23,6 +23,10 @@ end
 
 #SHOW
 #get single nation by unique ID /nations/:id
+get '/nations/:id' do
+  @nation = Nation.find(params[:id])
+  erb(:'nations/show')
+end
 
 #EDIT
 #get new form to update nation /nations/:id/edit

@@ -1,0 +1,25 @@
+<div>
+  <h3>Nation</h3>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Region</th>
+    <tr>
+    <tr>
+      <td><%= @nation.name %></td>
+      <td><%= @nation.region %></td>
+    </tr>
+  </table>
+</div>
+<div>
+  <table>
+    <tr>
+      <th>Full Name</th>
+    <tr>
+    <% @nation.athletes.each do |athlete| %>
+      <tr>
+        <td><a href= "/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
