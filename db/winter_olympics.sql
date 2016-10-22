@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS athletes_contests; 
+DROP TABLE IF EXISTS results; 
 DROP TABLE IF EXISTS contests; 
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS venues;
@@ -14,8 +14,7 @@ CREATE TABLE nations (
 
 CREATE TABLE sports (
   id SERIAL4 PRIMARY KEY,
-  name VARCHAR(255),
-  score_method VARCHAR(255)
+  name VARCHAR(255)
 );
 
 CREATE TABLE athletes (
@@ -38,6 +37,7 @@ CREATE TABLE events (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
   gender VARCHAR(255),
+  score_method VARCHAR(255),
   sport_id INT4 REFERENCES sports(id)
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE contests (
 
 CREATE TABLE results (
   id SERIAL4 PRIMARY KEY,
-  score NUMERIC(8,3),
+  score VARCHAR(255),
   athlete_id INT4 REFERENCES athletes(id),
   contest_id INT4 REFERENCES contests(id)
 );

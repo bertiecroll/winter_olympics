@@ -24,19 +24,19 @@ Sport.delete_all()
 @austria.save()
 
 #SPORTS
-@sport_1 = Sport.new('name' => "Alpine Skiing", 'score_method' => "time")
+@sport_1 = Sport.new('name' => "Alpine Skiing")
 @sport_1.save()
-@sport_2 = Sport.new('name' => "Figure Skating", 'score_method' => "points")
+@sport_2 = Sport.new('name' => "Figure Skating")
 @sport_2.save()
-@sport_3 = Sport.new('name' => "Skeleton", 'score_method' => "time")
+@sport_3 = Sport.new('name' => "Skeleton")
 @sport_3.save()
 
 #EVENTS
-@event_1 = Event.new('name' => "Slalom", 'gender' => "male", 'sport_id' => @sport_1.id)
+@event_1 = Event.new('name' => "Slalom", 'gender' => "male", 'score_method' => "time", 'sport_id' => @sport_1.id)
 @event_1.save()
-@event_2 = Event.new('name' => "Downhill", 'gender' => "female", 'sport_id' => @sport_1.id)
+@event_2 = Event.new('name' => "Downhill", 'gender' => "female", 'score_method' => "time", 'sport_id' => @sport_1.id)
 @event_2.save()
-@event_3 = Event.new('name' => "Individual", 'gender' => "male", 'sport_id' => @sport_2.id)
+@event_3 = Event.new('name' => "Individual", 'gender' => "male", 'score_method' => "points", 'sport_id' => @sport_2.id)
 @event_3.save()
 
 #VENUES
@@ -65,11 +65,11 @@ Sport.delete_all()
 @athlete_3.save()
 
 #RESULT
-@result_1 = Result.new('score' => 1.41, 'athlete_id' => @athlete_1.id, 'contest_id' => @contest_2.id)
+@result_1 = Result.new('score' => "1:41.85", 'athlete_id' => @athlete_1.id, 'contest_id' => @contest_2.id)
 @result_1.save()
-@result_2 = Result.new('score' => 1.82, 'athlete_id' => @athlete_2.id, 'contest_id' => @contest_2.id)
+@result_2 = Result.new('score' => "1:55.30", 'athlete_id' => @athlete_2.id, 'contest_id' => @contest_2.id)
 @result_2.save()
-@result_3 = Result.new('score' => 2.10, 'athlete_id' => @athlete_3.id, 'contest_id' => @contest_2.id)
+@result_3 = Result.new('score' => "2:10.01", 'athlete_id' => @athlete_3.id, 'contest_id' => @contest_2.id)
 @result_3.save()
 
 binding.pry
