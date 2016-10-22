@@ -32,6 +32,11 @@ end
 
 #EDIT
 #get new form to update athlete /athletes/:id/edit
+get '/athletes/:id/edit' do
+  @athlete = Athlete.find(params[:id])
+  @nations = Nation.all()
+  erb(:'athletes/edit')
+end
 
 #UPDATE
 #put update athlete details /athletes/:id
