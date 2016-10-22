@@ -37,6 +37,10 @@ end
 
 #UPDATE
 #put update venue details /venues/:id
+put '/venues/:id' do
+  Venue.update(params)
+  redirect to("/venues/#{params['id']}")
+end
 
 #DESTROY
 #delete venue using unqiue id, redirect to /venues

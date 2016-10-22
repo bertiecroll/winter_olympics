@@ -20,16 +20,16 @@ class Venue
     @id = venue['id'].to_i
   end
 
-  def update()
-    sql = "UPDATE venues
-      SET name = '#{@name}', location = '#{@location}', capacity = #{@capacity}
+  def delete()
+    sql = "DELETE FROM venues
       WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
-  def delete()
-    sql = "DELETE FROM venues
-      WHERE id = #{@id}"
+  def self.update(options)
+    sql = "UPDATE venues
+      SET name = '#{options['name']}', location = '#{options['location']}', capacity = #{options['capacity']}
+      WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
 
