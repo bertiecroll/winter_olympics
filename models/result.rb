@@ -11,6 +11,14 @@ class Result
     @contest_id = options['contest_id'].to_i
   end
 
+  def athlete()
+    return Athlete.find(@athlete_id)
+  end
+
+  def contest()
+    return Contest.find(@contest_id)
+  end
+
   def save()
     sql = "INSERT INTO results (score, athlete_id, contest_id)
       VALUES ('#{@score}', #{@athlete_id}, #{@contest_id})
