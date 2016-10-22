@@ -37,6 +37,10 @@ end
 
 #UPDATE
 #put update nation details /nations/:id
+put '/nations/:id' do
+  Nation.update(params)
+  redirect to("/nations/#{@params['id']}")
+end
 
 #DESTROY
 #delete nation using unqiue id, redirect to /nations

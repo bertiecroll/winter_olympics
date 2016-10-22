@@ -40,7 +40,7 @@ end
 #UPDATE
 #put update athlete details /athletes/:id
 put '/athletes/:id' do
-  @athlete = Athlete.update(params)
+  Athlete.update(params)
   redirect to("/athletes/#{params[:id]}")
 end
 

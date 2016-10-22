@@ -25,16 +25,16 @@ class Nation
     @id = nation['id']
   end
 
-  def update()
-    sql = "UPDATE nations
-      SET name = '#{@name}', region = '#{@region}'
+  def delete()
+    sql = "DELETE FROM nations
       WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
-  def delete()
-    sql = "DELETE FROM nations
-      WHERE id = #{@id}"
+  def self.update(options)
+    sql = "UPDATE nations
+      SET name = '#{options['name']}', region = '#{options['region']}'
+      WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
 
