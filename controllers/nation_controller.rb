@@ -1,22 +1,26 @@
 require_relative('../models/nation')
 
 #INDEX
-#get all athletes /athletes
+#get all nations /nations
+get '/nations' do
+  @nations = Nation.all()
+  erb(:'nations/index')
+end
 
 #NEW
-#get new form to add athlete /athletes/new
+#get new form to add nation /nations/new
 
 #CREATE
-#post new athlete onto list /athletes
+#post new nation onto list /nations
 
 #SHOW
-#get single athlete by unique ID /athletes/:id
+#get single nation by unique ID /nations/:id
 
 #EDIT
-#get new form to update athlete /athletes/:id/edit
+#get new form to update nation /nations/:id/edit
 
 #UPDATE
-#put update athlete details /athletes/:id
+#put update nation details /nations/:id
 
 #DESTROY
-#delete athlete using unqiue id, redirect to /athletes
+#delete nation using unqiue id, redirect to /nations
