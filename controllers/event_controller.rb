@@ -9,9 +9,18 @@ end
 
 #NEW
 #get new form to add event /events/new
+get '/events/new' do
+  @sports = Sport.all()
+  erb(:'events/new')
+end
 
 #CREATE
 #post new event onto list /events
+post '/events' do
+  @event = Event.new(params)
+  @event.save()
+  erb(:'events/create')
+end
 
 #SHOW
 #get single event by unique ID /events/:id
