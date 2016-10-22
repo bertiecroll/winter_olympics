@@ -1,5 +1,4 @@
 require_relative('../models/athlete')
-require_relative('../models/nation')
 
 #INDEX
 #get all athletes /athletes
