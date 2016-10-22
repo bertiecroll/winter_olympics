@@ -24,6 +24,10 @@ end
 
 #SHOW
 #get single event by unique ID /events/:id
+get '/events/:id' do
+  @event = Event.find(params[:id])
+  erb(:'events/show')
+end
 
 #EDIT
 #get new form to update event /events/:id/edit
