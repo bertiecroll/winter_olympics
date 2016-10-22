@@ -8,6 +8,7 @@
     <tr>
       <td><%= @nation.name %></td>
       <td><%= @nation.region %></td>
+      <td><a href="/nations/<%= @nation.id %>/edit">Edit Nation</a></td>
     </tr>
   </table>
 </div>
@@ -23,3 +24,4 @@
     <% end %>
   </table>
 </div>
+

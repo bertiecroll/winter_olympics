@@ -1,0 +1,12 @@
+<form action="/nations/<%= @nation.id %>" method="post">
+  
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" value="<%= @nation.name %>">
+
+  <label for="region">Region:</label>
+  <input type="text" name="region" id="region" value="<%= @nation.region %>">
+
+  <input type="hidden" name="_method" value="put">
+  <input type="submit" value="Update Nation Details">
+
+</form>

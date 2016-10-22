@@ -30,6 +30,10 @@ end
 
 #EDIT
 #get new form to update nation /nations/:id/edit
+get '/nations/:id/edit' do
+  @nation = Nation.find(params[:id])
+  erb(:'nations/edit')
+end
 
 #UPDATE
 #put update nation details /nations/:id
