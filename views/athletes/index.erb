@@ -7,7 +7,7 @@
     <tr>
     <% @athletes.each do |athlete| %>
       <tr>
-        <td><%= athlete.nation.name %></td>
+        <td><a href= "/nations/<%= athlete.nation.id %>"><%= athlete.nation.name %></a></td>
         <td><a href= "/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></td>
       </tr>
     <% end %>
