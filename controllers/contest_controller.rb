@@ -2,6 +2,10 @@ require_relative('../models/contest')
 
 #INDEX
 #get all contests /contests
+get '/contests' do
+  @contests = Contest.all()
+  erb(:'/contests/index')
+end
 
 #NEW
 #get new form to add contest /contests/new
