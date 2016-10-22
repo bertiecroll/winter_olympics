@@ -39,16 +39,16 @@ class Athlete
     @id = athlete['id']
   end
 
-  def update()
-    sql = "UPDATE athletes
-      SET first_name = '#{@first_name}', last_name = '#{@last_name}', date_of_birth = '#{dob()}', gender = '#{@gender}', nation_id = #{@nation_id}
+  def delete()
+    sql = "DELETE FROM athletes
       WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
-  def delete()
-    sql = "DELETE FROM athletes
-      WHERE id = #{@id}"
+  def self.update(options)
+    sql = "UPDATE athletes
+      SET first_name = '#{options['first_name']}', last_name = '#{options['last_name']}', date_of_birth = '#{options['date_of_birth']}', gender = '#{options['gender']}', nation_id = #{options['nation_id']}
+      WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
 

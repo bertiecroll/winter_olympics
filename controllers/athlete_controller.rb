@@ -40,6 +40,10 @@ end
 
 #UPDATE
 #put update athlete details /athletes/:id
+put '/athletes/:id' do
+  @athlete = Athlete.update(params)
+  redirect to("/athletes/#{params[:id]}")
+end
 
 #DESTROY
 #delete athlete using unqiue id, redirect to /athletes
