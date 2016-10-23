@@ -1,0 +1,27 @@
+<form action="/contests/<%= @contest.id %>" method="post">
+  
+  <label for="event_id">Event</label>
+  <select type="text" name="event_id" id="event_id">
+    <% @sports.each do |sport| %>
+      <optgroup label="<%= sport.name %>">
+        <% sport.events.each do |event| %>
+          <option value="<%= event.id %>" <%= "selected" if @contest.event_id == event.id %> ><%= event.class.capitalize %> <%= event.name %></option>
+        <% end %>
+      </optgroup>
+    <% end %>
+  </select>
+
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" value="<%= @contest.name %>">
+
+  <label for="venue_id">Venue</label>
+  <select type="text" name="venue_id" id="venue_id">
+    <% @venues.each do |venue| %>
+      <option value="<%= venue.id %>" <%= "selected" if @contest.venue_id == venue.id %> ><%= venue.name %></option>
+    <% end %>
+  </select>
+
+  <input type="hidden" name="_method" value="put">
+  <input type="submit" value="Update Contest Details">
+
+</form>

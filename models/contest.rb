@@ -28,16 +28,16 @@ class Contest
     @id = contest['id'].to_i
   end
 
-  def update()
-    sql = "UPDATE contests
-      SET name = '#{@name}', event_id = #{@event_id}, venue_id = #{@venue_id}
+  def delete()
+    sql = "DELETE FROM contests
       WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
-  def delete()
-    sql = "DELETE FROM contests
-      WHERE id = #{@id}"
+  def self.update(options)
+    sql = "UPDATE contests
+      SET name = '#{options['name']}', event_id = #{options['event_id']}, venue_id = #{options['venue_id']}
+      WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
 

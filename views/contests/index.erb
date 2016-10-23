@@ -11,7 +11,7 @@
     <% @contests.each do |contest| %>
       <tr>
         <td><%= contest.event.sport.name %></td>
-        <td><%= contest.event.name %></td>
+        <td><%= contest.event.class.capitalize %> <%= contest.event.name %></td>
         <td><%= contest.name %></td>
         <td><%= contest.venue.name %></td>
       </tr>

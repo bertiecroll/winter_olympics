@@ -32,9 +32,19 @@ end
 
 #EDIT
 #get new form to update contest /contests/:id/edit
+get '/contests/:id/edit' do
+  @sports = Sport.all()
+  @venues = Venue.all()
+  @contest = Contest.find(params[:id])
+  erb(:'contests/edit')
+end
 
 #UPDATE
 #put update contest details /contests/:id
+put '/contests/:id' do
+  Contest.update(params)
+  redirect to("/contests/#{params[:id]}")
+end
 
 #DESTROY
 #delete contest using unqiue id, redirect to /contests
