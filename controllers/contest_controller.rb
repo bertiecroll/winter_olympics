@@ -25,6 +25,10 @@ end
 
 #SHOW
 #get single contest by unique ID /contests/:id
+get '/contests/:id' do
+  @contest = Contest.find(params[:id])
+  erb(:'contests/show')
+end
 
 #EDIT
 #get new form to update contest /contests/:id/edit

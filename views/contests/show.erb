@@ -1,0 +1,17 @@
+<div>
+  <h3>Contest Details</h3>
+  <table>
+    <tr>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Name</th>
+      <th>Venue</th>
+    <tr>
+    <tr>
+      <td><a href="/sports/<%= @contest.event.sport.id %>"><%= @contest.event.sport.name %></a></td>
+      <td><a href="/events/<%= @contest.event.id %>"><%= @contest.event.name %></a></td>
+      <td><%= @contest.name %></td>
+      <td><a href="/venues/<%= @contest.venue.id %>"><%= @contest.venue.name %></a></td>
+    </tr>
+  </table>
+</div>
