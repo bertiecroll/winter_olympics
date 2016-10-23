@@ -28,16 +28,16 @@ class Result
     @id = result['id'].to_i
   end
 
-  def update()
-    sql = "UPDATE results
-      SET score = '#{@score}', athlete_id = #{@athlete_id}, contest_id = #{@contest_id}
+  def delete()
+    sql = "DELETE FROM results
       WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
-  def delete()
-    sql = "DELETE FROM results
-      WHERE id = #{@id}"
+  def self.update(options)
+    sql = "UPDATE results
+      SET score = '#{options['score']}', athlete_id = #{options['athlete_id']}, contest_id = #{options['contest_id']}
+      WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
 

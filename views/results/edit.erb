@@ -1,6 +1,6 @@
 <h4>Edit result for <%= @contest.event.sport.name %> <%= @contest.event.name %> <%= @contest.name %></h4>
 
-<form action="/results/:id" method="post">
+<form action="/results/<%= @result.id %>" method="post">
 
   <input type="hidden" name="contest_id" value="<%= @contest.id %>">
 

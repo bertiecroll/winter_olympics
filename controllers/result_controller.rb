@@ -38,6 +38,15 @@ end
 
 #UPDATE
 #put update result details /results/:id
+put '/results/:id' do
+  Result.update(params)
+  redirect to("/contests/#{params[:contest_id]}")
+end
 
 #DESTROY
 #delete result using unqiue id, /results/:id
+delete '/results/:id' do
+  @result = Result.find(params[:id])
+  @result.delete()
+  redirect to("/contests/#{@result.contest_id}")
+end
