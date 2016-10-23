@@ -1,4 +1,5 @@
 require_relative('../models/result')
+require('pry-byebug')
 
 #INDEX
 #get all results /results
@@ -16,7 +17,12 @@ get '/contests/:id/results/new' do
 end
 
 #CREATE
-#post new result onto list /results
+#post new result onto list /contests/:id/results
+post '/results' do
+  @result = Result.new(params)
+  @result.save()
+  erb(:'results/create')
+end
 
 #SHOW
 #get single result by unique ID /results/:id

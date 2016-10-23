@@ -1,0 +1,23 @@
+<div>
+  <h3>Below result has now been added</h3>
+  <table>
+    <tr>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Round</th>
+      <th>Athlete</th>
+      <th><%= @result.contest.event.score_method.capitalize %></th>
+    <tr>
+    <tr>
+      <td><%= @result.contest.event.sport.name %></td>
+      <td><%= @result.contest.event.name %></td>
+      <td><%= @result.contest.name %></td>
+      <td><%= @result.athlete.full_name %></td>
+      <td><%= @result.score %></td>
+    </tr>
+  </table>
+</div>
+
+<a href="/results">View all Results</a>
+<a href="/contests/<%= @result.contest.id %>/results/new">Add Another Result</a>
+<a href="/contests/<%= @result.contest.id %>">Return to Contest</a>

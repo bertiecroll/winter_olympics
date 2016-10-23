@@ -2,6 +2,8 @@
 
 <form action="/results" method="post">
 
+  <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+
   <label for="athlete_id">Athlete</label>
   <select type="text" name="athlete_id" id="athlete_id">
     <% @athletes.each do |athlete| %>
@@ -11,5 +13,7 @@
 
   <label for="score"><%= @contest.event.score_method.capitalize %></label>
   <input type="text" name="score" id="score">
+
+  <input type="submit" value="Add Result">
 
 </form>
