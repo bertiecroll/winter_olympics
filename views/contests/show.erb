@@ -36,7 +36,7 @@
     <% @contest.results.each do |result| %>
       <tr>
         <td><%= result.athlete.full_name %></td>
-        <td><%= result.score %></td>
+        <td><%= result.print_score %></td>
         <td><a href="/contests/<%= @contest.id %>/results/<%= result.id %>/edit">Edit</a></td>
         <td>
           <form action="/results/<%= result.id %>" method="post">

@@ -63,14 +63,18 @@ Sport.delete_all()
 @athlete_2.save()
 @athlete_3 = Athlete.new('first_name' => "Mario", 'last_name' => "Matt", 'date_of_birth' => "1979-04-09", 'gender' => "male", 'nation_id' => @austria.id)
 @athlete_3.save()
+@athlete_4 = Athlete.new('first_name' => "Bertie", 'last_name' => "Croll", 'date_of_birth' => "1987-08-21", 'gender' => "male", 'nation_id' => @gb.id)
+@athlete_4.save()
 
 #RESULT
-@result_1 = Result.new('score' => "1:41.85", 'athlete_id' => @athlete_1.id, 'contest_id' => @contest_2.id)
+@result_1 = Result.new('score' => "0:1:41.850", 'athlete_id' => @athlete_1.id, 'contest_id' => @contest_2.id)
 @result_1.save()
-@result_2 = Result.new('score' => "1:55.30", 'athlete_id' => @athlete_2.id, 'contest_id' => @contest_2.id)
+@result_2 = Result.new('score' => "0:1:55.300", 'athlete_id' => @athlete_2.id, 'contest_id' => @contest_2.id)
 @result_2.save()
-@result_3 = Result.new('score' => "2:10.01", 'athlete_id' => @athlete_3.id, 'contest_id' => @contest_2.id)
+@result_3 = Result.new('score' => "0:2:10.010", 'athlete_id' => @athlete_3.id, 'contest_id' => @contest_2.id)
 @result_3.save()
+@result_4 = Result.new('score' => "500", 'athlete_id' => @athlete_4.id, 'contest_id' => @contest_3.id)
+@result_4.save()
 
 binding.pry
 nil

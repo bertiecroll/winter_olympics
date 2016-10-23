@@ -1,15 +1,17 @@
 require_relative('../db/sql_runner')
+require('time')
+require('pry-byebug')
 
 class Result
 
-  attr_reader(:id)
-  attr_accessor(:score, :athlete_id, :contest_id)
+  attr_reader(:id, :score)
+  attr_accessor(:athlete_id, :contest_id)
 
   def initialize(options)
     @id = options['id'].to_i
-    @score = options['score']
     @athlete_id = options['athlete_id'].to_i
     @contest_id = options['contest_id'].to_i
+    @score = get_score(options['score'])
   end
 
   def athlete()
@@ -20,9 +22,26 @@ class Result
     return Contest.find(@contest_id)
   end
 
+  def score=(new_value)
+    return get_score(new_value)
+  end
+
+  def print_score()
+    score_method = contest().event.score_method
+    case score_method
+      when "time"
+        print_score = @score.strftime("%H:%M:%S.%L")       
+      when "points"
+        print_score = @score.to_s
+      else
+        print_score = @score.to_s
+    end
+    return print_score
+  end
+
   def save()
     sql = "INSERT INTO results (score, athlete_id, contest_id)
-      VALUES ('#{@score}', #{@athlete_id}, #{@contest_id})
+      VALUES ('#{print_score()}', #{@athlete_id}, #{@contest_id})
       RETURNING *"
     result = SqlRunner.run(sql).first
     @id = result['id'].to_i
@@ -64,6 +83,21 @@ class Result
   def self.delete_all()
     sql = "DELETE FROM results"
     SqlRunner.run(sql)
+  end
+
+  private
+
+  def get_score(value)
+    score_method = contest().event.score_method
+    case score_method
+      when "time"
+        score = Time.parse(value)       
+      when "points"
+        score = value.to_i
+      else
+        score = value
+    end
+    return score
   end
 
 end
