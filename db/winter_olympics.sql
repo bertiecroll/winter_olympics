@@ -10,7 +10,9 @@ CREATE TABLE nations (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
   region VARCHAR(255),
-  points INT4
+  gold INT2,
+  silver INT2,
+  bronze INT2
 );
 
 CREATE TABLE sports (

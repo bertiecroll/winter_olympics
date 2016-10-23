@@ -48,9 +48,9 @@ Sport.delete_all()
 @venue_3.save()
 
 #CONTEST
-@contest_1 = Contest.new('name' => "Qualifying", 'event_id' => @event_1.id, 'venue_id' => @venue_1.id)
+@contest_1 = Contest.new('name' => "qUALifying", 'event_id' => @event_1.id, 'venue_id' => @venue_1.id)
 @contest_1.save()
-@contest_2 = Contest.new('name' => "Final", 'event_id' => @event_1.id, 'venue_id' => @venue_1.id)
+@contest_2 = Contest.new('name' => "final", 'event_id' => @event_1.id, 'venue_id' => @venue_1.id)
 @contest_2.save()
 @contest_3 = Contest.new('name' => "Final", 'event_id' => @event_3.id, 'venue_id' => @venue_3.id)
 @contest_3.save()

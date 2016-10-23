@@ -7,7 +7,7 @@ class Contest
 
   def initialize(options)
     @id = options['id'].to_i
-    @name = options['name']
+    @name = options['name'].capitalize
     @event_id = options['event_id'].to_i
     @venue_id = options['venue_id'].to_i
   end
@@ -27,7 +27,7 @@ class Contest
     return Result.map_items(sql)
   end
 
-  def winner()
+  def gold()
     order = get_order()
     sql = "SELECT a.* FROM athletes a INNER JOIN results r
       ON a.id = r.athlete_id
@@ -48,6 +48,12 @@ class Contest
     sql = "DELETE FROM contests
       WHERE id = #{@id}"
     SqlRunner.run(sql)
+  end
+
+  def self.finals()
+    sql = "SELECT * FROM contests
+      WHERE name = 'Final'"
+    return Contest.map_items(sql)
   end
 
   def self.update(options)
