@@ -23,6 +23,27 @@ class Event
     return Contest.map_items(sql)
   end
 
+  def final()
+    sql = "SELECT * FROM contests
+      WHERE event_id = #{@id} AND name = 'Final'"
+    return Contest.map_item(sql)
+  end
+
+  def gold_athlete()
+    contest = final()
+    return contest.get_athlete(0)
+  end
+
+  def silver_athlete()
+    contest = final()
+    return contest.get_athlete(1)
+  end
+
+  def bronze_athlete()
+    contest = final()
+    return contest.get_athlete(2)
+  end
+
   def save()
     sql = "INSERT INTO events (name, class, score_method, sport_id)
       VALUES ('#{@name}', '#{@class}', '#{@score_method}', #{@sport_id})
