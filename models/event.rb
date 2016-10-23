@@ -17,6 +17,12 @@ class Event
     return Sport.find(@sport_id)
   end
 
+  def contests()
+    sql = "SELECT * FROM contests
+      WHERE event_id = #{@id}"
+    return Contest.map_items(sql)
+  end
+
   def save()
     sql = "INSERT INTO events (name, class, score_method, sport_id)
       VALUES ('#{@name}', '#{@class}', '#{@score_method}', #{@sport_id})

@@ -9,6 +9,11 @@ end
 
 #NEW
 #get new form to add contest /contests/new
+get '/contests/new' do
+  @sports = Sport.all()
+  @venues = Venue.all()
+  erb(:'/contests/new')
+end
 
 #CREATE
 #post new contest onto list /contests
