@@ -21,15 +21,19 @@ class Contest
   end
 
   def results()
-    if event().score_method == "time"
-      order = "ASC"
-    else
-      order = "DESC" 
-    end
-
+    order = get_order()
     sql = "SELECT * FROM results
       WHERE contest_id = #{@id} ORDER BY score #{order}"
     return Result.map_items(sql)
+  end
+
+  def winner()
+    order = get_order()
+    sql = "SELECT a.* FROM athletes a INNER JOIN results r
+      ON a.id = r.athlete_id
+      WHERE r.contest_id = #{@id}
+      ORDER BY r.score #{order} LIMIT 1"
+    return Athlete.map_item(sql)
   end
 
   def save()
@@ -76,6 +80,17 @@ class Contest
   def self.delete_all()
     sql = "DELETE FROM contests"
     SqlRunner.run(sql)
+  end
+
+  private
+
+  def get_order()
+    if event().score_method == "time"
+      order = "ASC"
+    else
+      order = "DESC" 
+    end
+    return order
   end
 
 end
