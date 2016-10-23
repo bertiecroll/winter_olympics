@@ -29,6 +29,12 @@ end
 
 #EDIT
 #get new form to update result /results/:id/edit
+get '/contests/:contest_id/results/:id/edit' do
+  @contest = Contest.find(params[:contest_id])
+  @athletes = Athlete.all()
+  @result = Result.find(params[:id])
+  erb(:'results/edit')
+end
 
 #UPDATE
 #put update result details /results/:id

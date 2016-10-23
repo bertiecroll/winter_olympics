@@ -1,0 +1,20 @@
+<h4>Edit result for <%= @contest.event.sport.name %> <%= @contest.event.name %> <%= @contest.name %></h4>
+
+<form action="/results/:id" method="post">
+
+  <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+
+  <label for="athlete_id">Athlete</label>
+  <select type="text" name="athlete_id" id="athlete_id">
+    <% @athletes.each do |athlete| %>
+      <option value="<%= athlete.id %>" <%= "selected" if @result.athlete_id == athlete.id %> ><%= athlete.full_name %></option>
+    <% end %>
+  </select>
+
+  <label for="score"><%= @contest.event.score_method.capitalize %></label>
+  <input type="text" name="score" id="score" value="<%= @result.score %>">
+
+  <input type="hidden" name="_method" value="put">
+  <input type="submit" value="Update Result">
+
+</form>

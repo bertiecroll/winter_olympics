@@ -37,6 +37,7 @@
       <tr>
         <td><%= result.athlete.full_name %></td>
         <td><%= result.score %></td>
+        <td><a href="/contests/<%= @contest.id %>/results/<%= result.id %>/edit">Edit</a></td>
       </tr>
     <% end %>
   </table>
