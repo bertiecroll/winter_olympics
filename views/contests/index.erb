@@ -14,6 +14,8 @@
         <td><%= contest.event.class.capitalize %> <%= contest.event.name %></td>
         <td><%= contest.name %></td>
         <td><%= contest.venue.name %></td>
+        <td><a href="/contests/<%= contest.id %>">View</a></td>
+
       </tr>
     <% end %>
   </table>

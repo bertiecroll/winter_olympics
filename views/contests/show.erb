@@ -16,4 +16,11 @@
   </table>
 </div>
 
+<form action="/contests/<%= @contest.id %>" method="post">
+  
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Contest">
+
+</form>
+
 <a href="/contests/<%= @contest.id %>/edit">Edit Contest Details</a>

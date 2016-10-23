@@ -47,4 +47,9 @@ put '/contests/:id' do
 end
 
 #DESTROY
-#delete contest using unqiue id, redirect to /contests
+#delete contest using unqiue id, /contests/:id
+delete '/contests/:id' do
+  @contest = Contest.find(params[:id])
+  @contest.delete()
+  redirect to("/contests")
+end
