@@ -24,11 +24,11 @@ Sport.delete_all()
 @sport_3.save()
 
 #NATIONS
-@gb = Nation.new('name' => "Great Britain", 'region' => "Europe")
+@gb = Nation.new('name' => "Great Britain", 'region' => "Europe", 'points' => 0)
 @gb.save()
-@france = Nation.new('name' => "France", 'region' => "Europe")
+@france = Nation.new('name' => "France", 'region' => "Europe", 'points' => 0)
 @france.save()
-@austria = Nation.new('name' => "Austria", 'region' => "Europe")
+@austria = Nation.new('name' => "Austria", 'region' => "Europe", 'points' => 0)
 @austria.save()
 
 #EVENTS

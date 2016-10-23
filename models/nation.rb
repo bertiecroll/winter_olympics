@@ -3,16 +3,14 @@ require('pry-byebug')
 
 class Nation
 
-  attr_reader(:id, :gold, :silver, :bronze)
-  attr_accessor(:name, :region)
+  attr_reader(:id)
+  attr_accessor(:name, :region, :points)
 
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
     @region = options['region']
-    @gold = medal_count("gold")
-    @silver = medal_count("silver")
-    @bronze = medal_count("bronze")
+    @points = options['points'].to_i
   end
 
   def athletes()
@@ -32,12 +30,36 @@ class Nation
     return medal_count
   end
 
+  def gold_count()
+    return medal_count("gold")
+  end
+
+  def silver_count()
+    return medal_count("silver")
+  end
+
+  def bronze_count()
+    return medal_count("bronze")
+  end
+
+  def get_points()
+    @points = gold_count() * 5 + silver_count() * 3 + bronze_count()
+    update()
+  end
+
   def save()
-    sql = "INSERT INTO nations (name, region, gold, silver, bronze)
-      VALUES ('#{@name}', '#{@region}', #{@gold}, #{@silver}, #{@bronze})
+    sql = "INSERT INTO nations (name, region, points)
+      VALUES ('#{@name}', '#{@region}', #{@points})
       RETURNING *"
     nation = SqlRunner.run(sql).first
-    @id = nation['id']
+    @id = nation['id'].to_i
+  end
+
+  def update()
+    sql = "UPDATE nations
+      SET name = '#{@name}', region = '#{@region}', points = #{@points}
+      WHERE id = #{@id}"
+    SqlRunner.run(sql)
   end
 
   def delete()
@@ -48,7 +70,7 @@ class Nation
 
   def self.update(options)
     sql = "UPDATE nations
-      SET name = '#{options['name']}', region = '#{options['region']}, gold = #{options['gold']}, gold = #{options['silver']}, gold = #{options['bronze']}
+      SET name = '#{options['name']}', region = '#{options['region']}, points = #{options['points']}
       WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
@@ -76,6 +98,10 @@ class Nation
   def self.delete_all()
     sql = "DELETE FROM nations"
     SqlRunner.run(sql)
+  end
+
+  def self.update_points()
+    Nation.all.each {|nation| nation.get_points}
   end
 
 end

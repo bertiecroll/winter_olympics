@@ -2,6 +2,7 @@
 <div>
   <% @nations.each do |nation| %>
     <div><a href="/nations/<%= nation.id %>"><%= nation.name %></a></div>
+    <div><%= nation.points %></div>
   <% end %>
 </div>
 
