@@ -21,8 +21,14 @@ class Contest
   end
 
   def results()
+    if event().score_method == "time"
+      order = "ASC"
+    else
+      order = "DESC" 
+    end
+
     sql = "SELECT * FROM results
-      WHERE contest_id = #{@id}"
+      WHERE contest_id = #{@id} ORDER BY score #{order}"
     return Result.map_items(sql)
   end
 
