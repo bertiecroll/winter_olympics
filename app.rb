@@ -6,6 +6,7 @@ require_relative('./controllers/sport_controller')
 require_relative('./controllers/event_controller')
 require_relative('./controllers/venue_controller')
 require_relative('./controllers/contest_controller')
+require_relative('./controllers/result_controller')
 
 
 

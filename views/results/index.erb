@@ -1,0 +1,22 @@
+<h3>All Results</h3>
+
+<div>
+  <table>
+    <tr>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Contest</th>
+      <th>Athlete</th>
+      <th>Score</th>
+    <tr>
+    <% @results.each do |result| %>
+      <tr>
+        <td><a href= "/sports/<%= result.contest.event.sport.id %>"><%= result.contest.event.sport.name %></a></td>
+        <td><a href= "/contests/<%= result.contest.event.id %>"><%= result.contest.event.class.capitalize %> <%= result.contest.event.name %></a></td>
+        <td><a href= "/contests/<%= result.contest_id %>"><%= result.contest.name %></a></td>
+        <td><a href= "/athletes/<%= result.athlete_id %>"><%= result.athlete.full_name %></a></td>
+        <td><%= result.score %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
