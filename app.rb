@@ -8,5 +8,11 @@ require_relative('./controllers/venue_controller')
 require_relative('./controllers/contest_controller')
 require_relative('./controllers/result_controller')
 
+get '/' do
+  Nation.update_points
+  @nations = Nation.all
+  erb(:leaderboard)
+end
+
 
 

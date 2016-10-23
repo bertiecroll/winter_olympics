@@ -1,0 +1,8 @@
+<h2>Leaderboard</h2>
+<div>
+  <ol>
+  <% @nations.each do |nation| %>
+    <li><a href="/nations/<%= nation.id %>"><%= nation.name %></a> <%= nation.gold_count %> <%= nation.points %></li>
+  <% end %>
+  </ol>
+</div>
