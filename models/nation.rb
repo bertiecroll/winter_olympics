@@ -2,13 +2,14 @@ require_relative('../db/sql_runner')
 
 class Nation
 
-  attr_reader(:id)
+  attr_reader(:id, :points)
   attr_accessor(:name, :region)
 
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
     @region = options['region']
+    @points = 0
   end
 
   def athletes()
@@ -18,8 +19,8 @@ class Nation
   end
 
   def save()
-    sql = "INSERT INTO nations (name, region)
-      VALUES ('#{@name}', '#{@region}')
+    sql = "INSERT INTO nations (name, region, points)
+      VALUES ('#{@name}', '#{@region}', #{@points})
       RETURNING *"
     nation = SqlRunner.run(sql).first
     @id = nation['id']
@@ -33,7 +34,7 @@ class Nation
 
   def self.update(options)
     sql = "UPDATE nations
-      SET name = '#{options['name']}', region = '#{options['region']}'
+      SET name = '#{options['name']}', region = '#{options['region']}, points = #{options['points']}'
       WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end

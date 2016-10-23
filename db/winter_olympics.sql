@@ -9,7 +9,8 @@ DROP TABLE IF EXISTS nations;
 CREATE TABLE nations (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
-  region VARCHAR(255)
+  region VARCHAR(255),
+  points INT4
 );
 
 CREATE TABLE sports (
