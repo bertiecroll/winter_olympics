@@ -17,6 +17,11 @@ end
 
 #CREATE
 #post new contest onto list /contests
+post '/contests' do
+  @contest = Contest.new(params)
+  @contest.save()
+  erb(:'contests/create')
+end
 
 #SHOW
 #get single contest by unique ID /contests/:id

@@ -1,0 +1,19 @@
+<div>
+  <h3>The below Contest has now been added</h3>
+  <table>
+    <tr>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Name</th>
+      <th>Venue</th>
+    <tr>
+    <tr>
+      <td><%= @contest.event.sport.name %></td>
+      <td><%= @contest.event.name %></td>
+      <td><%= @contest.name %></td>
+      <td><%= @contest.venue.name %></td>
+    </tr>
+  </table>
+</div>
+
+<a href="/contests">View all Contests</a>
