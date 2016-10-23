@@ -20,6 +20,12 @@ class Contest
     return Venue.find(venue_id)
   end
 
+  def results()
+    sql = "SELECT * FROM results
+      WHERE contest_id = #{@id}"
+    return Result.map_items(sql)
+  end
+
   def save()
     sql = "INSERT INTO contests (name, event_id, venue_id)
       VALUES ('#{@name}', #{@event_id}, #{@venue_id})

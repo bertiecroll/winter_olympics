@@ -14,7 +14,10 @@
         <td><%= event.name %></td>
         <td><%= event.class %></td>
         <td><%= event.score_method %></td>
+        <td><a href="/events/<%= event.id %>">View</a></td>
       </tr>
     <% end %>
   </table>
 </div>
+
+<a href="/events/new">Add New Event</a> 

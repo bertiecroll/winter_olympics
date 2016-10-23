@@ -9,6 +9,11 @@ end
 
 #NEW
 #get new form to add result /results/new
+get '/contests/:id/results/new' do
+  @contest = Contest.find(params[:id])
+  @athletes = Athlete.all()
+  erb(:'results/new')
+end
 
 #CREATE
 #post new result onto list /results

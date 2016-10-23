@@ -24,3 +24,22 @@
 </form>
 
 <a href="/contests/<%= @contest.id %>/edit">Edit Contest Details</a>
+
+<h3>Results</h3>
+
+<div>
+  <table>
+    <tr>
+      <th>Athlete</th>
+      <th><%= @contest.event.score_method.capitalize %></th>
+    <tr>
+    <% @contest.results.each do |result| %>
+      <tr>
+        <td><%= result.athlete.full_name %></td>
+        <td><%= result.score %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<a href="/contests/<%= @contest.id %>/results/new">Add New Result</a> 
