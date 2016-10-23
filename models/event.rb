@@ -29,19 +29,22 @@ class Event
     return Contest.map_item(sql)
   end
 
-  def gold_athlete()
+  def medalist(medal)
     contest = final()
-    return contest.get_athlete(0)
-  end
+    return nil if contest == nil
+    
+    case medal
+      when "gold"
+        result = contest.get_athlete(0)
+      when "silver"
+        result = contest.get_athlete(1)
+      when "gold"
+        result = contest.get_athlete(2)
+      else
+        result = nil
+    end
 
-  def silver_athlete()
-    contest = final()
-    return contest.get_athlete(1)
-  end
-
-  def bronze_athlete()
-    contest = final()
-    return contest.get_athlete(2)
+    return result
   end
 
   def save()

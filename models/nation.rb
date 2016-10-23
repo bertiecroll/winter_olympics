@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require('pry-byebug')
 
 class Nation
 
@@ -9,15 +10,26 @@ class Nation
     @id = options['id'].to_i
     @name = options['name']
     @region = options['region']
-    @gold = 0
-    @silver = 0
-    @bronze = 0
+    @gold = medal_count("gold")
+    @silver = medal_count("silver")
+    @bronze = medal_count("bronze")
   end
 
   def athletes()
     sql = "SELECT * FROM athletes
       WHERE nation_id = #{@id}"
     return Athlete.map_items(sql)
+  end
+
+  def medal_count(medal)
+    medal_count = 0
+    events = Event.all()
+    events.each do |event|
+      if event.medalist(medal) != nil
+        medal_count += 1 if event.medalist(medal).nation_id == @id
+      end
+    end
+    return medal_count
   end
 
   def save()

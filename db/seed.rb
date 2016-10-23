@@ -15,14 +15,6 @@ Venue.delete_all()
 Nation.delete_all()
 Sport.delete_all()
 
-#NATIONS
-@gb = Nation.new('name' => "Great Britain", 'region' => "Europe")
-@gb.save()
-@france = Nation.new('name' => "France", 'region' => "Europe")
-@france.save()
-@austria = Nation.new('name' => "Austria", 'region' => "Europe")
-@austria.save()
-
 #SPORTS
 @sport_1 = Sport.new('name' => "Alpine Skiing")
 @sport_1.save()
@@ -30,6 +22,14 @@ Sport.delete_all()
 @sport_2.save()
 @sport_3 = Sport.new('name' => "Skeleton")
 @sport_3.save()
+
+#NATIONS
+@gb = Nation.new('name' => "Great Britain", 'region' => "Europe")
+@gb.save()
+@france = Nation.new('name' => "France", 'region' => "Europe")
+@france.save()
+@austria = Nation.new('name' => "Austria", 'region' => "Europe")
+@austria.save()
 
 #EVENTS
 @event_1 = Event.new('name' => "Slalom", 'class' => "male", 'score_method' => "time", 'sport_id' => @sport_1.id)
