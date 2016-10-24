@@ -39,8 +39,10 @@ class Venue
     return Venue.map_item(sql)
   end
 
-  def self.all()
+  def self.all(query= "")
+    query = query.to_s.capitalize
     sql = "SELECT * FROM venues"
+    sql += " WHERE location LIKE '%#{query}%'" if query != ""
     return Venue.map_items(sql)
   end
 

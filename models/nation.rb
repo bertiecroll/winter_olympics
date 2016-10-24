@@ -46,6 +46,10 @@ class Nation
     return @gold * 5 + @silver * 3 + @bronze
   end
 
+  def flag_name()
+    return @name.downcase.tr(" ", "_")
+  end
+
   def save()
     sql = "INSERT INTO nations (name, region, gold, silver, bronze)
       VALUES ('#{@name}', '#{@region}', #{@gold}, #{@silver}, #{@bronze})

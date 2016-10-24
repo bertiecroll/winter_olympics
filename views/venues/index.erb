@@ -1,4 +1,9 @@
 <h2>Venues:</h2>
+<form method="get">
+  <label for="search">Search Venue by Location</label>
+  <input type="text" name="search" value="" id="search">
+  <input type="submit" value="Search">
+</form>
 <div>
   <% @venues.each do |venue| %>
     <div><a href="/venues/<%= venue.id %>"><%= venue.name %></a></div>

@@ -3,7 +3,8 @@ require_relative('../models/venue')
 #INDEX
 #get all venues /venues
 get '/venues' do
-  @venues = Venue.all()
+  query = params[:search]
+  @venues = Venue.all(query)
   erb(:'venues/index')
 end
 
