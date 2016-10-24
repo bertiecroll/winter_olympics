@@ -2,10 +2,11 @@ require_relative('../db/sql_runner')
 
 class Team
   
-  attr_reader(:id, :name, :player_count, :nation_id)
+  attr_reader(:id, :name, :class, :player_count, :nation_id)
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
+    @class = options['class']
     @player_count = options['player_count'].to_i
     @nation_id = options['nation_id'].to_i
   end
@@ -14,9 +15,16 @@ class Team
     return Nation.find(@nation_id)
   end
 
+  def athletes()
+    sql = "SELECT a.* FROM athletes a INNER JOIN athletes_teams at
+      ON a.id = at.athlete_id 
+      WHERE at.team_id = #{@id}"
+    return Athlete.map_items(sql)
+  end
+
   def save()
-    sql = "INSERT INTO teams (name, player_count, nation_id)
-      VALUES ('#{@name}', #{@player_count}, #{@nation_id})
+    sql = "INSERT INTO teams (name, class, player_count, nation_id)
+      VALUES ('#{@name}', '#{@class}', #{@player_count}, #{@nation_id})
       RETURNING *"
     team = SqlRunner.run(sql).first
     @id = team['id']
@@ -30,7 +38,7 @@ class Team
 
   def self.update(options)
     sql = "UPDATE teams
-      SET name = '#{options['name']}', player_count = #{options['player_count']}, nation_id = #{options['nation_id']}
+      SET name = '#{options['name']}', class = '#{options['class']}', player_count = #{options['player_count']}, nation_id = #{options['nation_id']}
       WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end

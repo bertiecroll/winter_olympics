@@ -20,8 +20,9 @@ CREATE TABLE nations (
 CREATE TABLE teams (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
-  nation_id INT4 REFERENCES nations(id) ON DELETE CASCADE,
-  player_count INT2
+  class VARCHAR(255),
+  player_count INT2,
+  nation_id INT4 REFERENCES nations(id) ON DELETE CASCADE
 );
 
 CREATE TABLE sports (
