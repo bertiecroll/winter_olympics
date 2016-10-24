@@ -5,6 +5,15 @@ DROP TABLE IF EXISTS venues;
 DROP TABLE IF EXISTS athletes;
 DROP TABLE IF EXISTS sports; 
 DROP TABLE IF EXISTS nations;
+DROP TABLE IF EXISTS games;
+
+CREATE TABLE games (
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255),
+  type VARCHAR(255),
+  home_nation VARCHAR(255),
+  begining_date DATE
+);
 
 CREATE TABLE nations (
   id SERIAL4 PRIMARY KEY,
@@ -54,6 +63,7 @@ CREATE TABLE contests (
 CREATE TABLE results (
   id SERIAL4 PRIMARY KEY,
   score VARCHAR(255),
+  game_id INT4 REFERENCES games(id) ON DELETE CASCADE,
   athlete_id INT4 REFERENCES athletes(id) ON DELETE CASCADE,
   contest_id INT4 REFERENCES contests(id) ON DELETE CASCADE
 );

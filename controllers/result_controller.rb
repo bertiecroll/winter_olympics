@@ -4,7 +4,8 @@ require('pry-byebug')
 #INDEX
 #get all results /results
 get '/results' do
-  @results = Result.all()
+  query = params[:search]
+  @results = Result.all(query)
   erb(:'results/index')
 end
 
@@ -12,7 +13,7 @@ end
 #get new form to add result /results/new
 get '/contests/:id/results/new' do
   @contest = Contest.find(params[:id])
-  @athletes = Athlete.all()
+  @nations = Nation.all()
   erb(:'results/new')
 end
 
@@ -32,7 +33,7 @@ end
 #get new form to update result /results/:id/edit
 get '/contests/:contest_id/results/:id/edit' do
   @contest = Contest.find(params[:contest_id])
-  @athletes = Athlete.all()
+  @nations = Nation.all()
   @result = Result.find(params[:id])
   erb(:'results/edit')
 end

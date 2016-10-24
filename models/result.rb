@@ -66,8 +66,11 @@ class Result
     return Result.map_item(sql)
   end
 
-  def self.all()
-    sql = "SELECT * FROM results"
+  def self.all(query= "")
+    query = query.to_s.capitalize
+    sql = "SELECT r.* FROM results r INNER JOIN athletes a
+      ON r.athlete_id = a.id"
+    sql += " WHERE a.first_name LIKE '%#{query}%' OR a.last_name LIKE '%#{query}%'" if query != ""
     return Result.map_items(sql)
   end
 

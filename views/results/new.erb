@@ -6,10 +6,14 @@
 
   <label for="athlete_id">Athlete</label>
   <select type="text" name="athlete_id" id="athlete_id">
-    <% @athletes.each do |athlete| %>
-      <% if althete.gender == @contest.event.class %>
-        <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
-      <% end %>
+    <% @nations.each do |nation| %>
+      <optgroup label="<%= nation.name %>">
+        <% nation.athletes.each do |athlete| %>
+          <% if athlete.gender == @contest.event.class %>
+            <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
+          <% end %>
+        <% end %>
+      </optgroup>
     <% end %>
   </select>
 
