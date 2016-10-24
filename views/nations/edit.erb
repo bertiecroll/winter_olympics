@@ -6,7 +6,9 @@
   <label for="region">Region:</label>
   <input type="text" name="region" id="region" value="<%= @nation.region %>">
 
-  <input type="hidden" name="points" value="<%= @nation.points %>">
+  <input type="hidden" name="gold" value="<%= @nation.gold %>">
+  <input type="hidden" name="silver" value="<%= @nation.silver %>">
+  <input type="hidden" name="bronze" value="<%= @nation.bronze %>">
 
   <input type="hidden" name="_method" value="put">
   <input type="submit" value="Update Nation Details">
