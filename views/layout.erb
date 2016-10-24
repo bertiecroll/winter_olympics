@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 
   <html>
+  <head>
+    <title>Winter Olympics 2018 | South Korea</title>
+  </head>
+  <body>
     <header>
       <h1>Winter Olympics 2018 | South Korea</h1>
       <nav>
         <ul>
-          <li><a href="/athletes">Athletes</a></li>
+          <li><a href="/">Leaderboard</a></li>
           <li><a href="/nations">Nations</a></li>
+          <li><a href="/athletes">Athletes</a></li>
           <li><a href="/sports">Sports</a></li>
           <li><a href="/events">Events</a></li>
           <li><a href="/results">Results</a></li>
@@ -15,11 +20,10 @@
         </ul>
       </nav>
     </header>
-  <head>
-    <title>Winter Olympics 2018 | South Korea</title>
-  </head>
-  <body>
-    <%= yield %>
+    
+    <div>
+      <%= yield %>
+    </div>
   </body>
 
 </html>

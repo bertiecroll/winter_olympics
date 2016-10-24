@@ -1,8 +1,25 @@
 <h2>Leaderboard</h2>
 <div>
-  <ol>
-  <% @nations.each do |nation| %>
-    <li><a href="/nations/<%= nation.id %>"><%= nation.name %></a> <%= nation.gold_count %> <%= nation.points %></li>
-  <% end %>
-  </ol>
+  <table>
+    <tr>
+      <th>Position</th>
+      <th>Nation</th>
+      <th>Gold</th>
+      <th>Silver</th>
+      <th>Bronze</th>
+      <th>Points</th>
+    </tr>
+    <% counter = 1 %>
+    <% @nations.each do |nation| %>
+      <tr>
+        <td><%= counter %></td>
+        <td><a href="/nations/<%= nation.id %>"><%= nation.name %></a></td>
+        <td><%= nation.gold_count %></td>
+        <td><%= nation.silver_count %></td>
+        <td><%= nation.bronze_count %></td>
+        <td><%= nation.points %></td>
+      </tr>
+      <% counter += 1 %>
+    <% end %>
+  </table>
 </div>
