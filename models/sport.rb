@@ -43,8 +43,10 @@ class Sport
     return Sport.map_item(sql)
   end
 
-  def self.all()
+  def self.all(query= "")
+    query = query.to_s.capitalize
     sql = "SELECT * FROM sports"
+    sql += " WHERE name LIKE '%#{query}%'" if query != ""
     return Sport.map_items(sql)
   end
 

@@ -16,7 +16,8 @@ end
 
 #Medalist page showing medalists for each event
 get '/medalists' do
-  @sports = Sport.all
+  query = params[:search]
+  @sports = Sport.all(query)
   erb(:medalists)
 end
 
