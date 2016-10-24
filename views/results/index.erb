@@ -9,6 +9,7 @@
       <th>Athlete</th>
       <th>Score</th>
     <tr>
+    <% @results.sort! {|result_a, result_b| result_a.contest.event.sport.name <=> result_b.contest.event.sport.name} %>
     <% @results.each do |result| %>
       <tr>
         <td><a href= "/sports/<%= result.contest.event.sport.id %>"><%= result.contest.event.sport.name %></a></td>
