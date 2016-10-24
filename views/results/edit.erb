@@ -1,4 +1,4 @@
-<h4>Edit result for <%= @contest.event.sport.name %> <%= @contest.event.name %> <%= @contest.name %></h4>
+<h4>Edit result for <%= @contest.event.sport.name %> <%= @contest.event.class.capitalize %> <%= @contest.event.name %> <%= @contest.name %></h4>
 
 <form action="/results/<%= @result.id %>" method="post">
 
@@ -7,7 +7,9 @@
   <label for="athlete_id">Athlete</label>
   <select type="text" name="athlete_id" id="athlete_id">
     <% @athletes.each do |athlete| %>
-      <option value="<%= athlete.id %>" <%= "selected" if @result.athlete_id == athlete.id %> ><%= athlete.full_name %></option>
+      <% if athlete.gender == @contest.event.class %>
+        <option value="<%= athlete.id %>" <%= "selected" if @result.athlete_id == athlete.id %> ><%= athlete.full_name %></option>
+      <% end %>
     <% end %>
   </select>
 

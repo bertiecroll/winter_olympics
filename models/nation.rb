@@ -81,7 +81,7 @@ class Nation
   end
 
   def self.all()
-    sql = "SELECT * FROM nations"
+    sql = "SELECT * FROM nations ORDER BY name"
     return Nation.map_items(sql)
   end
 

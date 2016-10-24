@@ -10,7 +10,7 @@
       <th>Points</th>
     </tr>
     <% counter = 1 %>
-    <% @nations.sort! {|nation_a, nation_b| nation_b.points <=> nation_a.points} %>
+    <% @nations.sort! {|nation_a, nation_b| (nation_b.points <=> nation_a.points) == 0 ? (nation_b.gold <=> nation_a.gold) : (nation_b.points <=> nation_a.points)} %>
     <% @nations.each do |nation| %>
       <tr>
         <td><%= counter %></td>
