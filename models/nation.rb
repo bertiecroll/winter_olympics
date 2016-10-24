@@ -19,32 +19,24 @@ class Nation
     return Athlete.map_items(sql)
   end
 
-  def medal_count(medal)
-    medal_count = 0
+  def medal_count()
+    medals = {gold: 0, silver: 0, bronze: 0}
+
     events = Event.all()
     events.each do |event|
-      if event.medalist(medal) != nil
-        medal_count += 1 if event.medalist(medal).nation_id == @id
-      end
+      medalists = event.medalists()
+      medals[:gold] += 1 if medalists[0] != nil && medalists[0].nation_id == @id
+      medals[:silver] += 1 if medalists[1] != nil && medalists[1].nation_id == @id
+      medals[:bronze] += 1 if medalists[2] != nil && medalists[2].nation_id == @id
     end
-    return medal_count
-  end
-
-  def gold_count()
-    return medal_count("gold")
-  end
-
-  def silver_count()
-    return medal_count("silver")
-  end
-
-  def bronze_count()
-    return medal_count("bronze")
+    return medals
   end
 
   def get_points()
-    @points = gold_count() * 5 + silver_count() * 3 + bronze_count()
+    medals = medal_count()
+    @points = medals[:gold] * 5 + medals[:silver] * 3 + medals[:bronze]
     update()
+    return
   end
 
   def save()

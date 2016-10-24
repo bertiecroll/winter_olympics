@@ -27,13 +27,13 @@ class Contest
     return Result.map_items(sql)
   end
 
-  def get_athlete(position)
+  def get_medalists()
     order = get_order()
     sql = "SELECT a.* FROM athletes a INNER JOIN results r
       ON a.id = r.athlete_id
       WHERE r.contest_id = #{@id}
-      ORDER BY r.score #{order} LIMIT 1 OFFSET #{position}"
-    return Athlete.map_item(sql)
+      ORDER BY r.score #{order} LIMIT 3"
+    return Athlete.map_items(sql)
   end
 
   def save()

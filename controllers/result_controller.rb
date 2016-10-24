@@ -21,7 +21,6 @@ end
 post '/results' do
   @result = Result.new(params)
   @result.save()
-  Nation.update_points
   erb(:'results/create')
 end
 
@@ -41,7 +40,6 @@ end
 #put update result details /results/:id
 put '/results/:id' do
   Result.update(params)
-  Nation.update_points
   redirect to("/contests/#{params[:contest_id]}")
 end
 

@@ -10,13 +10,11 @@
       <th>Points</th>
     </tr>
     <% counter = 1 %>
+    <% @nations.sort! {|nation_a, nation_b| nation_b.points <=> nation_a.points} %>
     <% @nations.each do |nation| %>
       <tr>
         <td><%= counter %></td>
         <td><a href="/nations/<%= nation.id %>"><%= nation.name %></a></td>
-        <td><%= nation.gold_count %></td>
-        <td><%= nation.silver_count %></td>
-        <td><%= nation.bronze_count %></td>
         <td><%= nation.points %></td>
       </tr>
       <% counter += 1 %>
