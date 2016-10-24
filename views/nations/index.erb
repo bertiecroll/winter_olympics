@@ -1,5 +1,5 @@
 <h2>Nations:</h2>
-<div>
+<div class="nation-index">
   <% @nations.each do |nation| %>
     <div><img src="http://img.freeflagicons.com/thumb/flag_background/<%= nation.flag_name %>/<%= nation.flag_name %>_640.png"><a href="/nations/<%= nation.id %>"><%= nation.name %></a></div>
   <% end %>
