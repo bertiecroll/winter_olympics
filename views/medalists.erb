@@ -3,18 +3,16 @@
   <% @sports.each do |sport| %>
     <h3><%= sport.name %></h3>
     <% sport.events.each do |event| %>
-      <% gold = event.medalist("gold") %>
-      <% silver = event.medalist("silver") %>
-      <% bronze = event.medalist("bronze") %>
+      <% medalists = event.medalists() %>
       <h4><%= event.name %></h4>
-      <% if gold != nil %>
-        <h5>Gold: <%= gold.full_name %> from <%= gold.nation.name %> </h5>
+      <% if medalists[0] != nil %>
+        <h5>Gold: <%= medalists[0].full_name %> from <%= medalists[0].nation.name %> </h5>
       <% end %>
-      <% if silver != nil %>
-        <h5>Silver: <%= silver.full_name %> from <%= silver.nation.name %> </h5>
+      <% if medalists[1] != nil %>
+        <h5>Silver: <%= medalists[1].full_name %> from <%= medalists[1].nation.name %> </h5>
       <% end %>
-      <% if bronze != nil %>
-        <h5>Bronze: <%= bronze.full_name %> from <%= bronze.nation.name %> </h5>
+      <% if medalists[2] != nil %>
+        <h5>Bronze: <%= medalists[2].full_name %> from <%= medalists[2].nation.name %> </h5>
       <% end %>
     <% end %>
   <% end %>

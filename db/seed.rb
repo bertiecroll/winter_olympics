@@ -175,47 +175,45 @@ Sport.delete_all()
 @athlete_20.save()
 
 #RESULT
-@result_1 = Result.new('score' => "0:1:41.850", 'athlete_id' => @athlete_1.id, 'contest_id' => @contest_2.id)
+@result_1 = Result.new('score' => "0:1:41.850", 'athlete_id' => @athlete_1.id, 'contest_id' => @contest_2.id) #2-GB
 @result_1.save()
 @result_2 = Result.new('score' => "0:1:55.300", 'athlete_id' => @athlete_3.id, 'contest_id' => @contest_2.id)
 @result_2.save()
 @result_3 = Result.new('score' => "0:2:10.010", 'athlete_id' => @athlete_5.id, 'contest_id' => @contest_2.id)
 @result_3.save()
-@result_4 = Result.new('score' => "0:1:35.500", 'athlete_id' => @athlete_6.id, 'contest_id' => @contest_2.id) #USA
+@result_4 = Result.new('score' => "0:1:35.500", 'athlete_id' => @athlete_6.id, 'contest_id' => @contest_2.id) #1-USA
 @result_4.save()
-@result_5 = Result.new('score' => "0:1:48.000", 'athlete_id' => @athlete_8.id, 'contest_id' => @contest_2.id)
+@result_5 = Result.new('score' => "0:1:48.000", 'athlete_id' => @athlete_8.id, 'contest_id' => @contest_2.id)  #3-CHINA
 @result_5.save()
-@result_6 = Result.new('score' => "210", 'athlete_id' => @athlete_10.id, 'contest_id' => @contest_5.id)
+@result_6 = Result.new('score' => "210", 'athlete_id' => @athlete_10.id, 'contest_id' => @contest_5.id) #3-SOUTH KOREA
 @result_6.save()
-@result_7 = Result.new('score' => "212", 'athlete_id' => @athlete_13.id, 'contest_id' => @contest_5.id)
+@result_7 = Result.new('score' => "212", 'athlete_id' => @athlete_13.id, 'contest_id' => @contest_5.id) #2-CANADA
 @result_7.save()
 @result_8 = Result.new('score' => "206", 'athlete_id' => @athlete_17.id, 'contest_id' => @contest_5.id)
 @result_8.save()
-@result_9 = Result.new('score' => "218", 'athlete_id' => @athlete_19.id, 'contest_id' => @contest_5.id)
+@result_9 = Result.new('score' => "218", 'athlete_id' => @athlete_19.id, 'contest_id' => @contest_5.id) #1-JAPAN
 @result_9.save()
 @result_10 = Result.new('score' => "201", 'athlete_id' => @athlete_20.id, 'contest_id' => @contest_5.id)
 @result_10.save()
-@result_11 = Result.new('score' => "0:0:41.555", 'athlete_id' => @athlete_11.id, 'contest_id' => @contest_9.id)
+@result_11 = Result.new('score' => "0:0:41.555", 'athlete_id' => @athlete_11.id, 'contest_id' => @contest_9.id) #1-SOUTH KOREA
 @result_11.save()
 @result_12 = Result.new('score' => "0:0:49.200", 'athlete_id' => @athlete_12.id, 'contest_id' => @contest_9.id)
 @result_12.save()
-@result_13 = Result.new('score' => "0:0:45.195", 'athlete_id' => @athlete_16.id, 'contest_id' => @contest_9.id)
+@result_13 = Result.new('score' => "0:0:45.195", 'athlete_id' => @athlete_16.id, 'contest_id' => @contest_9.id) #3-ITALY
 @result_13.save()
 @result_14 = Result.new('score' => "0:0:50.234", 'athlete_id' => @athlete_18.id, 'contest_id' => @contest_9.id)
 @result_14.save()
-@result_15 = Result.new('score' => "0:0:43.960", 'athlete_id' => @athlete_14.id, 'contest_id' => @contest_9.id)
+@result_15 = Result.new('score' => "0:0:43.960", 'athlete_id' => @athlete_14.id, 'contest_id' => @contest_9.id) #2-SWEDEN
 @result_15.save()
 @result_16 = Result.new('score' => "590", 'athlete_id' => @athlete_7.id, 'contest_id' => @contest_13.id)
 @result_16.save()
-@result_17 = Result.new('score' => "620", 'athlete_id' => @athlete_9.id, 'contest_id' => @contest_13.id)
+@result_17 = Result.new('score' => "620", 'athlete_id' => @athlete_9.id, 'contest_id' => @contest_13.id) #1-CHINA
 @result_17.save()
 @result_18 = Result.new('score' => "550", 'athlete_id' => @athlete_10.id, 'contest_id' => @contest_13.id)
 @result_18.save()
-@result_19 = Result.new('score' => "615", 'athlete_id' => @athlete_13.id, 'contest_id' => @contest_13.id)
+@result_19 = Result.new('score' => "615", 'athlete_id' => @athlete_13.id, 'contest_id' => @contest_13.id) #2-CANADA
 @result_19.save()
-@result_20 = Result.new('score' => "602", 'athlete_id' => @athlete_15.id, 'contest_id' => @contest_13.id)
+@result_20 = Result.new('score' => "602", 'athlete_id' => @athlete_15.id, 'contest_id' => @contest_13.id) #3-SWEDEN
 @result_20.save()
 
-
-binding.pry
-nil
+Nation.update_medals()

@@ -10,7 +10,6 @@ require_relative('./controllers/result_controller')
 
 #Leaderboard page showing table of nations ordered by points
 get '/' do
-  Nation.update_medals
   @nations = Nation.all
   erb(:leaderboard)
 end

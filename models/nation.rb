@@ -4,7 +4,7 @@ require('pry-byebug')
 class Nation
 
   attr_reader(:id, :gold, :silver, :bronze)
-  attr_accessor(:name, :region, :points)
+  attr_accessor(:name, :region)
 
   def initialize(options)
     @id = options['id'].to_i
@@ -15,25 +15,31 @@ class Nation
     @bronze = options['bronze'].to_i
   end
 
+  def gold=(amount)
+    @gold += amount
+    update()
+  end
+
+  def silver=(amount)
+    @silver += amount
+    update()
+  end
+
+  def bronze=(amount)
+    @bronze += amount
+    update()
+  end
+
   def athletes()
     sql = "SELECT * FROM athletes
       WHERE nation_id = #{@id}"
     return Athlete.map_items(sql)
   end
 
-  def medal_count()
-    reset_medals()
-    events = Event.all()
-    events.each do |event|
-      medalists = event.medalists()
-      if medalists != nil
-        @gold += 1 if medalists[0] != nil && medalists[0].nation_id == @id
-        @silver += 1 if medalists[1] != nil && medalists[1].nation_id == @id
-        @bronze += 1 if medalists[2] != nil && medalists[2].nation_id == @id
-        update()
-      end
-    end
-    return nil
+  def reset_medals()
+    @gold = 0
+    @silver = 0
+    @bronze = 0
   end
 
   def points()
@@ -94,15 +100,21 @@ class Nation
   end
 
   def self.update_medals()
-    Nation.all.each {|nation| nation.medal_count()}
-  end
+    Nation.all.each do |nation|
+      nation.reset_medals()
+    end
 
-  private
-
-  def reset_medals()
-    @gold = 0
-    @silver = 0
-    @bronze = 0
+    events = Event.all()
+    events.each do |event|
+      medalists = event.medalists()
+      # binding.pry
+      if medalists != []
+        medalists[0].nation.gold= 1 if medalists[0] != nil
+        medalists[1].nation.silver= 1 if medalists[1] != nil
+        medalists[2].nation.bronze=  1 if medalists[2] != nil
+      end
+    end
+    return nil
   end
 
 end
