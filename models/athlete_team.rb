@@ -2,7 +2,7 @@
 
 class AthleteTeam
   
-  attr_reader(:id, :name, :class, :player_count, :nation_id)
+  attr_reader(:id, :team_id, :nation_id)
   def initialize(options)
     @id = options['id'].to_i
     @team_id = options['team_id'].to_i

@@ -58,8 +58,10 @@ class Athlete
     return Athlete.map_item(sql)
   end
 
-  def self.all()
-    sql = "SELECT * FROM athletes"
+  def self.all(query= "")
+    query = query.to_s.capitalize
+    sql = "SELECT athletes.* FROM athletes"
+    sql += " INNER JOIN nations ON athletes.nation_id = nations.id WHERE nations.name LIKE '%#{query}%'" if query != ""
     return Athlete.map_items(sql)
   end
 
