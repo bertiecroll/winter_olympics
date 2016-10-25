@@ -35,7 +35,7 @@
     <tr>
     <% @contest.results.each do |result| %>
       <tr>
-        <td><%= result.athlete.full_name %></td>
+        <td><%= @contest.event.team_size == 1 ? result.athlete.full_name : result.team.nation.name %></td>
         <td><%= result.print_score %></td>
         <td><a href="/contests/<%= @contest.id %>/results/<%= result.id %>/edit">Edit</a></td>
         <td>
@@ -49,4 +49,4 @@
   </table>
 </div>
 
-<a href="/contests/<%= @contest.id %>/results/new">Add New Result</a> 
+<a href="/contests/<%= @contest.id %>/<%= @contest.event.team_size == 1 ? "results" : "team_results" %>/new">Add New Result</a> 

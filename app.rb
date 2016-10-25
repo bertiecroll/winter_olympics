@@ -9,6 +9,7 @@ require_relative('./controllers/contest_controller')
 require_relative('./controllers/result_controller')
 require_relative('./controllers/team_controller')
 require_relative('./controllers/athlete_team_controller')
+require_relative('./controllers/team_result_controller')
 
 #Leaderboard page showing table of nations ordered by points
 get '/' do

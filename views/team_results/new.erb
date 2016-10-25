@@ -1,0 +1,21 @@
+<h4>Add result for <%= @contest.event.sport.name %> <%= @contest.event.class.capitalize %> <%= @contest.event.name %> <%= @contest.name %></h4>
+
+<form action="/team_results" method="post">
+
+  <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+
+  <label for="team_id">Team</label>
+  <select type="text" name="team_id" id="team_id">
+      <% @teams.each do |team| %>
+        <% if team.event_id == @contest.event.id %>
+          <option value="<%= team.id %>"><%= team.nation.name %></option>
+        <% end %>
+      <% end %>
+  </select>
+
+  <label for="score"><%= @contest.event.score_method.capitalize %></label>
+  <input  type="text" <%= "placeholder='Hr:Min:Sec.USec'" if @contest.event.score_method == "time" %> name="score" id="score">
+
+  <input type="submit" value="Add Result">
+
+</form>

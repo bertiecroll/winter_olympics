@@ -36,6 +36,12 @@ class Nation
     return Athlete.map_items(sql)
   end
 
+  def teams()
+    sql = "SELECT * FROM teams
+      WHERE nation_id = #{@id}"
+    return Team.map_items(sql) 
+  end
+
   def reset_medals()
     @gold = 0
     @silver = 0
