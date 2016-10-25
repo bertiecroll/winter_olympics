@@ -16,6 +16,7 @@
   <label for="score"><%= @contest.event.score_method.capitalize %></label>
   <input  type="text" name="score" id="score" value="<%= @team_result.print_score %>">
 
+  <input type="hidden" name="team_id" value="<%= @team_result.team_id %>">
   <input type="hidden" name="_method" value="put">
   <input type="submit" value="Update Result">
 

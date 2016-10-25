@@ -1,0 +1,17 @@
+<h2>Olympic Schedule</h2>
+
+<div>
+  <% @contests.sort! {|contest_a, contest_b| contest_a.date_time <=> contest_b.date_time} %>
+  <% @dates.each do |date| %>
+    <h3><%= date %></h3>
+    <% @contests.each do |contest| %>
+      <% if contest.date() == date %>
+        <ul>
+          <li>Event: <%= contest.full_name %></li>
+          <li>Venue: <%= contest.venue.name %></li>
+          <li>Date: <%= contest.time() %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

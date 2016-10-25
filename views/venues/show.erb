@@ -19,12 +19,14 @@
     <th>Sport</th>
     <th>Event</th>
     <th>Round</th>
+    <th>Date</th>
   </tr>
   <% @venue.contests.each do |contest| %>
   <tr>
     <td><%= contest.event.sport.name %></td>
     <td><%= contest.event.name %> <%= contest.event.class.capitalize %></td>
     <td><%= contest.name %></td>
+    <td><%= contest.dt() %></td>
   </tr>
   <% end %>
 </table>

@@ -25,6 +25,13 @@ get '/medalists' do
   erb(:medalists)
 end
 
+#Schedule page showing contests and venues
+get '/schedule' do
+  @contests = Contest.all()
+  @dates = Contest.dates()
+  erb(:schedule)
+end
+
 
 
 

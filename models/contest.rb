@@ -15,8 +15,21 @@ class Contest
     @venue_id = options['venue_id'].to_i
   end
 
+  def full_name()
+    event = event()
+    return "#{event.sport.name} #{event.name} #{event.class.capitalize} #{@name}"
+  end
+
   def dt()
     return @date_time.strftime("%Y-%m-%d %R")
+  end
+
+  def date()
+    return @date_time.strftime("%Y-%m-%d")
+  end
+
+  def time()
+    return @date_time.strftime("%R")
   end
 
   def event()
@@ -62,6 +75,12 @@ class Contest
     sql = "DELETE FROM contests
       WHERE id = #{@id}"
     SqlRunner.run(sql)
+  end
+
+  def self.dates()
+    sql = "SELECT date_time FROM contests"
+    dates = SqlRunner.run(sql).map {|item| item['date_time'].split()[0]}
+    return dates.uniq
   end
 
   def self.finals()
