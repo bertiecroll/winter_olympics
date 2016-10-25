@@ -8,8 +8,10 @@ require_relative('../models/athlete')
 require_relative('../models/result')
 require_relative('../models/team')
 require_relative('../models/athlete_team')
+require_relative('../models/team_result')
 
 Result.delete_all()
+TeamResult.delete_all()
 Athlete.delete_all()
 Contest.delete_all()
 Event.delete_all()
@@ -142,6 +144,8 @@ Sport.delete_all()
 @contest_14.save()
 @contest_15 = Contest.new('name' => "Final", 'event_id' => @event_14.id, 'venue_id' => @venue_2.id)
 @contest_15.save()
+@contest_16 = Contest.new('name' => "Final", 'event_id' => @event_15.id, 'venue_id' => @venue_6.id)
+@contest_16.save()
 
 #TEAM
 @team_1 = Team.new('event_id' => @event_15.id, 'nation_id' => @nation_1.id)
@@ -291,6 +295,10 @@ Sport.delete_all()
 @result_19.save()
 @result_20 = Result.new('score' => "602", 'athlete_id' => @athlete_15.id, 'contest_id' => @contest_13.id) #3-SWEDEN
 @result_20.save()
+
+#TEAM RESULTS
+@team_result_1 = TeamResult.new('score' => "0:3:55.500", 'team_id' => @team_1.id, 'contest_id' => @contest_16.id) #UK
+@team_result_1.save()
 
 Nation.update_medals()
 # binding.pry

@@ -30,7 +30,7 @@
 <div>
   <table>
     <tr>
-      <th>Athlete</th>
+      <th><%= @contest.event.team_size == 1 ? "Athlete" : "Team" %></th>
       <th><%= @contest.event.score_method.capitalize %></th>
     <tr>
     <% @contest.results.each do |result| %>

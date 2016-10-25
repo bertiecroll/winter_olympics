@@ -1,4 +1,5 @@
-DROP TABLE IF EXISTS results; 
+DROP TABLE IF EXISTS results;
+DROP TABLE IF EXISTS team_results;
 DROP TABLE IF EXISTS contests;
 DROP TABLE IF EXISTS athletes_teams;
 DROP TABLE IF EXISTS teams; 
@@ -64,6 +65,13 @@ CREATE TABLE contests (
   name VARCHAR(255),
   event_id INT4 REFERENCES events(id) ON DELETE CASCADE,
   venue_id INT4 REFERENCES venues(id) ON DELETE CASCADE
+);
+
+CREATE TABLE team_results (
+  id SERIAL4 PRIMARY KEY,
+  score VARCHAR(255),
+  team_id INT4 REFERENCES teams(id) ON DELETE CASCADE,
+  contest_id INT4 REFERENCES contests(id) ON DELETE CASCADE
 );
 
 CREATE TABLE results (
