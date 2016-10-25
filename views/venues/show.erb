@@ -13,4 +13,19 @@
 
 <a href="/venues/<%= @venue.id %>/edit">Edit Venue</a>
 
+<h4>Events Taking Place at Venue</h4>
+<table>
+  <tr>
+    <th>Sport</th>
+    <th>Event</th>
+    <th>Round</th>
+  </tr>
+  <% @venue.contests.each do |contest| %>
+  <tr>
+    <td><%= contest.event.sport.name %></td>
+    <td><%= contest.event.name %> <%= contest.event.class.capitalize %></td>
+    <td><%= contest.name %></td>
+  </tr>
+  <% end %>
+</table>
 <a href="/venues">View All Venues</a>

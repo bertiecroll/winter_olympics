@@ -9,9 +9,10 @@ end
 
 #NEW
 #get new form to add contest /contests/new
-get '/contests/new' do
+get '/events/:id/contests/new' do
   @sports = Sport.all()
   @venues = Venue.all()
+  @event = Event.find(params[:id])
   erb(:'/contests/new')
 end
 

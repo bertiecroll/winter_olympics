@@ -5,7 +5,7 @@
     <% @sports.each do |sport| %>
       <optgroup label="<%= sport.name %>">
         <% sport.events.each do |event| %>
-          <option value="<%= event.id %>"><%= event.class.capitalize %> <%= event.name %></option>
+          <option value="<%= event.id %>" <%= "selected" if @event.id == event.id %> ><%= event.class.capitalize %> <%= event.name %></option>
         <% end %>
       </optgroup>
     <% end %>

@@ -12,6 +12,12 @@ class Venue
     @capacity = options['capacity'].to_i
   end
 
+  def contests()
+    sql = "SELECT * FROM contests
+      WHERE venue_id = #{@id}"
+    return Contest.map_items(sql)
+  end
+
   def save()
     sql = "INSERT INTO venues (name, location, capacity)
       VALUES ('#{@name}', '#{@location}', #{@capacity})
