@@ -22,7 +22,6 @@ end
 post '/results' do
   @result = Result.new(params)
   @result.save()
-  Nation.update_medals
   erb(:'results/create')
 end
 
@@ -42,7 +41,6 @@ end
 #put update result details /results/:id
 put '/results/:id' do
   Result.update(params)
-  Nation.update_medals
   redirect to("/contests/#{params[:contest_id]}")
 end
 
@@ -51,6 +49,5 @@ end
 delete '/results/:id' do
   @result = Result.find(params[:id])
   @result.delete()
-  Nation.update_medals
   redirect to("/contests/#{@result.contest_id}")
 end

@@ -46,6 +46,7 @@ class Nation
     @gold = 0
     @silver = 0
     @bronze = 0
+    update()
   end
 
   def points()

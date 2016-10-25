@@ -16,7 +16,6 @@ end
 post '/team_results' do
   @team_result = TeamResult.new(params)
   @team_result.save()
-  Nation.update_medals
   erb(:'team_results/create')
 end
 
@@ -36,7 +35,6 @@ end
 # #put update result details /team_results/:id
 put '/team_results/:id' do
   TeamResult.update(params)
-  Nation.update_medals
   redirect to("/contests/#{params[:contest_id]}")
 end
 
@@ -45,6 +43,5 @@ end
 delete '/team_results/:id' do
   @team_result = TeamResult.find(params[:id])
   @team_result.delete()
-  Nation.update_medals
   redirect to("/contests/#{@team_result.contest_id}")
 end

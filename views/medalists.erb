@@ -10,15 +10,16 @@
     <h3><%= sport.name %></h3>
     <% sport.events.each do |event| %>
       <% medalists = event.medalists() %>
+      <% team_size = event.team_size %>
       <h4><%= event.class.capitalize %> <%= event.name %></h4>
       <% if medalists[0] != nil %>
-        <h5>Gold: <%= medalists[0].full_name %> from <%= medalists[0].nation.name %> </h5>
+        <h5>Gold: <%= team_size == 1 ? "#{medalists[0].full_name} from #{medalists[0].nation.name}" : medalists[0].nation.name %> </h5>
       <% end %>
       <% if medalists[1] != nil %>
-        <h5>Silver: <%= medalists[1].full_name %> from <%= medalists[1].nation.name %> </h5>
+        <h5>Silver: <%= team_size == 1 ? "#{medalists[1].full_name} from #{medalists[1].nation.name}" : medalists[1].nation.name %> </h5>
       <% end %>
       <% if medalists[2] != nil %>
-        <h5>Bronze: <%= medalists[2].full_name %> from <%= medalists[2].nation.name %> </h5>
+        <h5>Bronze: <%= team_size == 1 ? "#{medalists[2].full_name} from #{medalists[2].nation.name}" : medalists[2].nation.name %> </h5>
       <% end %>
     <% end %>
   <% end %>
