@@ -48,3 +48,8 @@ end
 
 #DESTROY
 #delete team using unqiue id, redirect to /teams
+delete '/teams/:id' do
+  @team = Team.find(params[:id])
+  @team.delete
+  redirect to("/teams")
+end
