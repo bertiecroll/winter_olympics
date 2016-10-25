@@ -24,21 +24,21 @@ end
 # #get single result by unique ID /results/:id
 
 # #EDIT
-# #get new form to update result /results/:id/edit
-# get '/contests/:contest_id/results/:id/edit' do
-#   @contest = Contest.find(params[:contest_id])
-#   @nations = Nation.all()
-#   @result = Result.find(params[:id])
-#   erb(:'results/edit')
-# end
+# #get new form to update result /team_results/:id/edit
+get '/contests/:contest_id/team_results/:id/edit' do
+  @contest = Contest.find(params[:contest_id])
+  @teams = Team.all()
+  @team_result = TeamResult.find(params[:id])
+  erb(:'team_results/edit')
+end
 
 # #UPDATE
-# #put update result details /results/:id
-# put '/results/:id' do
-#   Result.update(params)
-#   Nation.update_medals
-#   redirect to("/contests/#{params[:contest_id]}")
-# end
+# #put update result details /team_results/:id
+put '/team_results/:id' do
+  TeamResult.update(params)
+  Nation.update_medals
+  redirect to("/contests/#{params[:contest_id]}")
+end
 
 # #DESTROY
 # #delete result using unqiue id, /results/:id
