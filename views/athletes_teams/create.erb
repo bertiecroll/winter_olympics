@@ -1,0 +1,9 @@
+<% team = @athlete_team.team %>
+<div>
+  <h3> <%= @athlete_team.athlete.full_name %> has now been added to <%= team.nation.name %> <%= team.name %></h3>
+
+</div>
+
+<a href="/results">View all Results</a>
+<a href="/teams/<%= team.id %>/athletes/new">Add Another Athlete to the Team</a>
+<a href="/teams/<%= team.id %>">Return to Team</a>

@@ -8,6 +8,18 @@
   <input type="submit" value="Delete Team">  
 </form>
 
+<div>
+  <h4>Team Members</h4>
+  <% @team.athletes.each do |athlete| %>
+    <h5><a href="/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></h5>
+    <form action="/athletes_teams/<%= @team.athlete_team.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Remove Athlete From Team">
+    </form>
+  <% end %>
+
+</div>
+
 <a href="/teams/<%= @team.id %>/athletes/new">Add Athlete to Team</a>
 <a href="/teams/<%= @team.id %>/edit">Edit Team</a>
 <a href="/teams">View All Teams</a>

@@ -29,6 +29,12 @@ class Team
     return Athlete.map_items(sql)
   end
 
+  def athlete_team()
+    sql = "SELECT * FROM athletes_teams
+      WHERE team_id = #{@id}"
+      return AthleteTeam.map_item(sql)
+  end
+
   def save()
     sql = "INSERT INTO teams (event_id, nation_id)
       VALUES (#{@event_id}, #{@nation_id})
