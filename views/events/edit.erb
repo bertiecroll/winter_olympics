@@ -22,6 +22,15 @@
     <option value="time" <%= "selected" if @event.score_method == "time" %> >Time</option>
   </select>
 
+  <label for="team_size">Team Size</label>
+  <select type="number" name="team_size" id="team_size">
+    <% counter = 1 %>
+    <% 11.times do %>
+      <option value="<%= counter %>" <%= "selected" if @event.team_size == counter %>><%= counter %></option>
+      <% counter += 1 %>
+    <% end %>
+  </select>
+
   <input type="hidden" name="_method" value="put">
   <input type="submit" value="Update Event">
 

@@ -43,6 +43,7 @@ CREATE TABLE events (
   name VARCHAR(255),
   class VARCHAR(255),
   score_method VARCHAR(255),
+  team_size INT2,
   sport_id INT4 REFERENCES sports(id) ON DELETE CASCADE
 );
 
