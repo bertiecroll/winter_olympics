@@ -51,5 +51,6 @@ end
 delete '/results/:id' do
   @result = Result.find(params[:id])
   @result.delete()
+  Nation.update_medals
   redirect to("/contests/#{@result.contest_id}")
 end

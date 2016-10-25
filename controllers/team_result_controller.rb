@@ -41,9 +41,10 @@ put '/team_results/:id' do
 end
 
 # #DESTROY
-# #delete result using unqiue id, /results/:id
-# delete '/results/:id' do
-#   @result = Result.find(params[:id])
-#   @result.delete()
-#   redirect to("/contests/#{@result.contest_id}")
-# end
+# #delete result using unqiue id, /team_results/:id
+delete '/team_results/:id' do
+  @team_result = TeamResult.find(params[:id])
+  @team_result.delete()
+  Nation.update_medals
+  redirect to("/contests/#{@team_result.contest_id}")
+end
