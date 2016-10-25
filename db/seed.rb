@@ -307,5 +307,5 @@ Sport.delete_all()
 @team_result_4.save()
 
 Nation.update_medals()
-# binding.pry
-# nil
+binding.pry
+nil

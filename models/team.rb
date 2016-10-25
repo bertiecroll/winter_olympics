@@ -35,6 +35,12 @@ class Team
       return AthleteTeam.map_item(sql)
   end
 
+  def has_result?(contest_id)
+    sql = "SELECT count(*) FROM team_results WHERE team_id=#{@id} AND contest_id=#{contest_id}"
+    result = SqlRunner.run(sql).first
+    return result['count'].to_i
+  end
+
   def save()
     sql = "INSERT INTO teams (event_id, nation_id)
       VALUES (#{@event_id}, #{@nation_id})

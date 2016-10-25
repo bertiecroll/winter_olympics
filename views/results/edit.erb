@@ -5,7 +5,7 @@
   <input type="hidden" name="contest_id" value="<%= @contest.id %>">
 
   <label for="athlete_id">Athlete</label>
-  <select type="text" name="athlete_id" id="athlete_id">
+  <select type="text" name="athlete_id" id="athlete_id" disabled>
     <% @nations.each do |nation| %>
       <optgroup label="<%= nation.name %>">
         <% nation.athletes.each do |athlete| %>

@@ -15,6 +15,8 @@ class Athlete
     @nation_id = options['nation_id'].to_i
   end
 
+  511 |        242
+
   def full_name()
     return "#{@first_name} #{@last_name}"
   end
@@ -29,6 +31,12 @@ class Athlete
 
   def date_of_birth=(new_dob)
     return @date_of_birth = Date.parse(new_dob)
+  end
+
+  def has_result?(contest_id)
+    sql = "SELECT count(*) FROM results WHERE athlete_id=#{@id} AND contest_id=#{contest_id}"
+    result = SqlRunner.run(sql).first
+    return result['count'].to_i
   end
 
   def save()

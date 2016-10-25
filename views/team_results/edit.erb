@@ -5,7 +5,7 @@
   <input type="hidden" name="contest_id" value="<%= @contest.id %>">
 
   <label for="team_id">Team</label>
-  <select type="text" name="team_id" id="team_id">
+  <select type="text" name="team_id" id="team_id" disabled>
       <% @teams.each do |team| %>
         <% if team.event_id == @contest.event.id %>
           <option value="<%= team.id %>" <%= "selected" if @team_result.team_id == team.id %> ><%= team.nation.name %></option>
