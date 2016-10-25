@@ -9,6 +9,11 @@ end
 
 #NEW
 #get new form to add team /teams/new
+get '/teams/new' do
+  @nations = Nation.all()
+  @sports = Sport.all()
+  erb(:'teams/new')
+end
 
 #CREATE
 #post new team onto list /teams

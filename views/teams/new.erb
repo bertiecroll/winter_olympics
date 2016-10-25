@@ -1,0 +1,25 @@
+<div>
+  <form action="/teams" method="post">
+
+    <label for="nation_id">Nation:</label>
+    <select type="text" name="nation_id" id="nation_id">
+      <% @nations.each do |nation| %>
+        <option value="<%= nation.id %>"><%= nation.name %></option>
+      <% end %>
+    </select>
+
+    <label for="event_id">Event:</label>
+    <select type="text" name="event_id" id="event_id">
+      <% @sports.each do |sport| %>
+        <optgroup label="<%= sport.name %>">
+          <% sport.events.each do |event| %>
+            <option value="<%= event.id %>"><%= event.name %></option>
+          <% end %>
+        </optgroup>
+      <% end %>
+    </select>
+
+    <input type="submit" value="Add Team">
+
+  </form>
+</div>
