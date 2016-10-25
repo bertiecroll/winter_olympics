@@ -92,6 +92,8 @@ Sport.delete_all()
 @event_13.save()
 @event_14 = Event.new('name' => "Singles", 'class' => "female", 'score_method' => "time", 'sport_id' => @sport_7.id)
 @event_14.save()
+@event_15 = Event.new('name' => "5000M Relay", 'class' => "male", 'score_method' => "time", 'sport_id' => @sport_4.id)
+@event_15.save()
 
 #VENUES
 @venue_1 = Venue.new('name' => "Yongpyong Alpine Centre", 'location' => "Pyeongchang", 'capacity' => 10000)
@@ -142,13 +144,13 @@ Sport.delete_all()
 @contest_15.save()
 
 #TEAM
-@team_1 = Team.new('name' => "5000M Relay", 'class' => "male", 'player_count' => 3, 'nation_id' => @nation_1.id)
+@team_1 = Team.new('event_id' => @event_4.id, 'nation_id' => @nation_1.id)
 @team_1.save()
-@team_2 = Team.new('name' => "5000M Relay", 'class' => "male", 'player_count' => 3, 'nation_id' => @nation_2.id)
+@team_2 = Team.new('event_id' => @event_4.id, 'nation_id' => @nation_2.id)
 @team_2.save()
-@team_3 = Team.new('name' => "5000M Relay", 'class' => "male", 'player_count' => 3, 'nation_id' => @nation_3.id)
+@team_3 = Team.new('event_id' => @event_4.id, 'nation_id' => @nation_3.id)
 @team_3.save()
-@team_4 = Team.new('name' => "5000M Relay", 'class' => "male", 'player_count' => 3, 'nation_id' => @nation_4.id)
+@team_4 = Team.new('event_id' => @event_4.id, 'nation_id' => @nation_4.id)
 @team_4.save()
 
 

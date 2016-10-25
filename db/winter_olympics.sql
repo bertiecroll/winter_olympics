@@ -1,11 +1,11 @@
 DROP TABLE IF EXISTS results; 
-DROP TABLE IF EXISTS contests; 
+DROP TABLE IF EXISTS contests;
+DROP TABLE IF EXISTS teams; 
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS venues;
 DROP TABLE IF EXISTS athletes_teams;
 DROP TABLE IF EXISTS athletes;
 DROP TABLE IF EXISTS sports; 
-DROP TABLE IF EXISTS teams; 
 DROP TABLE IF EXISTS nations;
 
 CREATE TABLE nations (
@@ -15,14 +15,6 @@ CREATE TABLE nations (
   gold INT4,
   silver INT4,
   bronze INT4
-);
-
-CREATE TABLE teams (
-  id SERIAL4 PRIMARY KEY,
-  name VARCHAR(255),
-  class VARCHAR(255),
-  player_count INT2,
-  nation_id INT4 REFERENCES nations(id) ON DELETE CASCADE
 );
 
 CREATE TABLE sports (
@@ -58,6 +50,12 @@ CREATE TABLE events (
   class VARCHAR(255),
   score_method VARCHAR(255),
   sport_id INT4 REFERENCES sports(id) ON DELETE CASCADE
+);
+
+CREATE TABLE teams (
+  id SERIAL4 PRIMARY KEY,
+  event_id INT4 REFERENCES events(id) ON DELETE CASCADE
+  nation_id INT4 REFERENCES nations(id) ON DELETE CASCADE
 );
 
 CREATE TABLE contests (

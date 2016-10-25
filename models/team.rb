@@ -2,17 +2,19 @@ require_relative('../db/sql_runner')
 
 class Team
   
-  attr_reader(:id, :name, :class, :player_count, :nation_id)
+  attr_reader(:id, :event_id, :nation_id)
   def initialize(options)
     @id = options['id'].to_i
-    @name = options['name']
-    @class = options['class']
-    @player_count = options['player_count'].to_i
+    @event_id = options['event_id'].to_i
     @nation_id = options['nation_id'].to_i
   end
 
   def nation()
     return Nation.find(@nation_id)
+  end
+
+  def event()
+    return Event.find(@event_id)
   end
 
   def athletes()
@@ -23,8 +25,8 @@ class Team
   end
 
   def save()
-    sql = "INSERT INTO teams (name, class, player_count, nation_id)
-      VALUES ('#{@name}', '#{@class}', #{@player_count}, #{@nation_id})
+    sql = "INSERT INTO teams (event_id, nation_id)
+      VALUES (#{@event_id}, #{@nation_id})
       RETURNING *"
     team = SqlRunner.run(sql).first
     @id = team['id']
@@ -38,7 +40,7 @@ class Team
 
   def self.update(options)
     sql = "UPDATE teams
-      SET name = '#{options['name']}', class = '#{options['class']}', player_count = #{options['player_count']}, nation_id = #{options['nation_id']}
+      SET event_id = #{options['event_id']}, nation_id = #{options['nation_id']}
       WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
