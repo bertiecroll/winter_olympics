@@ -9,7 +9,7 @@
     <% @teams.each do |team| %>
       <tr>
         <td><%= team.nation.name %></td> 
-        <td><%= team.event.sport.name %> <%= team.event.name %></td>
+        <td><%= team.name %></td>
         <td><a href="/teams/<%= team.id %>">View</a></td>
       </tr>
     <% end %>

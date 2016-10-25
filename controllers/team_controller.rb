@@ -17,9 +17,18 @@ end
 
 #CREATE
 #post new team onto list /teams
+post '/teams' do
+  @team = Team.new(params)
+  @team.save()
+  erb(:'teams/create')
+end
 
 #SHOW
-#get single team by unique ID /team/:id
+#get single team by unique ID /teams/:id
+get '/teams/:id' do
+  @team = Team.find(params[:id])
+  erb(:'teams/show')
+end
 
 #EDIT
 #get new form to update team /teams/:id/edit

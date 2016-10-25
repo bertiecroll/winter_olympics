@@ -17,6 +17,11 @@ class Team
     return Event.find(@event_id)
   end
 
+  def name()
+    team_event = event()
+    return "#{team_event.sport.name} #{team_event.name}" 
+  end
+
   def athletes()
     sql = "SELECT a.* FROM athletes a INNER JOIN athletes_teams at
       ON a.id = at.athlete_id 
