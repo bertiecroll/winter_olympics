@@ -32,9 +32,19 @@ end
 
 #EDIT
 #get new form to update team /teams/:id/edit
+get '/teams/:id/edit' do
+  @team = Team.find(params[:id])
+  @nations = Nation.all()
+  @sports = Sport.all()
+  erb(:'teams/edit')
+end
 
 #UPDATE
 #put update team details /teams/:id
+put '/teams/:id' do
+  Team.update(params)
+  redirect to("/teams/#{params[:id]}")
+end
 
 #DESTROY
 #delete team using unqiue id, redirect to /teams

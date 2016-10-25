@@ -1,0 +1,26 @@
+<div>
+  <form action="/teams/<%= @team.id %>" method="post">
+
+    <label for="nation_id">Nation:</label>
+    <select type="text" name="nation_id" id="nation_id">
+      <% @nations.each do |nation| %>
+        <option value="<%= nation.id %>" <%= "selected" if @team.nation_id == nation.id %> ><%= nation.name %></option>
+      <% end %>
+    </select>
+
+    <label for="event_id">Event:</label>
+    <select type="text" name="event_id" id="event_id">
+      <% @sports.each do |sport| %>
+        <optgroup label="<%= sport.name %>">
+          <% sport.events.each do |event| %>
+            <option value="<%= event.id %>" <%= "selected" if @team.event_id == event.id %> ><%= event.name %></option>
+          <% end %>
+        </optgroup>
+      <% end %>
+    </select>
+
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="Update Team">
+
+  </form>
+</div>
