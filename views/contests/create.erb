@@ -6,12 +6,14 @@
       <th>Event</th>
       <th>Name</th>
       <th>Venue</th>
+      <th>Date</th>
     <tr>
     <tr>
       <td><%= @contest.event.sport.name %></td>
       <td><%= @contest.event.name %></td>
       <td><%= @contest.name %></td>
       <td><%= @contest.venue.name %></td>
+      <td><%= @contest.dt() %></td>
     </tr>
   </table>
 </div>

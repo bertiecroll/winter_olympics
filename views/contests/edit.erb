@@ -21,6 +21,10 @@
     <% end %>
   </select>
 
+  <label for="date_time">Date And Time</label>
+  <input type="text" name="date_time" id="date_time" value="<%= @contest.dt %>">
+
+  <input type="hidden" name="event_id" value="<%= @contest.event.id %>">
   <input type="hidden" name="_method" value="put">
   <input type="submit" value="Update Contest Details">
 

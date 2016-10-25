@@ -63,6 +63,7 @@ CREATE TABLE athletes_teams (
 CREATE TABLE contests (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
+  date_time TIMESTAMP,
   event_id INT4 REFERENCES events(id) ON DELETE CASCADE,
   venue_id INT4 REFERENCES venues(id) ON DELETE CASCADE
 );

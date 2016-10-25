@@ -6,12 +6,14 @@
       <th>Event</th>
       <th>Name</th>
       <th>Venue</th>
+      <th>Date</th>
     <tr>
     <tr>
       <td><a href="/sports/<%= @contest.event.sport.id %>"><%= @contest.event.sport.name %></a></td>
       <td><a href="/events/<%= @contest.event.id %>"><%= @contest.event.class.capitalize %> <%= @contest.event.name %></a></td>
       <td><%= @contest.name %></td>
       <td><a href="/venues/<%= @contest.venue.id %>"><%= @contest.venue.name %></a></td>
+      <td><%= @contest.dt() %></td>
     </tr>
   </table>
 </div>

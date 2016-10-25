@@ -1,16 +1,22 @@
+require('time')
 require_relative('../db/sql_runner')
 require('pry-byebug')
 
 class Contest
 
   attr_reader(:id)
-  attr_accessor(:name, :event_id, :venue_id)
+  attr_accessor(:name, :date_time, :event_id, :venue_id)
 
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name'].capitalize
+    @date_time = Time.parse(options['date_time'])
     @event_id = options['event_id'].to_i
     @venue_id = options['venue_id'].to_i
+  end
+
+  def dt()
+    return @date_time.strftime("%Y-%m-%d %R")
   end
 
   def event()
@@ -45,8 +51,8 @@ class Contest
   end
 
   def save()
-    sql = "INSERT INTO contests (name, event_id, venue_id)
-      VALUES ('#{@name}', #{@event_id}, #{@venue_id})
+    sql = "INSERT INTO contests (name, date_time, event_id, venue_id)
+      VALUES ('#{@name}', '#{dt()}', #{@event_id}, #{@venue_id})
       RETURNING *"
     contest = SqlRunner.run(sql).first
     @id = contest['id'].to_i
@@ -66,7 +72,7 @@ class Contest
 
   def self.update(options)
     sql = "UPDATE contests
-      SET name = '#{options['name']}', event_id = #{options['event_id']}, venue_id = #{options['venue_id']}
+      SET name = '#{options['name']}', date_time = '#{options['date_time']}', event_id = #{options['event_id']}, venue_id = #{options['venue_id']}
       WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
