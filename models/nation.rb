@@ -111,7 +111,6 @@ class Nation
     events = Event.all()
     events.each do |event|
       medalists = event.medalists()
-      # binding.pry
       if medalists != nil && medalists != []
         medalists[0].nation.gold= 1 if medalists[0] != nil
         medalists[1].nation.silver= 1 if medalists[1] != nil

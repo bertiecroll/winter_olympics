@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require('pry-byebug')
 
 class Contest
 
@@ -22,18 +23,25 @@ class Contest
 
   def results()
     order = get_order()
-    sql = "SELECT * FROM results
+    result_table = get_result_table()
+
+    sql = "SELECT * FROM #{result_table}
       WHERE contest_id = #{@id} ORDER BY score #{order}"
-    return Result.map_items(sql)
+    result_table == "results" ? result = Result.map_items(sql) : result = TeamResult.map_items(sql)
+    return result
   end
 
   def get_medalists()
     order = get_order()
-    sql = "SELECT a.* FROM athletes a INNER JOIN results r
-      ON a.id = r.athlete_id
-      WHERE r.contest_id = #{@id}
-      ORDER BY r.score #{order} LIMIT 3"
-    return Athlete.map_items(sql)
+    result_table = get_result_table()
+    if result_table == "results"
+      sql = "SELECT a.* FROM athletes a INNER JOIN results r ON a.id = r.athlete_id WHERE r.contest_id = #{@id} ORDER BY r.score #{order} LIMIT 3"
+    else
+      sql = "SELECT t.* FROM teams t INNER JOIN team_results r ON t.id = r.team_id WHERE r.contest_id = #{@id} ORDER BY r.score #{order} LIMIT 3"  
+    end
+    
+    result_table == "results" ? result = Athlete.map_items(sql) : result = Team.map_items(sql)
+    return result
   end
 
   def save()
@@ -99,4 +107,8 @@ class Contest
     return order
   end
 
+  def get_result_table()
+    event().team_size == 1 ? table = "results" : table = "team_results"
+    return table
+  end
 end

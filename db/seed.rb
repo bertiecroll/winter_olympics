@@ -297,8 +297,14 @@ Sport.delete_all()
 @result_20.save()
 
 #TEAM RESULTS
-@team_result_1 = TeamResult.new('score' => "0:3:55.500", 'team_id' => @team_1.id, 'contest_id' => @contest_16.id) #UK
+@team_result_1 = TeamResult.new('score' => "0:3:55.500", 'team_id' => @team_1.id, 'contest_id' => @contest_16.id) #1-UK
 @team_result_1.save()
+@team_result_2 = TeamResult.new('score' => "0:4:15.230", 'team_id' => @team_2.id, 'contest_id' => @contest_16.id) #FRANCE
+@team_result_2.save()
+@team_result_3 = TeamResult.new('score' => "0:3:58.000", 'team_id' => @team_3.id, 'contest_id' => @contest_16.id) #2-AUSTRIA
+@team_result_3.save()
+@team_result_4 = TeamResult.new('score' => "0:4:12.911", 'team_id' => @team_4.id, 'contest_id' => @contest_16.id) #3-USA
+@team_result_4.save()
 
 Nation.update_medals()
 # binding.pry
