@@ -2,16 +2,12 @@
   <h3>The below Contest has now been added</h3>
   <table>
     <tr>
-      <th>Sport</th>
       <th>Event</th>
-      <th>Name</th>
       <th>Venue</th>
       <th>Date</th>
     <tr>
     <tr>
-      <td><%= @contest.event.sport.name %></td>
-      <td><%= @contest.event.name %></td>
-      <td><%= @contest.name %></td>
+      <td><%= @contest.full_name %></td>
       <td><%= @contest.venue.name %></td>
       <td><%= @contest.dt() %></td>
     </tr>

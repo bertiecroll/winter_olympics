@@ -1,19 +1,26 @@
-<h4>Add Athlete to Team for <%= @team.nation.name %> <%= @team.name %></h4>
-<h5>Current number of Athletes in team <%= @team.athletes.count %></h5>
+<% if @team.athlete_count < @team.event.team_size %>
 
-<form action="/athletes_teams" method="post">
+  <h4>Add Athlete to Team for <%= @team.nation.name %> <%= @team.name %></h4>
+  <h5>Current number of Athletes in team <%= @team.athletes.count %></h5>
 
-  <input type="hidden" name="team_id" value="<%= @team.id %>">
+  <form action="/athletes_teams" method="post">
 
-  <label for="athlete_id">Athlete</label>
-  <select type="text" name="athlete_id" id="athlete_id">
-    <% @athletes.each do |athlete| %>
-      <% if athlete.nation.name == @team.nation.name && athlete.gender == @team.event.class %>
-        <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
+    <input type="hidden" name="team_id" value="<%= @team.id %>">
+
+    <label for="athlete_id">Athlete</label>
+    <select type="text" name="athlete_id" id="athlete_id">
+      <% @athletes.each do |athlete| %>
+        <% if athlete.nation.name == @team.nation.name && athlete.gender == @team.event.class && !@team.has_athlete?(athlete.id) %>
+          <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
+        <% end %>
       <% end %>
-    <% end %>
-  </select>
+    </select>
 
-  <input type="submit" value="Add Athlete">
+    <input type="submit" value="Add Athlete">
 
-</form>
+  </form>
+<% else %>
+  <h4>Sorry, no more athletes can be added to Team <%= @team.nation.name %> - <%= @team.name %></h4>
+  <h4>Event team size: <%= @team.event.team_size %></h4>
+  <h5><a href="/teams/<%= @team.id %>">Return to Team</a></h5>
+<% end %>

@@ -35,8 +35,9 @@ class Athlete
 
   def has_result?(contest_id)
     sql = "SELECT count(*) FROM results WHERE athlete_id=#{@id} AND contest_id=#{contest_id}"
-    result = SqlRunner.run(sql).first
-    return result['count'].to_i
+    sql_result = SqlRunner.run(sql).first
+    count = sql_result['count'].to_i
+    return count < 1 ? false : true
   end
 
   def save()

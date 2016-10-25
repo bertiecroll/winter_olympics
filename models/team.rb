@@ -29,6 +29,14 @@ class Team
     return Athlete.map_items(sql)
   end
 
+  def athlete_count()
+    sql = "SELECT count(*) FROM athletes a INNER JOIN athletes_teams at
+      ON a.id = at.athlete_id 
+      WHERE at.team_id = #{@id}"
+    result = SqlRunner.run(sql).first
+    return result['count'].to_i
+  end
+
   def athlete_team()
     sql = "SELECT * FROM athletes_teams
       WHERE team_id = #{@id}"
@@ -37,8 +45,16 @@ class Team
 
   def has_result?(contest_id)
     sql = "SELECT count(*) FROM team_results WHERE team_id=#{@id} AND contest_id=#{contest_id}"
-    result = SqlRunner.run(sql).first
-    return result['count'].to_i
+    sql_result = SqlRunner.run(sql).first
+    count = sql_result['count'].to_i
+    return count < 1 ? false : true 
+  end
+
+  def has_athlete?(athlete_id)
+    sql = "SELECT count(*) FROM athletes_teams WHERE team_id=#{@id} AND athlete_id=#{athlete_id}"
+    sql_result = SqlRunner.run(sql).first
+    count = sql_result['count'].to_i
+    return count < 1 ? false : true
   end
 
   def save()

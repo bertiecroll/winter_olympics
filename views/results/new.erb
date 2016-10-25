@@ -1,4 +1,4 @@
-<h4>Add result for <%= @contest.event.sport.name %> <%= @contest.event.class.capitalize %> <%= @contest.event.name %> <%= @contest.name %></h4>
+<h4>Add result for <%= @contest.full_name %></h4>
 
 <form action="/results" method="post">
 
@@ -9,7 +9,7 @@
     <% @nations.each do |nation| %>
       <optgroup label="<%= nation.name %>">
         <% nation.athletes.each do |athlete| %>
-          <% if athlete.gender == @contest.event.class && athlete.has_result?(@contest.id) < 1 %>
+          <% if athlete.gender == @contest.event.class && !athlete.has_result?(@contest.id) %>
             <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
           <% end %>
         <% end %>

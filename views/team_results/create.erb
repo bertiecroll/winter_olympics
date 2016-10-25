@@ -2,16 +2,12 @@
   <h3>Below result has now been added</h3>
   <table>
     <tr>
-      <th>Sport</th>
       <th>Event</th>
-      <th>Round</th>
       <th>Team</th>
       <th><%= @team_result.contest.event.score_method.capitalize %></th>
     <tr>
     <tr>
-      <td><%= @team_result.contest.event.sport.name %></td>
-      <td><%= @team_result.contest.event.name %></td>
-      <td><%= @team_result.contest.name %></td>
+      <td><%= @team_result.contest.full_name %></td>
       <td><%= @team_result.team.nation.name %></td>
       <td><%= @team_result.print_score %></td>
     </tr>

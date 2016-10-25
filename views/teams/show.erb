@@ -9,7 +9,8 @@
 </form>
 
 <div>
-  <h4>Team Members</h4>
+  <h4>Event Team Size Limit: <%= @team.event.team_size %></h4>
+  <h4>Current Team Members: <%= @team.athlete_count %></h4>
   <% @team.athletes.each do |athlete| %>
     <h5><a href="/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></h5>
     <form action="/athletes_teams/<%= @team.athlete_team.id %>" method="post">

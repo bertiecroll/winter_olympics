@@ -3,16 +3,12 @@
 <div>
   <table>
     <tr>
-      <th>Sport</th>
       <th>Event</th>
-      <th>Contest</th>
       <th>Venue</th>
     <tr>
     <% @contests.each do |contest| %>
       <tr>
-        <td><%= contest.event.sport.name %></td>
-        <td><%= contest.event.class.capitalize %> <%= contest.event.name %></td>
-        <td><%= contest.name %></td>
+        <td><%= contest.full_name %></td>
         <td><%= contest.venue.name %></td>
         <td><a href="/contests/<%= contest.id %>">View</a></td>
 

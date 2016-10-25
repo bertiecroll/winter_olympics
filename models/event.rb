@@ -64,8 +64,10 @@ class Event
     return Event.map_item(sql)
   end
 
-  def self.all()
+  def self.all(query= "")
+    query = query.to_s
     sql = "SELECT * FROM events"
+    sql += " WHERE team_size #{query} 1" if query != ""
     return Event.map_items(sql)
   end
 

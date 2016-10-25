@@ -3,7 +3,8 @@ require_relative('../models/event')
 #INDEX
 #get all events for sport sports/:id/events
 get '/events' do
-  @events = Event.all()
+  query = params[:search]
+  @events = Event.all(query)
   erb(:'events/index')
 end
 
