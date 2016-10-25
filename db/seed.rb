@@ -144,13 +144,13 @@ Sport.delete_all()
 @contest_15.save()
 
 #TEAM
-@team_1 = Team.new('event_id' => @event_4.id, 'nation_id' => @nation_1.id)
+@team_1 = Team.new('event_id' => @event_15.id, 'nation_id' => @nation_1.id)
 @team_1.save()
-@team_2 = Team.new('event_id' => @event_4.id, 'nation_id' => @nation_2.id)
+@team_2 = Team.new('event_id' => @event_15.id, 'nation_id' => @nation_2.id)
 @team_2.save()
-@team_3 = Team.new('event_id' => @event_4.id, 'nation_id' => @nation_3.id)
+@team_3 = Team.new('event_id' => @event_15.id, 'nation_id' => @nation_3.id)
 @team_3.save()
-@team_4 = Team.new('event_id' => @event_4.id, 'nation_id' => @nation_4.id)
+@team_4 = Team.new('event_id' => @event_15.id, 'nation_id' => @nation_4.id)
 @team_4.save()
 
 
@@ -293,5 +293,5 @@ Sport.delete_all()
 @result_20.save()
 
 Nation.update_medals()
-binding.pry
-nil
+# binding.pry
+# nil

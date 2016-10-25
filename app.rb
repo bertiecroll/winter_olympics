@@ -7,6 +7,7 @@ require_relative('./controllers/event_controller')
 require_relative('./controllers/venue_controller')
 require_relative('./controllers/contest_controller')
 require_relative('./controllers/result_controller')
+require_relative('./controllers/team_controller')
 
 #Leaderboard page showing table of nations ordered by points
 get '/' do
