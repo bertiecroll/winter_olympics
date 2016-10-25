@@ -1,15 +1,21 @@
 <h3>Teams</h3>
 
 <div>
+  <form method="get">
+    <label for="search">Search Teams by Nation</label>
+    <input type="text" name="search" value="" id="search">
+    <input type="submit" value="Search">
+  </form>
   <table>
     <tr>
       <th>Nation</th>
       <th>Team</th>
     <tr>
+    <% @teams.sort! {|team_a, team_b| team_a.nation.name <=> team_b.nation.name} %>
     <% @teams.each do |team| %>
       <tr>
         <td><%= team.nation.name %></td> 
-        <td><%= team.name %></td>
+        <td><%= team.name %> </td>
         <td><a href="/teams/<%= team.id %>">View</a></td>
       </tr>
     <% end %>

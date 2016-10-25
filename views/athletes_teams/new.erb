@@ -8,7 +8,7 @@
   <label for="athlete_id">Athlete</label>
   <select type="text" name="athlete_id" id="athlete_id">
     <% @athletes.each do |athlete| %>
-      <% if athlete.nation.name == @team.nation.name %>
+      <% if athlete.nation.name == @team.nation.name && athlete.gender == @team.event.class %>
         <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
       <% end %>
     <% end %>

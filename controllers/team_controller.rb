@@ -3,7 +3,8 @@ require_relative('../models/team')
 #INDEX
 #get all teams /teams
 get '/teams' do
-  @teams = Team.all()
+  query = params[:search]
+  @teams = Team.all(query)
   erb(:'teams/index')
 end
 

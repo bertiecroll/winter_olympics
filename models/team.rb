@@ -19,7 +19,7 @@ class Team
 
   def name()
     team_event = event()
-    return "#{team_event.sport.name} #{team_event.name}" 
+    return "#{team_event.sport.name} #{team_event.name} #{team_event.class.capitalize}" 
   end
 
   def athletes()
@@ -68,8 +68,10 @@ class Team
     return Team.map_item(sql)
   end
 
-  def self.all()
-    sql = "SELECT * FROM teams"
+  def self.all(query= "")
+    query = query.to_s.capitalize
+    sql = "SELECT t.* FROM teams t INNER JOIN nations n ON t.nation_id = n.id"
+    sql += " WHERE n.name LIKE '%#{query}%'" if query != ""
     return Team.map_items(sql)
   end
 

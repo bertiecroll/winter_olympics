@@ -13,7 +13,9 @@
       <% @sports.each do |sport| %>
         <optgroup label="<%= sport.name %>">
           <% sport.events.each do |event| %>
-            <option value="<%= event.id %>"><%= event.name %></option>
+            <% if event.team_size > 1 %>
+              <option value="<%= event.id %>"><%= event.name %> <%= event.class.capitalize %></option>
+            <% end %>
           <% end %>
         </optgroup>
       <% end %>
