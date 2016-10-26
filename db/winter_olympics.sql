@@ -27,7 +27,7 @@ CREATE TABLE athletes (
   id SERIAL4 PRIMARY KEY,
   first_name VARCHAR(255),
   last_name VARCHAR(255),
-  date_of_birth DATE,
+  date_of_birth TIMESTAMP,
   gender VARCHAR(255),
   image VARCHAR(255),
   nation_id INT4 REFERENCES nations(id) ON DELETE CASCADE

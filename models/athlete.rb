@@ -16,10 +16,15 @@ class Athlete
     @nation_id = options['nation_id'].to_i
   end
 
-  511 |        242
-
   def full_name()
     return "#{@first_name} #{@last_name}"
+  end
+
+  def age()
+    sql = "SELECT age(date_of_birth) FROM athletes
+      WHERE id = #{@id}"
+    age = SqlRunner.run(sql).first
+    return age['age']
   end
 
   def dob()

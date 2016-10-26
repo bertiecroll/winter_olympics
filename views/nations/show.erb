@@ -32,3 +32,16 @@
   </table>
 </div>
 
+<div>
+  <h4>Stats</h4>
+  <% athlete = @nation.athlete_age_stat("desc") %>
+  <% if athlete != nil %>
+    <h5>Youngest Athlete: <%= athlete.full_name %> Age: <%= athlete.age %> </h5>
+  <% end %>
+  <% athlete = @nation.athlete_age_stat("asc") %>
+  <% if athlete != nil %>
+    <h5>Oldest Athlete: <%= athlete.full_name %> Age: <%= athlete.age %> </h5>
+  <% end %>
+  <h5>Average Age of Athletes: <%= @nation.athlete_average_age() %></h5>
+</div>
+

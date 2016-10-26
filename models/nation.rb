@@ -36,6 +36,17 @@ class Nation
     return Athlete.map_items(sql)
   end
 
+  def athlete_age_stat(order)
+    sql = "SELECT * FROM athletes WHERE nation_id = #{@id} ORDER BY date_of_birth #{order} LIMIT 1"
+    return Athlete.map_item(sql)
+  end
+
+  def athlete_average_age()
+    sql = "SELECT AVG(age(date_of_birth)) FROM athletes WHERE nation_id = #{@id}"
+    average_age = SqlRunner.run(sql).first['avg']
+    return average_age[0..-9]
+  end
+
   def teams()
     sql = "SELECT * FROM teams
       WHERE nation_id = #{@id}"
