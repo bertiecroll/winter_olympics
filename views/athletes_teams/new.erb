@@ -10,8 +10,16 @@
     <label for="athlete_id">Athlete</label>
     <select type="text" name="athlete_id" id="athlete_id">
       <% @athletes.each do |athlete| %>
-        <% if athlete.nation.name == @team.nation.name && athlete.gender == @team.event.class && !@team.has_athlete?(athlete.id) %>
-          <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
+        <% if athlete.nation.name == @team.nation.name && !@team.has_athlete?(athlete.id) %>
+          <% if athlete.gender == @team.event.class %>
+            <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
+          <% elsif @team.event.class == "mixed" && @team.athlete_count.odd? %>
+            <% if @team.athletes.last.gender != athlete.gender %>
+              <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
+            <% end %>
+          <% elsif @team.event.class == "mixed" %>
+              <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
+          <% end %>
         <% end %>
       <% end %>
     </select>
