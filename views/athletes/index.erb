@@ -1,9 +1,10 @@
 <form method="get">
   <label for="filter">Filter Athletes by Nation</label>
   <select type="text" name="filter" id="filter">
-      <% @nations.each do |nation| %>
-        <option value="<%= nation.id %>"><%= nation.name %></option>
-      <% end %>
+    <option disabled selected>--- Select Nation ---</option>
+    <% @nations.each do |nation| %>
+      <option value="<%= nation.id %>"><%= nation.name %></option>
+    <% end %>
   </select>
   <input type="submit" value="Filter">
 </form>

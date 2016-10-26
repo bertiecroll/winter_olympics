@@ -2,6 +2,7 @@
   <form method="get">
     <label for="filter">Filter Medalists by Sport</label>
     <select type="text" name="filter" id="filter">
+        <option disabled selected>--- Select Sport ---</option>
         <% @sports_filter.each do |sport| %>
           <option value="<%= sport.id %>"><%= sport.name %></option>
         <% end %>
