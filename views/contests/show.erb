@@ -1,55 +1,46 @@
-<div>
-  <h3>Contest Details</h3>
-  <table>
-    <tr>
-      <th>Sport</th>
-      <th>Event</th>
-      <th>Name</th>
-      <th>Venue</th>
-      <th>Date</th>
-    <tr>
-    <tr>
-      <td><a href="/sports/<%= @contest.event.sport.id %>"><%= @contest.event.sport.name %></a></td>
-      <td><a href="/events/<%= @contest.event.id %>"><%= @contest.event.class.capitalize %> <%= @contest.event.name %></a></td>
-      <td><%= @contest.name %></td>
-      <td><a href="/venues/<%= @contest.venue.id %>"><%= @contest.venue.name %></a></td>
-      <td><%= @contest.dt() %></td>
-    </tr>
-  </table>
-</div>
+<div class="main-row show-row">
+  <div class="main-cell medalists">
+    <h1>Contest Details</h1>
+    <h3><span>Name: </span><%= @contest.full_name %></h3>
+    <h3><span>Venue: </span><a href="/venues/<%= @contest.venue.id %>"><%= @contest.venue.name %></a></h3>
+    <h3><span>Date: </span><%= @contest.dt() %></h3>
+    <div class="page-header">
+      <form action="/contests/<%= @contest.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Contest">
+      </form>
+      <a href="/contests/<%= @contest.id %>/edit">Edit Contest Details</a>
+    </div>
+  </div>
 
-<form action="/contests/<%= @contest.id %>" method="post">
-  
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Contest">
+  <div class="main-cell">
+    <h1>Results</h1>
 
-</form>
-
-<a href="/contests/<%= @contest.id %>/edit">Edit Contest Details</a>
-
-<h3>Results</h3>
-
-<div>
-  <% team_size = @contest.event.team_size %>
-  <table>
-    <tr>
-      <th><%= team_size == 1 ? "Athlete" : "Team" %></th>
-      <th><%= @contest.event.score_method.capitalize %></th>
-    <tr>
-    <% @contest.results.each do |result| %>
+    <% team_size = @contest.event.team_size %>
+    <table>
       <tr>
-        <td><%= team_size == 1 ? result.athlete.full_name : result.team.nation.name %></td>
-        <td><%= result.print_score %></td>
-        <td><a href="/contests/<%= @contest.id %>/<%= team_size == 1 ? "results" : "team_results" %>/<%= result.id %>/edit">Edit</a></td>
-        <td>
-          <form action="/<%= team_size == 1 ? "results" : "team_results" %>/<%= result.id %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="Delete Result">
-          </form>
-        </td>
+        <th><%= team_size == 1 ? "Athlete" : "Team" %>:</th>
+        <th><%= @contest.event.score_method.capitalize %></th>
       </tr>
-    <% end %>
-  </table>
+      <% @contest.results.each do |result| %>
+        <tr>
+          <td class="results"><%= team_size == 1 ? result.athlete.full_name : result.team.nation.name %></td>
+          <td class="results"><%= result.print_score %></td>
+          <td class="results">
+            <div class="page-header">
+              <form action="/<%= team_size == 1 ? "results" : "team_results" %>/<%= result.id %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="Delete Result">
+              </form>
+              <a href="/contests/<%= @contest.id %>/<%= team_size == 1 ? "results" : "team_results" %>/<%= result.id %>/edit">Edit</a>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="page-header zero-margin">
+      <a href="/contests/<%= @contest.id %>/<%= team_size == 1 ? "results" : "team_results" %>/new">Add New Result</a> 
+    </div>
+  </div>
 </div>
 
-<a href="/contests/<%= @contest.id %>/<%= team_size == 1 ? "results" : "team_results" %>/new">Add New Result</a> 

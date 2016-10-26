@@ -1,47 +1,34 @@
-<div>
-  <h3>Nation</h3>
-  <img src="http://img.freeflagicons.com/thumb/flag_background/<%= @nation.flag_name %>/<%= @nation.flag_name %>_640.png">
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Region</th>
-    <tr>
-    <tr>
-      <td><%= @nation.name %></td>
-      <td><%= @nation.region %></td>
-      <td><a href="/nations/<%= @nation.id %>/edit">Edit Nation</a></td>
-    </tr>
-  </table>
-  <div>
+<div class="main-row show-row">
+  <div class="main-cell medalists">
+    <h1><%= @nation.name %></h1>
+    <img class="flag" src="http://img.freeflagicons.com/thumb/flag_background/<%= @nation.flag_name %>/<%= @nation.flag_name %>_640.png">
+    <h2>Region: <%= @nation.region %></h2>
+    <div class="page-header">
+      <a href="/nations/<%= @nation.id %>/edit">Edit Nation</a>
     <form action="/nations/<%= @nation.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Nation">
     </form>
+    </div>
+  </div>
+
+  <div class="main-cell medalists">
+    <h2>Athletes</h2>
+    <div class="athletes">
+    <% @nation.athletes.each do |athlete| %>
+      <h3><a href= "/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></h3>
+    <% end %>
+    </div>
+
+    <h2>Stats</h2>
+    <% athlete = @nation.athlete_age_stat("desc") %>
+    <% if athlete != nil %>
+      <h3><span>Youngest Athlete: </span><%= athlete.full_name %> <span>&nbsp Age: </span><%= athlete.age %> </h3>
+    <% end %>
+    <% athlete = @nation.athlete_age_stat("asc") %>
+    <% if athlete != nil %>
+      <h3><span>Oldest Athlete: </span><%= athlete.full_name %> <span>&nbsp Age: </span><%= athlete.age %> </h3>
+    <% end %>
+      <h3><span>Average Age of Athletes: </span><%= @nation.athlete_average_age() %></h3>
   </div>
 </div>
-<div>
-  <table>
-    <tr>
-      <th>Full Name</th>
-    <tr>
-    <% @nation.athletes.each do |athlete| %>
-      <tr>
-        <td><a href= "/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-
-<div>
-  <h4>Stats</h4>
-  <% athlete = @nation.athlete_age_stat("desc") %>
-  <% if athlete != nil %>
-    <h5>Youngest Athlete: <%= athlete.full_name %> Age: <%= athlete.age %> </h5>
-  <% end %>
-  <% athlete = @nation.athlete_age_stat("asc") %>
-  <% if athlete != nil %>
-    <h5>Oldest Athlete: <%= athlete.full_name %> Age: <%= athlete.age %> </h5>
-  <% end %>
-  <h5>Average Age of Athletes: <%= @nation.athlete_average_age() %></h5>
-</div>
-

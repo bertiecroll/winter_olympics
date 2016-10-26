@@ -5,107 +5,282 @@
 
 body {
   margin: 0;
-  font-family: 'Maven Pro', sans-serif;
-}
-/**********MAIN STYLES**********/
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding-top: 200px;
+  padding-top: 180px;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 body a {
   text-decoration: none;
+  font-family: 'Titillium Web', sans-serif;
 }
 
-header {
-  margin: 0;
-  padding: 0;
-}
-
-/**********IMAGE STYLES**********/
-.nation-index img {
-  width: 300px;
-}
-
-.athlete-image {
-  height: 275px;
-  width: 200px;
-}
-
-th img {
-  margin: 1rem;
-  width: 50px;
+h1, h2, h3, h4, h5 {
+  font-variant: small-caps;
+  color: grey;
 }
 
 /**********HEADER STYLES**********/
 
-.main-header {
+header {
   width: 100%;
   position: fixed;
   background: white;
   top: 0;
   z-index: 999;
+  box-shadow: 0 8px 6px -6px black;
 }
 
-.main-header h1 {
-  color: darkgrey;
-}
-
-div form {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  background: black;
-  color: white;
-
-}
-
-
-/**********NAV STYLES**********/
-
-.nav-bar {
+.title h1, 
+.title img {
+  display: inline-block;
+  margin: auto;
+  margin-top: 1rem;
+  padding: .5rem;
   text-align: center;
-  padding: 0;
 }
 
-.nav-bar h1 {
-  margin: 0;
-  padding: 1rem;
-  color: white;
+.title img {
+  width: 100px;
 }
 
-.nav-bar ul,
-.nav-bar li {
+.nav-row {
+  display: flex;
+  flex-direction: row;
+  margin: 0 1rem;
+}
+
+.nav-cell {
+  flex: 1;
+  padding: 0 1rem;
+}
+
+.nav-cell ul,
+.nav-cell li {
   padding: 0;
   display: inline-block;
   list-style: none;
 }
 
-.nav-bar a {
+.nav-cell a {
   color: darkgrey;
   text-transform: uppercase;
-  font-size: 1.2rem;
-  margin: 0 1rem;
-  padding: 1rem 1rem;
+  font-size: .9rem;
+  margin: 0 .2rem;
+  padding: 1rem .4rem;
   transition: color .5s;
 }
 
-.nav-bar a:hover {
-  color: rgba(221,221,221,.5); /*#ddd*/
+.nav-cell a:hover {
+  color: rgba(75,75,75,.8); /*#ddd*/
 }
 
-.nav-bar img {
-  display: none;
+/**********CONTENT STYLES**********/
+
+.main-row {
+ display: flex;
+ flex-direction: column;
+ flex-wrap: wrap;
+ justify-content: center;
+ margin: 0 1rem; 
 }
 
-/**********NAV STYLES**********/
-
-.clearfix::after {
-  content: " ";
-  display: table;
-  clear: both;
+.main-cell {
+  margin: auto;
+  padding-top: 1rem;
+  text-align: center;
 }
+
+.banner h3 {
+  word-spacing: 2rem;
+  text-align: center;
+}
+
+.main-row a {
+  color: darkgrey;
+  font-size: 1.5rem;
+  margin: 0 .2rem;
+  padding: 1rem;
+  transition: color .5s;
+}
+
+.main-cell a:hover,
+.nation-cell a:hover {
+  color: rgba(75,75,75,.8); /*#ddd*/
+}
+
+td {
+  color: darkgrey;
+  font-size: 1.5rem; 
+}
+
+th {
+  color: rgba(115,115,115,1);
+}
+
+th img {
+  margin: 1rem;
+  opacity: .8;
+  border-radius: 100%;
+  width: 50px;
+  box-shadow: 5px 5px 10px -5px rgba(0,0,0,.5);
+}
+
+.medalists {
+  text-align: left;
+}
+
+.medalists h2 {
+  margin-top: 3rem;
+}
+
+.main-row h1,
+.medalists h2,
+.medalists span {
+  color: rgba(115,115,115,1);
+  letter-spacing: .5rem;
+  text-align: center;
+}
+
+.medalists th {
+  padding-left: 2rem;
+}
+
+.main-cell ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: darkgrey;
+}
+
+.results {
+  text-align: left;
+  font-size: 1rem;
+}
+
+/**********FORM/BUTTON STYLES**********/
+
+form {
+  font-family: 'Titillium Web', sans-serif;
+  display: inline-block;
+  background: #fff;
+  margin-top: 1rem;
+  padding: 1rem .5rem;
+  border-radius: 5%;
+ 
+}
+
+label, select {
+  color: rgba(115,115,115,1);  
+}
+
+input,
+textarea,
+.page-header a {
+  background: rgba(75,75,75,.8);
+  height: auto;
+  font-size: 1rem;
+  border: none;
+  outline: 0;
+  border-radius: 5%;
+  padding: .2rem 1rem;
+  box-shadow: 5px 5px 10px -5px rgba(0,0,0,.5);
+  color: #CCC;
+}
+
+.page-header a {
+  display: inline-block;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  transition: color .5s;
+}
+
+input {
+  transition: color .5s; 
+}
+
+.page-header a:hover,
+input:hover {
+  color: #FFF;
+}
+
+.results {
+  padding: 0 1rem;
+}
+
+.results .page-header,
+.results form,
+.results a {
+  padding: .2rem;
+  margin: .2rem;
+}
+
+.nation-row h3 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.space input,
+.space select {
+  margin-right: 1rem;
+}
+
+.space fieldset {
+  border: none;
+  margin: 2rem;
+}
+
+.zero-margin a {
+  margin: 0 0 2rem 0;
+}
+
+/**********NATION STYLES**********/
+
+.nation-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 1rem;
+  text-align: center;
+}
+
+.flag-container {
+  flex: 1;
+}
+
+.nation-row img {
+  margin: 1rem 1rem 0 1rem;
+  width: 250px;
+  border-radius: 10%;
+  box-shadow: 5px 5px 10px -5px rgba(0,0,0,.5);
+}
+
+.main-cell .flag,
+.athlete-image {
+  margin: 1rem 1rem 0 1rem;
+  width: 350px;
+  border-radius: 10%;
+  box-shadow: 5px 5px 10px -5px rgba(0,0,0,.5);
+}
+
+.athlete-image {
+  margin-left: 4rem;
+  height: 275px;
+  width: 200px;
+}
+
+.main-cell .team-image {
+  padding: 0;
+  margin: 0;
+  height: 250px;
+  width: 200px;
+}
+
+.show-row {
+  flex-direction: row;  
+}
+
+.athletes {
+  text-align: center;
+}
+

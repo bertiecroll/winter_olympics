@@ -1,31 +1,39 @@
-<form action="/contests/<%= @contest.id %>" method="post">
-  
-  <label for="event_id">Event</label>
-  <select type="text" name="event_id" id="event_id">
-    <% @sports.each do |sport| %>
-      <optgroup label="<%= sport.name %>">
-        <% sport.events.each do |event| %>
-          <option value="<%= event.id %>" <%= "selected" if @contest.event_id == event.id %> disabled><%= event.class.capitalize %> <%= event.name %></option>
+<div class="main-cell space">
+  <h2>Edit Contest using the fields below.</h2>
+
+  <form action="/contests/<%= @contest.id %>" method="post">
+    
+    <fieldset>
+      <label for="event_id">Event</label>
+      <select type="text" name="event_id" id="event_id">
+        <% @sports.each do |sport| %>
+          <optgroup label="<%= sport.name %>">
+            <% sport.events.each do |event| %>
+              <option value="<%= event.id %>" <%= "selected" if @contest.event_id == event.id %> disabled><%= event.class.capitalize %> <%= event.name %></option>
+            <% end %>
+          </optgroup>
         <% end %>
-      </optgroup>
-    <% end %>
-  </select>
+      </select>
 
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" value="<%= @contest.name %>">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" value="<%= @contest.name %>">
+    </fieldset>
 
-  <label for="venue_id">Venue</label>
-  <select type="text" name="venue_id" id="venue_id">
-    <% @venues.each do |venue| %>
-      <option value="<%= venue.id %>" <%= "selected" if @contest.venue_id == venue.id %> ><%= venue.name %></option>
-    <% end %>
-  </select>
+    <fieldset>
+      <label for="venue_id">Venue</label>
+      <select type="text" name="venue_id" id="venue_id">
+        <% @venues.each do |venue| %>
+          <option value="<%= venue.id %>" <%= "selected" if @contest.venue_id == venue.id %> ><%= venue.name %></option>
+        <% end %>
+      </select>
 
-  <label for="date_time">Date And Time</label>
-  <input type="text" name="date_time" id="date_time" value="<%= @contest.dt %>">
+      <label for="date_time">Date And Time</label>
+      <input type="text" name="date_time" id="date_time" value="<%= @contest.dt %>">
+    </fieldset>
 
-  <input type="hidden" name="event_id" value="<%= @contest.event_id %>">
-  <input type="hidden" name="_method" value="put">
-  <input type="submit" value="Update Contest Details">
+    <input type="hidden" name="event_id" value="<%= @contest.event_id %>">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="Update Contest Details">
 
-</form>
+  </form>
+</div>

@@ -1,6 +1,9 @@
-<h3>Events</h3>
+<div class="page-header">
+  <h1>Events</h1>
+</div>
 
-<div>
+<div class="page-header">
+  <a href="/events/new">Add New Event</a> 
   <form method="get">
     <input type="hidden" name="search" value="=" id="search">
     <input type="submit" value="Individual">
@@ -15,7 +18,7 @@
   </form>
 </div>
 
-<div>
+<div class="main-cell">
   <table>
     <tr>
       <th>Sport</th>
@@ -25,14 +28,13 @@
     <tr>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.sport.name %></td>
-        <td><%= event.name %></td>
-        <td><%= event.class %></td>
-        <td><%= event.score_method %></td>
-        <td><a href="/events/<%= event.id %>">View</a></td>
+        <td class="results"><%= event.sport.name %></td>
+        <td class="results"><%= event.name %></td>
+        <td class="results"><%= event.class.capitalize %></td>
+        <td class="results"><%= event.score_method.capitalize %></td>
+        <td class="results page-header"><a href="/events/<%= event.id %>">View</a></td>
       </tr>
     <% end %>
   </table>
 </div>
 
-<a href="/events/new">Add New Event</a> 

@@ -1,14 +1,20 @@
-<form action="/venues" method="post">
-  
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name">
+<div class="main-cell space">
+  <h2>Add new Venue using the fields below.</h2>
 
-  <label for="location">Location:</label>
-  <input type="text" name="location" id="location">
+  <form action="/venues" method="post">
+    
+    <fieldset>
+      <label for="name">Name: </label>
+      <input type="text" name="name" id="name">
 
-  <label for="capacity">Capacity:</label>
-  <input type="number" name="capacity" id="capacity">
+      <label for="location">Location: </label>
+      <input type="text" name="location" id="location">
 
-  <input type="submit" value="Add Venue">
+      <label for="capacity">Capacity: </label>
+      <input type="number" name="capacity" id="capacity">
+    </fieldset>
 
-</form>
+    <input type="submit" value="Add Venue">
+
+  </form>
+</div>

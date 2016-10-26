@@ -1,25 +1,28 @@
-<h4>Add result for <%= @contest.full_name %></h4>
+<div class="main-cell space">
+  <h2>Add result for <%= @contest.full_name %></h2>
 
-<form action="/results" method="post">
+  <form action="/results" method="post">
 
-  <input type="hidden" name="contest_id" value="<%= @contest.id %>">
-
-  <label for="athlete_id">Athlete</label>
-  <select type="text" name="athlete_id" id="athlete_id">
-    <% @nations.each do |nation| %>
-      <optgroup label="<%= nation.name %>">
-        <% nation.athletes.each do |athlete| %>
-          <% if athlete.gender == @contest.event.class && !athlete.has_result?(@contest.id) %>
-            <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
-          <% end %>
+    <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+    <fieldset>
+      <label for="athlete_id">Athlete</label>
+      <select type="text" name="athlete_id" id="athlete_id">
+        <% @nations.each do |nation| %>
+          <optgroup label="<%= nation.name %>">
+            <% nation.athletes.each do |athlete| %>
+              <% if athlete.gender == @contest.event.class && !athlete.has_result?(@contest.id) %>
+                <option value="<%= athlete.id %>"><%= athlete.full_name %></option>
+              <% end %>
+            <% end %>
+          </optgroup>
         <% end %>
-      </optgroup>
-    <% end %>
-  </select>
+      </select>
 
-  <label for="score"><%= @contest.event.score_method.capitalize %></label>
-  <input  type="text" <%= "placeholder='Hr:Min:Sec.USec'" if @contest.event.score_method == "time" %> name="score" id="score">
+      <label for="score"><%= @contest.event.score_method.capitalize %></label>
+      <input  type="text" <%= "placeholder='Hr:Min:Sec.USec'" if @contest.event.score_method == "time" %> name="score" id="score">
+    
+      <input type="submit" value="Add Result">
+    </fieldset>
 
-  <input type="submit" value="Add Result">
-
-</form>
+  </form>
+</div>

@@ -1,15 +1,21 @@
-<form action="/venues/<%= @venue.id %>" method="post">
-  
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name" value="<%= @venue.name %>">
+<div class="main-cell space">
+  <h2>Edit <%= @venue.name %></h2>
 
-  <label for="location">Location:</label>
-  <input type="text" name="location" id="location" value="<%= @venue.location %>">
+  <form action="/venues/<%= @venue.id %>" method="post">
 
-  <label for="capacity">Capacity:</label>
-  <input type="number" name="capacity" id="capacity" value="<%= @venue.capacity %>">
+  <fieldset>
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" value="<%= @venue.name %>">
 
-  <input type="hidden" name="_method" value="put">
-  <input type="submit" value="Update Venue">
+    <label for="location">Location: </label>
+    <input type="text" name="location" id="location" value="<%= @venue.location %>">
 
-</form>
+    <label for="capacity">Capacity: </label>
+    <input type="number" name="capacity" id="capacity" value="<%= @venue.capacity %>">
+  </fieldset>
+
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="Update Venue">
+
+  </form>
+</div>

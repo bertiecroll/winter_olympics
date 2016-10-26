@@ -1,33 +1,38 @@
-<div>
+<div class="main-cell space">
+  <h2>Edit Athlete using the fields below.</h2>
+
   <form action="/athletes/<%= @athlete.id %>" method="post">
 
-    <label for="first_name">First Name:</label>
-    <input type="text" name="first_name" id="first_name" value="<%= @athlete.first_name %>">
+    <fieldset>
+      <label for="first_name">First Name:</label>
+      <input type="text" name="first_name" id="first_name" value="<%= @athlete.first_name %>">
 
-    <label for="last_name">Last Name:</label>
-    <input type="text" name="last_name" id="last_name" value="<%= @athlete.last_name %>">
-    
-    <label for="date_of_birth">Date of Birth:</label>
-    <input type="date" name="date_of_birth" id="date_of_birth" value="<%= @athlete.dob %>">
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="last_name" id="last_name" value="<%= @athlete.last_name %>">
+      
+      <label for="date_of_birth">Date of Birth:</label>
+      <input type="date" name="date_of_birth" id="date_of_birth" value="<%= @athlete.dob %>">
 
-    <label for="gender">Gender:</label>
-    <select type="text" name="gender" id="gender">
-      <option value="male" <%= "selected" if @athlete.gender == "male" %> >Male</option>
-      <option value="female" <%= "selected" if @athlete.gender == "female" %> >Female</option>
-    </select>
+      <label for="gender">Gender:</label>
+      <select type="text" name="gender" id="gender">
+        <option value="male" <%= "selected" if @athlete.gender == "male" %> >Male</option>
+        <option value="female" <%= "selected" if @athlete.gender == "female" %> >Female</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <label for="image">Image Source</label>
+      <input type="text" name="image" id="image" value="<%= @athlete.image %>">
 
-    <label for="image">Image Source</label>
-    <input type="text" name="image" id="image" value="<%= @athlete.image %>">
-
-    <label for="nation_id">Nation:</label>
-    <select type="text" name="nation_id" id="nation_id">
-      <% @nations.each do |nation| %>
-        <option value="<%= nation.id %>" <%= "selected" if @athlete.nation_id == nation.id %> ><%= nation.name %></option>
-      <% end %>
-    </select>
+      <label for="nation_id">Nation:</label>
+      <select type="text" name="nation_id" id="nation_id">
+        <% @nations.each do |nation| %>
+          <option value="<%= nation.id %>" <%= "selected" if @athlete.nation_id == nation.id %> ><%= nation.name %></option>
+        <% end %>
+      </select>
+    </fieldset>
 
     <input type="hidden" name="_method" value="put">
-    <input type="submit" value="Update Athlete details">
+    <input type="submit" value="Update Athlete Details">
 
   </form>
 </div>

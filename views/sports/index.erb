@@ -1,9 +1,15 @@
-<h3>Sports</h3>
+<div class="page-header">
+  <h1>Sports</h1>
+</div>
 
-<% @sports.each do |sport| %>
-  <div>
-    <a href="/sports/<%= sport.id %>"><%= sport.name %></a>
+<div class="main-cell">
+  <div class="page-header zero-margin">
+    <a href="/sports/new">Add New Sport</a>
   </div>
-<% end %>
+  <% @sports.each do |sport| %>
+    <div>
+      <a href="/sports/<%= sport.id %>"><%= sport.name %></a>
+    </div>
+  <% end %>
+</div>
 
-<a href="/sports/new">Add New Sport</a> 

@@ -1,27 +1,31 @@
-<h4>Edit result for <%= @contest.full_name %></h4>
+<div class="main-cell space">
+  <h2>Edit result for <%= @contest.full_name %></h2>
 
-<form action="/results/<%= @result.id %>" method="post">
 
-  <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+  <form action="/results/<%= @result.id %>" method="post">
 
-  <label for="athlete_id">Athlete</label>
-  <select type="text" name="athlete_id" id="athlete_id" disabled>
-    <% @nations.each do |nation| %>
-      <optgroup label="<%= nation.name %>">
-        <% nation.athletes.each do |athlete| %>
-          <% if athlete.gender == @contest.event.class %>
-            <option value="<%= athlete.id %>" <%= "selected" if @result.athlete_id == athlete.id %> ><%= athlete.full_name %></option>
-          <% end %>
+    <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+    <fieldset>
+      <label for="athlete_id">Athlete</label>
+      <select type="text" name="athlete_id" id="athlete_id" disabled>
+        <% @nations.each do |nation| %>
+          <optgroup label="<%= nation.name %>">
+            <% nation.athletes.each do |athlete| %>
+              <% if athlete.gender == @contest.event.class %>
+                <option value="<%= athlete.id %>" <%= "selected" if @result.athlete_id == athlete.id %> ><%= athlete.full_name %></option>
+              <% end %>
+            <% end %>
+          </optgroup>
         <% end %>
-      </optgroup>
-    <% end %>
-  </select>
+      </select>
 
-  <label for="score"><%= @contest.event.score_method.capitalize %></label>
-  <input type="text" name="score" id="score" value="<%= @result.print_score %>">
+      <label for="score"><%= @contest.event.score_method.capitalize %></label>
+      <input type="text" name="score" id="score" value="<%= @result.print_score %>">
+    
+      <input type="hidden" name="athlete_id" value="<%= @result.athlete_id %>">
+      <input type="hidden" name="_method" value="put">
+      <input type="submit" value="Update Result">
+    </fieldset>
 
-  <input type="hidden" name="athlete_id" value="<%= @result.athlete_id %>">
-  <input type="hidden" name="_method" value="put">
-  <input type="submit" value="Update Result">
-
-</form>
+  </form>
+</div>

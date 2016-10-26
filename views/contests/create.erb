@@ -1,17 +1,14 @@
-<div>
-  <h3>The below Contest has now been added</h3>
-  <table>
-    <tr>
-      <th>Event</th>
-      <th>Venue</th>
-      <th>Date</th>
-    <tr>
-    <tr>
-      <td><%= @contest.full_name %></td>
-      <td><%= @contest.venue.name %></td>
-      <td><%= @contest.dt() %></td>
-    </tr>
-  </table>
+<div class="page-header">
+  <h3>The below Contest has now been added.</h3>
 </div>
 
-<a href="/contests">View all Contests</a>
+<div class="nation-row medalists">
+  <h3><span>Event: </span><%= @contest.full_name %></h3>
+  <h3><span>Venue </span><%= @contest.venue.name %></h3>
+  <h3><span>Date </span><%= @contest.dt() %></h3>
+</div>
+<div class="page-header">
+  <a href="/events/<%= @contest.event.id %>">Return to Event</a>
+  <a href="/contests">View all Contests</a>
+</div>
+

@@ -1,8 +1,13 @@
-<h2>Nations:</h2>
-<div class="nation-index">
+<div class="page-header">
+<h1>Nations</h1>
+<a href="/nations/new">Add New Nation</a>
+</div>
+
+<div class="nation-row">
   <% @nations.each do |nation| %>
-    <div><img src="http://img.freeflagicons.com/thumb/flag_background/<%= nation.flag_name %>/<%= nation.flag_name %>_640.png"><a href="/nations/<%= nation.id %>"><%= nation.name %></a></div>
+    <div class="flag-container"><a href="/nations/<%= nation.id %>"><img src="http://img.freeflagicons.com/thumb/flag_background/<%= nation.flag_name %>/<%= nation.flag_name %>_640.png"></a>
+      <h3><%= nation.name %></h3>
+    </div>
   <% end %>
 </div>
 
-<a href="/nations/new">Add New Nation</a> 

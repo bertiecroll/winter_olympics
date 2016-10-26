@@ -1,27 +1,32 @@
-<div>
-  <h3><%= @team.nation.name %></h3> 
-  <h3><%= @team.name %></h3>
-</div>
-
-<form action="/teams/<%= @team.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">  
-  <input type="submit" value="Delete Team">  
-</form>
-
-<div>
-  <h4>Event Team Size Limit: <%= @team.event.team_size %></h4>
-  <h4>Current Team Members: <%= @team.athlete_count %></h4>
-  <% @team.athletes.each do |athlete| %>
-    <img class="athlete-image" src="<%= athlete.image %>" alt="image of <%= athlete.full_name %>">
-    <h5><a href="/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></h5>
-    <form action="/athletes_teams/<%= @team.athlete_team.id %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Remove Athlete From Team">
+<div class="main-cell">
+  <h1><%= @team.nation.name %></h1> 
+  <h2><%= @team.name %> Team</h2>
+  <h3><span>Event Team Size Limit: </span><%= @team.event.team_size %></h3>
+  <h3><span>Current Team Members: </span><%= @team.athlete_count %></h3>
+  <div class="page-header zero-margin">
+    <a href="/teams/<%= @team.id %>/edit">Edit Team</a>
+    <form action="/teams/<%= @team.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">  
+      <input type="submit" value="Delete Team">  
     </form>
-  <% end %>
-
+    <a href="/teams/<%= @team.id %>/athletes/new">Add Athlete to Team</a>
+  </div>
 </div>
 
-<a href="/teams/<%= @team.id %>/athletes/new">Add Athlete to Team</a>
-<a href="/teams/<%= @team.id %>/edit">Edit Team</a>
-<a href="/teams">View All Teams</a>
+<div class="page-header zero-margin">
+  <h1>Team Members</h1>
+</div>
+<div class="nation-row">
+  <% @team.athletes.each do |athlete| %>
+    <div class="main-cell flag-container">
+      <a href="/athletes/<%= athlete.id %>"><img class="team-image" src="<%= athlete.image %>" alt="image of <%= athlete.full_name %>"></a>
+      <h3><%= athlete.full_name %></h3>
+      <div class="page-header zero-margin">
+        <form action="/athletes_teams/<%= @team.athlete_team.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Remove Athlete From Team">
+        </form>
+      </div>
+    </div>
+  <% end %>
+</div>

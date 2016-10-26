@@ -1,16 +1,13 @@
-<div>
-  <h3>Below Team has now been added</h3>
-  <table>
-    <tr>
-      <th>Nation</th>
-      <th>Team</th>
-    <tr>
-    <tr>
-      <td><%= @team.nation.name %></td>
-      <td><%= @team.name %></td>
-    </tr>
-  </table>
+<div class="page-header">
+  <h3>The below Team has now been added.</h3>
 </div>
 
-<a href="/teams/<%= @team.id %>/athletes/new">Add an Athlete to the Team</a>
-<a href="/teams">View all Teams</a>
+<div class="nation-row medalists">
+  <h3><span>Nation: </span><%= @team.nation.name %></h3>
+  <h3><span>Team: </span><%= @team.name %></h3>
+</div>
+
+<div class="page-header">
+  <a href="/teams/<%= @team.id %>/athletes/new">Add an Athlete to the Team</a>
+  <a href="/teams">View all Teams</a>
+</div>

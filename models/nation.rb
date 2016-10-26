@@ -44,7 +44,7 @@ class Nation
   def athlete_average_age()
     sql = "SELECT AVG(age(date_of_birth)) FROM athletes WHERE nation_id = #{@id}"
     average_age = SqlRunner.run(sql).first['avg']
-    return average_age[0..-9]
+    return average_age == nil ? nil : average_age[0..-9]
   end
 
   def teams()

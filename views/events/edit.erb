@@ -1,38 +1,46 @@
-<form action="/events/<%= @event.id %>" method="post">
-  
-  <label for="sport_id">Sport</label>
-  <select type="text" name="sport_id" id="sport_id">
-    <% @sports.each do |sport| %>
-      <option value="<%= sport.id %>" <%= "selected" if @event.sport_id == sport.id %> ><%= sport.name %></option>
-    <% end %>
-  </select>
+<div class="main-cell space">
+  <h2>Edit Contest using the fields below.</h2>
 
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" value="<%= @event.name %>">
+  <form action="/events/<%= @event.id %>" method="post">
+    
+    <fieldset>
+      <label for="sport_id">Sport: </label>
+      <select type="text" name="sport_id" id="sport_id">
+        <% @sports.each do |sport| %>
+          <option value="<%= sport.id %>" <%= "selected" if @event.sport_id == sport.id %> ><%= sport.name %></option>
+        <% end %>
+      </select>
 
-  <label for="class">Class</label>
-  <select type="text" name="class" id="class">
-    <option value="male" <%= "selected" if @event.class == "male" %> >Male</option>
-    <option value="female" <%= "selected" if @event.class == "female" %> >Female</option>
-    <option value="female" <%= "selected" if @event.class == "mixed" %> >Mixed</option>
-  </select>
+      <label for="name">Name: </label>
+      <input type="text" name="name" id="name" value="<%= @event.name %>">
+    </fieldset>
 
-  <label for="score_method">Score Method</label>
-  <select type="text" name="score_method" id="score_method">
-    <option value="points" <%= "selected" if @event.score_method == "points" %> >Points</option>
-    <option value="time" <%= "selected" if @event.score_method == "time" %> >Time</option>
-  </select>
+    <fieldset>
+      <label for="class">Class: </label>
+      <select type="text" name="class" id="class">
+        <option value="male" <%= "selected" if @event.class == "male" %> >Male</option>
+        <option value="female" <%= "selected" if @event.class == "female" %> >Female</option>
+        <option value="female" <%= "selected" if @event.class == "mixed" %> >Mixed</option>
+      </select>
 
-  <label for="team_size">Team Size</label>
-  <select type="number" name="team_size" id="team_size">
-    <% counter = 1 %>
-    <% 11.times do %>
-      <option value="<%= counter %>" <%= "selected" if @event.team_size == counter %>><%= counter %></option>
-      <% counter += 1 %>
-    <% end %>
-  </select>
+      <label for="score_method">Score Method: </label>
+      <select type="text" name="score_method" id="score_method">
+        <option value="points" <%= "selected" if @event.score_method == "points" %> >Points</option>
+        <option value="time" <%= "selected" if @event.score_method == "time" %> >Time</option>
+      </select>
 
-  <input type="hidden" name="_method" value="put">
-  <input type="submit" value="Update Event">
+      <label for="team_size">Team Size: </label>
+      <select type="number" name="team_size" id="team_size">
+        <% counter = 1 %>
+        <% 11.times do %>
+          <option value="<%= counter %>" <%= "selected" if @event.team_size == counter %>><%= counter %></option>
+          <% counter += 1 %>
+        <% end %>
+      </select>
+    </fieldset>
 
-</form>
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="Update Event">
+
+  </form>
+</div>

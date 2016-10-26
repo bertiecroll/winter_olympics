@@ -1,37 +1,45 @@
+<div class="main-cell space">
+  <h2>Add new Event using the fields below.</h2>
+
 <form action="/events" method="post">
   
-  <label for="sport_id">Sport</label>
-  <select type="text" name="sport_id" id="sport_id">
-    <% @sports.each do |sport| %>
-      <option value="<%= sport.id %>"><%= sport.name %></option>
-    <% end %>
-  </select>
+  <fieldset>
+    <label for="sport_id">Sport: </label>
+    <select type="text" name="sport_id" id="sport_id">
+      <% @sports.each do |sport| %>
+        <option value="<%= sport.id %>"><%= sport.name %></option>
+      <% end %>
+    </select>
 
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name">
+  </fieldset>
 
-  <label for="class">Class</label>
-  <select type="text" name="class" id="class">
-    <option value="male" >Male</option>
-    <option value="female" >Female</option>
-    <option value="mixed" >Mixed</option>
-  </select>
+  <fieldset>
+    <label for="class">Class: </label>
+    <select type="text" name="class" id="class">
+      <option value="male" >Male</option>
+      <option value="female" >Female</option>
+      <option value="mixed" >Mixed</option>
+    </select>
 
-  <label for="score_method">Score Method</label>
-  <select type="text" name="score_method" id="score_method">
-    <option value="points" >Points</option>
-    <option value="time" >Time</option>
-  </select>
+    <label for="score_method">Score Method: </label>
+    <select type="text" name="score_method" id="score_method">
+      <option value="points" >Points</option>
+      <option value="time" >Time</option>
+    </select>
 
-  <label for="team_size">Team Size</label>
-  <select type="number" name="team_size" id="team_size">
-    <% counter = 1 %>
-    <% 11.times do %>
-      <option value="<%= counter %>"><%= counter %></option>
-      <% counter += 1 %>
-    <% end %>
-  </select>
+    <label for="team_size">Team Size: </label>
+    <select type="number" name="team_size" id="team_size">
+      <% counter = 1 %>
+      <% 11.times do %>
+        <option value="<%= counter %>"><%= counter %></option>
+        <% counter += 1 %>
+      <% end %>
+    </select>
+  </fieldset>
 
   <input type="submit" value="Add Event">
 
 </form>
+</div>

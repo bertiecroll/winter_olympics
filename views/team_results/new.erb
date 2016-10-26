@@ -1,21 +1,24 @@
-<h4>Add result for <%= @contest.full_name %></h4>
+<div class="main-cell space">
+  <h2>Add result for <%= @contest.full_name %></h2>
 
-<form action="/team_results" method="post">
+  <form action="/team_results" method="post">
 
-  <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+    <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+    <fieldset>
+      <label for="team_id">Team</label>
+      <select type="text" name="team_id" id="team_id">
+          <% @teams.each do |team| %>
+            <% if team.event_id == @contest.event.id && !team.has_result?(@contest.id) && team.athlete_count == @contest.event.team_size %>
+              <option value="<%= team.id %>"><%= team.nation.name %></option>
+            <% end %>
+          <% end %>
+      </select>
 
-  <label for="team_id">Team</label>
-  <select type="text" name="team_id" id="team_id">
-      <% @teams.each do |team| %>
-        <% if team.event_id == @contest.event.id && !team.has_result?(@contest.id) && team.athlete_count == @contest.event.team_size %>
-          <option value="<%= team.id %>"><%= team.nation.name %></option>
-        <% end %>
-      <% end %>
-  </select>
+      <label for="score"><%= @contest.event.score_method.capitalize %></label>
+      <input  type="text" <%= "placeholder='Hr:Min:Sec.USec'" if @contest.event.score_method == "time" %> name="score" id="score">
+    
+      <input type="submit" value="Add Result">
+    </fieldset>
 
-  <label for="score"><%= @contest.event.score_method.capitalize %></label>
-  <input  type="text" <%= "placeholder='Hr:Min:Sec.USec'" if @contest.event.score_method == "time" %> name="score" id="score">
-
-  <input type="submit" value="Add Result">
-
-</form>
+  </form>
+</div>

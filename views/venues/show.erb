@@ -1,29 +1,30 @@
-<h3>Venues</h3>
+<div class="main-row show-row">
+  <div class="main-cell medalists">
+    <h3><span>Name: </span><%= @venue.name %></h3>
+    <h3><span>Location: </span><%= @venue.location %></h3>
+    <h3><span>Capacity: </span><%= @venue.capacity %></h3>
+    <div class="page-header zero-margin">
+      <form action="/venues/<%= @venue.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Venue">
+      </form>
+      <a href="/venues/<%= @venue.id %>/edit">Edit Venue</a>
+    </div>
+  </div>
 
-<h5>Name: <%= @venue.name %></h5>
-<h5>Location: <%= @venue.location %></h5>
-<h5>Capacity: <%= @venue.capacity %></h5>
-
-<form action="/venues/<%= @venue.id %>" method="post">
-  
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Venue">
-  
-</form>
-
-<a href="/venues/<%= @venue.id %>/edit">Edit Venue</a>
-
-<h4>Events Taking Place at Venue</h4>
-<table>
-  <tr>
-    <th>Event</th>
-    <th>Date</th>
-  </tr>
-  <% @venue.contests.each do |contest| %>
-  <tr>
-    <td><%= contest.full_name %></td>
-    <td><%= contest.dt() %></td>
-  </tr>
-  <% end %>
-</table>
-<a href="/venues">View All Venues</a>
+  <div class="main-cell">
+    <h2>Events Taking Place at Venue</h2>
+    <table>
+      <tr>
+        <th>Event</th>
+        <th>Date</th>
+      </tr>
+      <% @venue.contests.each do |contest| %>
+      <tr>
+        <td class="results"><%= contest.full_name %></td>
+        <td class="results"><%= contest.dt() %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,9 +1,15 @@
-<form action="/sports/<%= @sport.id %>" method="post">
-  
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name" value="<%= @sport.name %>">
+<div class="main-cell space">
+  <h2>Edit Sport using the fields below.</h2>
 
-  <input type="hidden" name="_method" value="put">
-  <input type="submit" value="Update Sport Details">
+  <form action="/sports/<%= @sport.id %>" method="post">
+    
+    <fieldset>
+    <label for="name">Name: </label>
+      <input type="text" name="name" id="name" value="<%= @sport.name %>">
 
-</form>
+      <input type="hidden" name="_method" value="put">
+      <input type="submit" value="Update Sport Details">
+    </fieldset>
+
+  </form>
+</div>

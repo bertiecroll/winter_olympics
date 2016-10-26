@@ -1,46 +1,30 @@
-<div>
-  <h3>Event</h3>
-  <table>
-    <tr>
-      <th>Sport</th>
-      <th>Name</th>
-      <th>Class</th>
-      <th>Score Method</th>
-      <th>Team Size</th>
-    <tr>
-    <tr>
-      <td><%= @event.sport.name %></td>
-      <td><%= @event.name %></td>
-      <td><%= @event.class %></td>
-      <td><%= @event.score_method %></td>
-      <td><%= @event.team_size == 1 ? "Individual" : "#{@event.team_size} Athletes" %></td>
-    </tr>
-  </table>
-</div>
+<div class="main-row show-row">
+  <div class="main-cell medalists">
+    <h1>Event Details</h1>
+    <h3><span>Sport: </span><%= @event.sport.name %></h3>
+    <h3><span>Name: </span><%= @event.name %></h3>
+    <h3><span>Class: </span><%= @event.class %></h3>
+    <h3><span>Score Method: </span><%= @event.score_method %></h3>
+    <h3><span>Team Size: </span><%= @event.team_size == 1 ? "Individual" : "#{@event.team_size} Athletes" %></h3>
+    <div class="page-header">
+      <form action="/events/<%= @event.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Event">
+      </form>
+      <a href="/events/<%= @event.id %>/edit">Edit Event</a>
+      <a href="/sports/<%= @event.sport.id %>">View all <%= @event.sport.name %> Events</a>
+    </div>
+  </div>
 
-<form action="/events/<%= @event.id %>" method="post">
-  
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Event">
 
-</form>
 
-<a href="/events/<%= @event.id %>/edit">Edit Event</a>
-<a href="/sports/<%= @event.sport.id %>">View all <%= @event.sport.name %> Events</a>
-
-<h3>Contests</h3>
-
-<div>
-  <table>
-    <tr>
-      <th>Round</th>
-    <tr>
+  <div class="main-cell">
+    <h1>Contests</h1>
     <% @event.contests.each do |contest| %>
-      <tr>
-        <td><a href="/contests/<%= contest.id %>"><%= contest.name %></a></td>
-      </tr>
+      <h3 class="results"><a href="/contests/<%= contest.id %>"><%= contest.name %></a></h3>
     <% end %>
-  </table>
+    <div class="page-header zero-margin">
+      <a href="/events/<%= @event.id %>/contests/new">Add New Contest</a> 
+    </div>
+  </div>
 </div>
-
-<a href="/events/<%= @event.id %>/contests/new">Add New Contest</a> 

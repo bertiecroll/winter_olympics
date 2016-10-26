@@ -1,20 +1,17 @@
-<div>
-  <h3>Below athlete has now been added</h3>
-  <img class="athlete-image" src="<%= @athlete.image %>" alt="image of <%= @athlete.full_name %>">
-  <table>
-    <tr>
-      <th>Nation</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Date of Birth</th>
-    <tr>
-    <tr>
-      <td><%= @athlete.nation.name %></td>
-      <td><%= @athlete.first_name %></td>
-      <td><%= @athlete.last_name %></td>
-      <td><%= @athlete.dob %></td>
-    </tr>
-  </table>
-</div>
+<div class="nation-row medalists">
+  <div class="page-header">
+    <h3>The below Athlete has now been added.</h3>
+  </div>
 
-<a href="/athletes">View all Athletes</a>
+  <div class="flag-container">
+    <img class="athlete-image" src="<%= @athlete.image %>" alt="image of <%= @athlete.full_name %>">
+    <h3><span>Nation: </span><%= @athlete.nation.name %></h2>
+    <h3><span>First Name: </span><%= @athlete.first_name %></h2>
+    <h3><span>Last Name: </span><%= @athlete.last_name %></h2>
+    <h3><span>Date of Birth: </span><%= @athlete.dob %></h2>
+  </div>
+
+  <div class="page-header">
+    <a href="/athletes">View all Athletes</a>
+  </div>
+</div>

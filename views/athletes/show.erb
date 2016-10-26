@@ -1,28 +1,22 @@
-<div>
-  <h3>Athlete Profile</h3>
-  <img class="athlete-image" src="<%= @athlete.image %>" alt="image of <%= @athlete.full_name %>">
-  <table>
-    <tr>
-      <th>Nation</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Date of Birth</th>
-      <th>Gender</th>
-
-    <tr>
-    <tr>
-      <td><a href="/nations/<%= @athlete.nation.id %>"><%= @athlete.nation.name %></a></td>
-      <td><%= @athlete.first_name %></td>
-      <td><%= @athlete.last_name %></td>
-      <td><%= @athlete.dob %></td>
-      <td><%= @athlete.gender %></td>
-    </tr>
-  </table>
+<div class="main-row show-row">
+  <div class="main-cell medalists">
+    <h1>Athlete Profile</h1>
+    <img class="athlete-image" src="<%= @athlete.image %>" alt="image of <%= @athlete.full_name %>">
+    <div class="page-header">
+      <a href="/athletes/<%= @athlete.id %>/edit">Edit Athlete's Details</a>
+      <form action="/athletes/<%= @athlete.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Athlete">
+      </form>
+    </div>
+  </div>
+  <div class="main-cell medalists">  
+    <h3><span>Nation: </span><a href="/nations/<%= @athlete.nation.id %>"><%= @athlete.nation.name %></a></h3>
+    <h3><span>First Name: </span><%= @athlete.first_name %></h3>
+    <h3><span>Last Name: </span><%= @athlete.last_name %></h3>
+    <h3><span>Date of Birth: </span><%= @athlete.dob %></h3>
+    <h3><span>Gender: </span><%= @athlete.gender %></h3>
+  </div>
 </div>
 
-<form action="/athletes/<%= @athlete.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Athlete">
-</form>
 
-<a href="/athletes/<%= @athlete.id %>/edit">Edit Athlete's Details</a>

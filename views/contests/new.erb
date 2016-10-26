@@ -1,29 +1,36 @@
-<form action="/contests" method="post">
-  
-  <label for="event_id">Event</label>
-  <select type="text" name="event_id" id="event_id">
-    <% @sports.each do |sport| %>
-      <optgroup label="<%= sport.name %>">
-        <% sport.events.each do |event| %>
-          <option value="<%= event.id %>" <%= "selected" if @event.id == event.id %> ><%= event.class.capitalize %> <%= event.name %></option>
+<div class="main-cell space">
+  <h2>Add new Contest using the fields below.</h2>
+
+  <form action="/contests" method="post">
+    
+    <fieldset>
+      <label for="event_id">Event:</label>
+      <select type="text" name="event_id" id="event_id">
+        <% @sports.each do |sport| %>
+          <optgroup label="<%= sport.name %>">
+            <% sport.events.each do |event| %>
+              <option value="<%= event.id %>" <%= "selected" if @event.id == event.id %> ><%= event.class.capitalize %> <%= event.name %></option>
+            <% end %>
+          </optgroup>
         <% end %>
-      </optgroup>
-    <% end %>
-  </select>
+      </select>
 
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name">
+    </fieldset>
 
-  <label for="venue_id">Venue</label>
-  <select type="text" name="venue_id" id="venue_id">
-    <% @venues.each do |venue| %>
-      <option value="<%= venue.id %>"><%= venue.name %></option>
-    <% end %>
-  </select>
+    <fieldset>
+      <label for="venue_id">Venue:</label>
+      <select type="text" name="venue_id" id="venue_id">
+        <% @venues.each do |venue| %>
+          <option value="<%= venue.id %>"><%= venue.name %></option>
+        <% end %>
+      </select>
 
-  <label for="date_time">Date And Time</label>
-  <input type="text" name="date_time" id="date_time" placeholder="YYYY-MM-DD Hr:Min">
+      <label for="date_time">Date And Time:</label>
+      <input type="text" name="date_time" id="date_time" placeholder="YYYY-MM-DD Hr:Min">
+    </fieldset>
+    <input type="submit" value="Add Contest">
 
-  <input type="submit" value="Add Contest">
-
-</form>
+  </form>
+</div>

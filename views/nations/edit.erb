@@ -1,16 +1,23 @@
-<form action="/nations/<%= @nation.id %>" method="post">
-  
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name" value="<%= @nation.name %>">
+<div class="main-cell space">
+  <h2>Edit Nation using the fields below.</h2>
 
-  <label for="region">Region:</label>
-  <input type="text" name="region" id="region" value="<%= @nation.region %>">
+  <form action="/nations/<%= @nation.id %>" method="post">
+    
+    <fieldset>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" value="<%= @nation.name %>">
 
-  <input type="hidden" name="gold" value="<%= @nation.gold %>">
-  <input type="hidden" name="silver" value="<%= @nation.silver %>">
-  <input type="hidden" name="bronze" value="<%= @nation.bronze %>">
+      <label for="region">Region:</label>
+      <input type="text" name="region" id="region" value="<%= @nation.region %>">
 
-  <input type="hidden" name="_method" value="put">
-  <input type="submit" value="Update Nation Details">
+      <input type="hidden" name="gold" value="<%= @nation.gold %>">
+      <input type="hidden" name="silver" value="<%= @nation.silver %>">
+      <input type="hidden" name="bronze" value="<%= @nation.bronze %>">
+    </fieldset>
 
-</form>
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="Update Nation Details">
+
+
+  </form>
+</div>

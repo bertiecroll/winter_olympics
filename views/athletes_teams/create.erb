@@ -1,9 +1,14 @@
-<% team = @athlete_team.team %>
-<div>
-  <h3> <%= @athlete_team.athlete.full_name %> has now been added to <%= team.nation.name %> <%= team.name %></h3>
-
+<div class="nation-row medalists">
+  <div class="page-header">
+    <h2><% team = @athlete_team.team %></h2>
+    <h3><span><%= @athlete_team.athlete.full_name %></span> has now been added to <%= team.nation.name %> <%= team.name %></h3>
+  </div>
+  <div class="nation-cell medalists">
+    <div class="page-header">
+      <a href="/results">View all Results</a>
+      <a href="/teams/<%= team.id %>/athletes/new">Add Another Athlete to the Team</a>
+      <a href="/teams/<%= team.id %>">Return to Team</a> 
+    </div>
+  </div>
 </div>
 
-<a href="/results">View all Results</a>
-<a href="/teams/<%= team.id %>/athletes/new">Add Another Athlete to the Team</a>
-<a href="/teams/<%= team.id %>">Return to Team</a>

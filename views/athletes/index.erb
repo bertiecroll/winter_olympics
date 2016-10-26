@@ -1,31 +1,36 @@
-<form method="get">
-  <label for="filter">Filter Athletes by Nation</label>
-  <select type="text" name="filter" id="filter">
-    <option disabled selected>--- Select Nation ---</option>
-    <% @nations.each do |nation| %>
-      <option value="<%= nation.id %>"><%= nation.name %></option>
-    <% end %>
-  </select>
-  <input type="submit" value="Filter">
-</form>
-<form method="get">
-  <input type="hidden" name="filter" value="0">
-  <input type="submit" value="View All">
-</form>
+<div class="page-header">
+  <h1>Athletes</h1>
+</div>
 
-<div>
+<div class="main-cell page-header space">
+  <form method="get">
+    <input type="hidden" name="filter" value="0">
+    <input type="submit" value="View All">
+  </form>
+  <form method="get">
+    <label for="filter">Filter Athletes by Nation</label>
+    <select type="text" name="filter" id="filter">
+      <option disabled selected>--- Select Nation ---</option>
+      <% @nations.each do |nation| %>
+        <option value="<%= nation.id %>"><%= nation.name %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Filter">
+  </form>
+  <a href="/athletes/new">Add New Athlete</a>
+</div>
+
+<div class="main-cell medalists">
   <table>
     <tr>
-      <th>Nation</th>
       <th>Full Name</th>
+      <th>Nation</th>
     <tr>
     <% @athletes.each do |athlete| %>
       <tr>
-        <td><a href= "/nations/<%= athlete.nation.id %>"><%= athlete.nation.name %></a></td>
         <td><a href= "/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></td>
+        <td><a href= "/nations/<%= athlete.nation.id %>"><%= athlete.nation.name %></a></td>
       </tr>
     <% end %>
   </table>
-</div>
-
-<a href="/athletes/new">Add New Athlete</a> 
+</div> 

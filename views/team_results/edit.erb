@@ -1,23 +1,26 @@
-<h4>Edit result for <%= @contest.full_name %></h4>
+<div class="main-cell space">
+  <h2>Edit result for <%= @contest.full_name %></h2>
 
-<form action="/team_results/<%= @team_result.id %>" method="post">
+  <form action="/team_results/<%= @team_result.id %>" method="post">
 
-  <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+    <input type="hidden" name="contest_id" value="<%= @contest.id %>">
+    <fieldset>
+      <label for="team_id">Team: </label>
+      <select type="text" name="team_id" id="team_id" disabled>
+          <% @teams.each do |team| %>
+            <% if team.event_id == @contest.event.id %>
+              <option value="<%= team.id %>" <%= "selected" if @team_result.team_id == team.id %> ><%= team.nation.name %></option>
+            <% end %>
+          <% end %>
+      </select>
 
-  <label for="team_id">Team</label>
-  <select type="text" name="team_id" id="team_id" disabled>
-      <% @teams.each do |team| %>
-        <% if team.event_id == @contest.event.id %>
-          <option value="<%= team.id %>" <%= "selected" if @team_result.team_id == team.id %> ><%= team.nation.name %></option>
-        <% end %>
-      <% end %>
-  </select>
+      <label for="score"><%= @contest.event.score_method.capitalize %>: </label>
+      <input  type="text" name="score" id="score" value="<%= @team_result.print_score %>">
 
-  <label for="score"><%= @contest.event.score_method.capitalize %></label>
-  <input  type="text" name="score" id="score" value="<%= @team_result.print_score %>">
+      <input type="hidden" name="team_id" value="<%= @team_result.team_id %>">
+      <input type="hidden" name="_method" value="put">
+      <input type="submit" value="Update Result">
+    </fieldset>
 
-  <input type="hidden" name="team_id" value="<%= @team_result.team_id %>">
-  <input type="hidden" name="_method" value="put">
-  <input type="submit" value="Update Result">
-
-</form>
+  </form>
+</div>

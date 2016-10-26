@@ -1,14 +1,24 @@
-<div>
-  <h3><%= @sport.name %></h3>
-</div>
-<div>
+<div class="main-row show-row">
+  <div class="main-cell medalists">
+    <h3><span>Name: </span><%= @sport.name %></h3>
+    <div class="page-header">
+      <form action="/sports/<%= @sport.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">  
+        <input type="submit" value="Delete Sport">  
+      </form>
+      <a href="/sports/<%= @sport.id %>/edit">Edit Sport</a>
+    </div>
+  </div>
+
+  <div class="main-cell">
+    <h1>Events</h1>
   <% @sport.events.each do |event| %>
-    <h4><a href="/events/<%= event.id %>"><%= event.class.capitalize %> <%= event.name %></a></h4>
+    <h3><a href="/events/<%= event.id %>"><%= event.class.capitalize %> <%= event.name %></a></h4>
   <% end %>
+    <div class="page-header zero-margin">
+      <a href="/events/new">Add Event</a> 
+    </div>
+  </div>
 </div>
 
-<form action="/sports/<%= @sport.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">  
-  <input type="submit" value="Delete Sport">  
-</form>
-<a href="/sports/<%= @sport.id %>/edit">Edit Sport</a>
+

@@ -4,27 +4,37 @@
   <head>
     <title>Winter Olympics 2018 | South Korea</title>
     <link href="/css/normalize.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width">
   </head>
   <body>
-    <header class="main-header">
-      <h1>Winter Olympics 2018 | South Korea</h1>
-      <nav class="nav-bar">
-        <ul>
-          <li><a href="/">Leaderboard</a></li>
-          <li><a href="/medalists">Medalists</a></li>
-          <li><a href="/nations">Nations</a></li>
-          <li><a href="/teams">Teams</a></li>
-          <li><a href="/athletes">Athletes</a></li>
-          <li><a href="/sports">Sports</a></li>
-          <li><a href="/events">Events</a></li>
-          <li><a href="/results">Results</a></li>
-          <li><a href="/venues">Venues</a></li>
-        </ul>
-      </nav>
+    <header>
+      <div class="title">
+        <img src="/images/logos/olympic_logo.svg">
+        <h1>Winter Olympics 2018 | South Korea</h1>
+      </div>
+      <div class="nav-row">
+        <nav class="nav-cell">
+          <ul>
+            <li><a href="/">Leaderboard</a></li>
+            <li><a href="/medalists">Medalists</a></li>
+            <li><a href="/schedule">Schedule</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-cell">
+          <ul>
+            <li><a href="/nations">Nations</a></li>
+            <li><a href="/teams">Teams</a></li>
+            <li><a href="/athletes">Athletes</a></li>
+            <li><a href="/sports">Sports</a></li>
+            <li><a href="/results">Results</a></li>
+            <li><a href="/venues">Venues</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <div class="main-content">
+    <div class="main-row">
       <%= yield %>
     </div>
   </body>

@@ -1,27 +1,30 @@
-<div>
+<div class="main-cell space">
+  <h2>Add new Team using the fields below.</h2>
+
   <form action="/teams" method="post">
 
-    <label for="nation_id">Nation:</label>
-    <select type="text" name="nation_id" id="nation_id">
-      <% @nations.each do |nation| %>
-        <option value="<%= nation.id %>"><%= nation.name %></option>
-      <% end %>
-    </select>
+    <fieldset>
+      <label for="nation_id">Nation:</label>
+      <select type="text" name="nation_id" id="nation_id">
+        <% @nations.each do |nation| %>
+          <option value="<%= nation.id %>"><%= nation.name %></option>
+        <% end %>
+      </select>
 
-    <label for="event_id">Event:</label>
-    <select type="text" name="event_id" id="event_id">
-      <% @sports.each do |sport| %>
-        <optgroup label="<%= sport.name %>">
-          <% sport.events.each do |event| %>
-            <% if event.team_size > 1 %>
-              <option value="<%= event.id %>"><%= event.name %> <%= event.class.capitalize %></option>
+      <label for="event_id">Event:</label>
+      <select type="text" name="event_id" id="event_id">
+        <% @sports.each do |sport| %>
+          <optgroup label="<%= sport.name %>">
+            <% sport.events.each do |event| %>
+              <% if event.team_size > 1 %>
+                <option value="<%= event.id %>"><%= event.name %> <%= event.class.capitalize %></option>
+              <% end %>
             <% end %>
-          <% end %>
-        </optgroup>
-      <% end %>
-    </select>
+          </optgroup>
+        <% end %>
+      </select>
 
-    <input type="submit" value="Add Team">
-
+      <input type="submit" value="Add Team">
+    </fieldset>
   </form>
 </div>

@@ -1,15 +1,20 @@
-<form action="/nations" method="post">
+<div class="main-cell space">
+  <h2>Add new Nation using the fields below.</h2>
 
-  <input type="hidden" name="gold" value="0">
-  <input type="hidden" name="silver" value="0">
-  <input type="hidden" name="bronze" value="0">
-  
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name">
+  <form action="/nations" method="post">
 
-  <label for="region">Region:</label>
-  <input type="text" name="region" id="region">
+    <fieldset>
+      <input type="hidden" name="gold" value="0">
+      <input type="hidden" name="silver" value="0">
+      <input type="hidden" name="bronze" value="0">
+      
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name">
 
-  <input type="submit" value="Add Nation">
+      <label for="region">Region:</label>
+      <input type="text" name="region" id="region">
+    </fieldset>
+    <input type="submit" value="Add Nation">
 
-</form>
+  </form>
+</div>

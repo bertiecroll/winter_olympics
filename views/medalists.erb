@@ -1,6 +1,6 @@
-<div class="filter-form">
+<div class="main-cell">
   <form method="get">
-    <label for="filter">Filter Medalists by Sport</label>
+    <label for="filter">Filter Medalists by Sport: </label>
     <select type="text" name="filter" id="filter">
         <option disabled selected>--- Select Sport ---</option>
         <% @sports_filter.each do |sport| %>
@@ -15,25 +15,27 @@
   </form>
 </div>
 
-<h2>Medalists</h2>
-<div>
+<div class="main-cell medalists">
+  <h1>Medalists</h1>
   <% @sports.each do |sport| %>
-    <h3><%= sport.name %></h3>
+    <h2><%= sport.name %></h2>
     <% sport.events.each do |event| %>
       <% medalists = event.medalists() %>
       <% if medalists != nil %>
         <% team_size = event.team_size %> 
-        <h4><%= event.class.capitalize %> <%= event.name %></h4>
+        <h3><%= event.class.capitalize %> <%= event.name %></h3>
         <% if medalists[0] != nil %>
-          <h5>Gold: <%= team_size == 1 ? "#{medalists[0].full_name} from #{medalists[0].nation.name}" : medalists[0].nation.name %> </h5>
+          <h4><span>Gold:</span> <%= team_size == 1 ? "#{medalists[0].full_name} from #{medalists[0].nation.name}" : medalists[0].nation.name %> </h4>
         <% end %>
         <% if medalists[1] != nil %>
-          <h5>Silver: <%= team_size == 1 ? "#{medalists[1].full_name} from #{medalists[1].nation.name}" : medalists[1].nation.name %> </h5>
+          <h4><span>Silver:</span> <%= team_size == 1 ? "#{medalists[1].full_name} from #{medalists[1].nation.name}" : medalists[1].nation.name %> </h4>
         <% end %>
         <% if medalists[2] != nil %>
-          <h5>Bronze: <%= team_size == 1 ? "#{medalists[2].full_name} from #{medalists[2].nation.name}" : medalists[2].nation.name %> </h5>
+          <h4><span>Bronze:</span> <%= team_size == 1 ? "#{medalists[2].full_name} from #{medalists[2].nation.name}" : medalists[2].nation.name %> </h4>
         <% end %>
       <% end %>
     <% end %>
+    <br>
+    <hr>
   <% end %>
 </div>
