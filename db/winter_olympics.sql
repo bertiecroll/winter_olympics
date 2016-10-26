@@ -29,6 +29,7 @@ CREATE TABLE athletes (
   last_name VARCHAR(255),
   date_of_birth DATE,
   gender VARCHAR(255),
+  image VARCHAR(255),
   nation_id INT4 REFERENCES nations(id) ON DELETE CASCADE
 );
 

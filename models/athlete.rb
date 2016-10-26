@@ -4,7 +4,7 @@ require_relative('../db/sql_runner')
 class Athlete
 
   attr_reader(:id, :date_of_birth)
-  attr_accessor(:first_name, :last_name, :gender, :nation_id)
+  attr_accessor(:first_name, :last_name, :gender, :image, :nation_id)
 
   def initialize(options)
     @id = options['id'].to_i
@@ -12,6 +12,7 @@ class Athlete
     @last_name = options['last_name']
     @date_of_birth = Date.parse(options['date_of_birth'])
     @gender = options['gender']
+    @image = options['image']
     @nation_id = options['nation_id'].to_i
   end
 
@@ -41,8 +42,8 @@ class Athlete
   end
 
   def save()
-    sql = "INSERT INTO athletes (first_name, last_name, date_of_birth, gender, nation_id)
-      VALUES ('#{@first_name}', '#{@last_name}', '#{dob()}', '#{@gender}', #{@nation_id})
+    sql = "INSERT INTO athletes (first_name, last_name, date_of_birth, gender, image, nation_id)
+      VALUES ('#{@first_name}', '#{@last_name}', '#{dob()}', '#{@gender}', '#{@image}', #{@nation_id})
       RETURNING *"
     athlete = SqlRunner.run(sql).first
     @id = athlete['id']
@@ -56,7 +57,7 @@ class Athlete
 
   def self.update(options)
     sql = "UPDATE athletes
-      SET first_name = '#{options['first_name']}', last_name = '#{options['last_name']}', date_of_birth = '#{options['date_of_birth']}', gender = '#{options['gender']}', nation_id = #{options['nation_id']}
+      SET first_name = '#{options['first_name']}', last_name = '#{options['last_name']}', date_of_birth = '#{options['date_of_birth']}', gender = '#{options['gender']}', image = '#{options['image']}', nation_id = #{options['nation_id']}
       WHERE id = #{options['id']}"
     SqlRunner.run(sql)
   end
