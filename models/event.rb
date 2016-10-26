@@ -51,6 +51,12 @@ class Event
     SqlRunner.run(sql)
   end
 
+  def self.count()
+    sql = "SELECT count(*) FROM events"
+    value = SqlRunner.run(sql).first['count']
+    return value
+  end
+
   def self.update(options)
     sql = "UPDATE events
       SET name = '#{options['name']}', class = '#{options['class']}', score_method = '#{options['score_method']}', team_size = #{options['team_size']} sport_id = #{options['sport_id']}

@@ -89,6 +89,12 @@ class Nation
     SqlRunner.run(sql)
   end
 
+  def self.count()
+    sql = "SELECT count(*) FROM nations"
+    value = SqlRunner.run(sql).first['count']
+    return value
+  end
+
   def self.update(options)
     sql = "UPDATE nations
       SET name = '#{options['name']}', region = '#{options['region']}, gold = #{options['gold']}, silver = #{options['silver']}, bronze = #{options['bronze']}

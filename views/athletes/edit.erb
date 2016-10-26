@@ -16,6 +16,9 @@
       <option value="female" <%= "selected" if @athlete.gender == "female" %> >Female</option>
     </select>
 
+    <label for="image">Image Source</label>
+    <input type="text" name="image" id="image" value="<%= @athlete.image %>">
+
     <label for="nation_id">Nation:</label>
     <select type="text" name="nation_id" id="nation_id">
       <% @nations.each do |nation| %>

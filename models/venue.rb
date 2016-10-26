@@ -32,6 +32,12 @@ class Venue
     SqlRunner.run(sql)
   end
 
+  def self.count()
+    sql = "SELECT count(*) FROM venues"
+    value = SqlRunner.run(sql).first['count']
+    return value
+  end
+
   def self.update(options)
     sql = "UPDATE venues
       SET name = '#{options['name']}', location = '#{options['location']}', capacity = #{options['capacity']}

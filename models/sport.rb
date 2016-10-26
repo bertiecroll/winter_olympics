@@ -30,6 +30,12 @@ class Sport
     SqlRunner.run(sql)
   end
 
+  def self.count()
+    sql = "SELECT count(*) FROM sports"
+    value = SqlRunner.run(sql).first['count']
+    return value
+  end
+
   def self.update(options)
     sql = "UPDATE sports
       SET name = '#{options['name']}'

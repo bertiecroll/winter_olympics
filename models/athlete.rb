@@ -12,7 +12,7 @@ class Athlete
     @last_name = options['last_name']
     @date_of_birth = Date.parse(options['date_of_birth'])
     @gender = options['gender']
-    @image = options['image']
+    @image = options['image'].to_s == "" ? "/images/athletes/#{@gender}_avatar.png" : options['image']
     @nation_id = options['nation_id'].to_i
   end
 
@@ -58,6 +58,12 @@ class Athlete
     sql = "DELETE FROM athletes
       WHERE id = #{@id}"
     SqlRunner.run(sql)
+  end
+
+  def self.count()
+    sql = "SELECT count(*) FROM athletes"
+    value = SqlRunner.run(sql).first['count']
+    return value
   end
 
   def self.update(options)

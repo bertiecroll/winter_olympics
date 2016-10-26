@@ -13,6 +13,11 @@ require_relative('./controllers/team_result_controller')
 
 #Leaderboard page showing table of nations ordered by points
 get '/' do
+  @athlete_count = Athlete.count()
+  @nation_count = Nation.count()
+  @sport_count = Sport.count()
+  @event_count = Event.count()
+  @venue_count = Venue.count()
   Nation.update_medals
   @nations = Nation.all
   erb(:leaderboard)

@@ -12,6 +12,7 @@
   <h4>Event Team Size Limit: <%= @team.event.team_size %></h4>
   <h4>Current Team Members: <%= @team.athlete_count %></h4>
   <% @team.athletes.each do |athlete| %>
+    <img class="athlete-image" src="<%= athlete.image %>" alt="image of <%= athlete.full_name %>">
     <h5><a href="/athletes/<%= athlete.id %>"><%= athlete.full_name %></a></h5>
     <form action="/athletes_teams/<%= @team.athlete_team.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
