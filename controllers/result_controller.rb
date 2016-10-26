@@ -4,8 +4,8 @@ require('pry-byebug')
 #INDEX
 #get all results /results
 get '/results' do
-  query = params[:search]
-  @results = Result.all(query)
+  @results = Result.all()
+  @team_results = TeamResult.all()
   erb(:'results/index')
 end
 

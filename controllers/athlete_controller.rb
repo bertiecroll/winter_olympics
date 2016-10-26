@@ -3,7 +3,9 @@ require_relative('../models/athlete')
 #INDEX
 #get all athletes /athletes
 get '/athletes' do
-  @athletes = Athlete.all()
+  @nations = Nation.all()
+  query = params[:filter]
+  @athletes = Athlete.all(query)
   erb(:'athletes/index')
 end
 

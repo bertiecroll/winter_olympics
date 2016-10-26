@@ -3,14 +3,14 @@
   <html>
   <head>
     <title>Winter Olympics 2018 | South Korea</title>
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/normalize.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width">
   </head>
   <body>
-    <header>
+    <header class="main-header">
       <h1>Winter Olympics 2018 | South Korea</h1>
-      <nav>
+      <nav class="nav-bar">
         <ul>
           <li><a href="/">Leaderboard</a></li>
           <li><a href="/medalists">Medalists</a></li>
@@ -21,12 +21,10 @@
           <li><a href="/events">Events</a></li>
           <li><a href="/results">Results</a></li>
           <li><a href="/venues">Venues</a></li>
-          <hr>
         </ul>
       </nav>
     </header>
-    
-    <div>
+    <div class="main-content">
       <%= yield %>
     </div>
   </body>

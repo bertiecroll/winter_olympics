@@ -1,8 +1,18 @@
-<form method="get">
-  <label for="search">Search Medalists by Sport</label>
-  <input type="text" name="search" value="" id="search">
-  <input type="submit" value="Search">
-</form>
+<div class="filter-form">
+  <form method="get">
+    <label for="filter">Filter Medalists by Sport</label>
+    <select type="text" name="filter" id="filter">
+        <% @sports_filter.each do |sport| %>
+          <option value="<%= sport.id %>"><%= sport.name %></option>
+        <% end %>
+    </select>
+    <input type="submit" value="Filter">
+  </form>
+  <form method="get">
+    <input type="hidden" name="filter" value="0">
+    <input type="submit" value="View All">
+  </form>
+</div>
 
 <h2>Medalists</h2>
 <div>

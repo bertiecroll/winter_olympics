@@ -1,4 +1,17 @@
-<!-- :first_name, :last_name, :gender, :date_of_birth :nation_id -->
+<form method="get">
+  <label for="filter">Filter Athletes by Nation</label>
+  <select type="text" name="filter" id="filter">
+      <% @nations.each do |nation| %>
+        <option value="<%= nation.id %>"><%= nation.name %></option>
+      <% end %>
+  </select>
+  <input type="submit" value="Filter">
+</form>
+<form method="get">
+  <input type="hidden" name="filter" value="0">
+  <input type="submit" value="View All">
+</form>
+
 <div>
   <table>
     <tr>
