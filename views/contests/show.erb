@@ -19,11 +19,14 @@
     <% team_size = @contest.event.team_size %>
     <table>
       <tr>
+        <th>Position</th>
         <th><%= team_size == 1 ? "Athlete" : "Team" %>:</th>
         <th><%= @contest.event.score_method.capitalize %></th>
       </tr>
+      <% counter = 1 %>
       <% @contest.results.each do |result| %>
         <tr>
+          <td><%= counter %></td>
           <td class="results"><%= team_size == 1 ? result.athlete.full_name : result.team.nation.name %></td>
           <td class="results"><%= result.print_score %></td>
           <td class="results">
@@ -36,6 +39,7 @@
             </div>
           </td>
         </tr>
+        <% counter += 1 %>
       <% end %>
     </table>
     <div class="page-header zero-margin">

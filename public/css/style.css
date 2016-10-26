@@ -246,6 +246,11 @@ input:hover {
 
 .flag-container {
   flex: 1;
+  transition: .8s;
+}
+
+.flag-container:hover {
+  transform: scale(1.1);
 }
 
 .nation-row img {
