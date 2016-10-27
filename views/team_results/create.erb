@@ -3,8 +3,8 @@
 </div>
 
 <div class="nation-row medalists">
-  <h3><span>Event: </span><%= @result_team.contest.full_name %>: </h3>
-  <h3><span>Athlete</span><%= @team_result.team.nation.name %>: </h3>
+  <h3><span>Event: </span><%= @team_result.contest.full_name %>: </h3>
+  <h3><span>Team: </span><%= @team_result.team.nation.name %>: </h3>
   <h3><span><%= @team_result.contest.event.score_method.capitalize %>: </span><%= @team_result.print_score %></h3>
 </div>
 
