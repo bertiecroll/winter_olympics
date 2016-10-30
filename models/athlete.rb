@@ -35,12 +35,19 @@ class Athlete
     return Nation.find(@nation_id)
   end
 
+  def teams()
+    sql = "SELECT t.* FROM teams t
+      INNER JOIN athletes_teams at ON t.id = at.team_id
+      WHERE at.athlete_id = #{@id}"
+    return Team.map_items(sql)
+  end
+
   def date_of_birth=(new_dob)
     return @date_of_birth = Date.parse(new_dob)
   end
 
   def has_result?(contest_id)
-    sql = "SELECT count(*) FROM results WHERE athlete_id=#{@id} AND contest_id=#{contest_id}"
+    sql = "SELECT count(*) FROM results WHERE athlete_id= #{@id} AND contest_id= #{contest_id}"
     sql_result = SqlRunner.run(sql).first
     count = sql_result['count'].to_i
     return count < 1 ? false : true

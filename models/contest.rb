@@ -54,10 +54,11 @@ class Contest
     order = get_order()
     result_table = get_result_table()
     if result_table == "results"
-      sql = "SELECT a.* FROM athletes a INNER JOIN results r ON a.id = r.athlete_id WHERE r.contest_id = #{@id} ORDER BY r.score #{order} LIMIT 3"
+      sql = "SELECT a.* FROM athletes a INNER JOIN results r ON a.id = r.athlete_id"
     else
-      sql = "SELECT t.* FROM teams t INNER JOIN team_results r ON t.id = r.team_id WHERE r.contest_id = #{@id} ORDER BY r.score #{order} LIMIT 3"  
+      sql = "SELECT t.* FROM teams t INNER JOIN team_results r ON t.id = r.team_id"
     end
+      sql += " WHERE r.contest_id = #{@id} ORDER BY r.score #{order} LIMIT 3"  
     
     result_table == "results" ? result = Athlete.map_items(sql) : result = Team.map_items(sql)
     return result

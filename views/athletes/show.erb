@@ -16,6 +16,11 @@
     <h3><span>Last Name: </span><%= @athlete.last_name %></h3>
     <h3><span>Date of Birth: </span><%= @athlete.dob %></h3>
     <h3><span>Gender: </span><%= @athlete.gender %></h3>
+
+    <h2>Teams</h2>
+    <% @athlete.teams.each do |team| %>
+      <h3><a href="/teams/<%= team.id %>"><%= team.name %></a></h3>
+    <% end %>
   </div>
 </div>
 
