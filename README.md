@@ -13,7 +13,7 @@ Project created while studying at CodeClan, Edinburgh.
 
 ## Installing and Running App
 
-# Requirements
+### Requirements
 * Ruby with Sinatra and PG Gems.
 * PostgreSQL - install instructions [here](https://www.postgresql.org/docs/9.6/static/tutorial-install.html)
 
