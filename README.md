@@ -22,12 +22,12 @@ Project created while studying at CodeClan, Edinburgh.
 3. create databse tables using `psql -d winter_olympics -f db/winter_olympics.sql` from root project folder
 4. add seed data using `ruby db/seed.rb` from root project folder
 5. start server using `ruby app.rb` from root project folder
-6. application with run on localhost:4567
+6. application will run on localhost:4567
 
 ## Built With
 
 Ruby.  
 Sinatra.  
-SQL (Posgres).
-HTML.
-CSS. 
+SQL (Posgres).  
+HTML.  
+CSS.   
