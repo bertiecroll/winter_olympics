@@ -1,4 +1,3 @@
-require('pry-byebug')
 require_relative('../models/nation')
 require_relative('../models/sport')
 require_relative('../models/event')
@@ -307,5 +306,3 @@ Sport.delete_all()
 @team_result_4.save()
 
 Nation.update_medals()
-binding.pry
-nil
