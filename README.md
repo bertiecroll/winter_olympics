@@ -19,7 +19,7 @@ Project created while studying at CodeClan, Edinburgh.
 
 1. Clone repository using `git clone https://github.com/bertiecroll/winter_olympics.git`
 2. create psql database using `psql` then `create database winter_olympics`
-3. create databse tables using `psql -d winter_olympics -f db/winter_olympics.sql` from root project folder
+3. create database tables using `psql -d winter_olympics -f db/winter_olympics.sql` from root project folder
 4. add seed data using `ruby db/seed.rb` from root project folder
 5. start server using `ruby app.rb` from root project folder
 6. application will run on localhost:4567
